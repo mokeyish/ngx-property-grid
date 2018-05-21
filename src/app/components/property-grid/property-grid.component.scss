@@ -1,0 +1,31 @@
+
+.property-grid {
+
+    .property-grid-group {
+        .property-grid-group-label {
+            padding-left: 3px;
+            background-color: cornflowerblue;
+            color: white;
+        }
+    }
+
+    .property-grid-items {
+
+    }
+
+    .property-grid-item {
+        display: flex;
+    }
+
+    .property-grid-label, .property-grid-control {
+        border: 0.5px solid gray;
+    }
+
+    .property-grid-label {
+        width: 100px;
+        padding-left: 3px;
+    }
+    .property-grid-control {
+        flex: 1;
+    }
+}

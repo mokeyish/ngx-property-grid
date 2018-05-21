@@ -10,7 +10,7 @@
         "component-selector": [
             true,
             "element",
-            "app",
+            ["app","ngx"],
             "kebab-case"
         ]
     }
