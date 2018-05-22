@@ -1,10 +1,12 @@
+import {Type} from '@angular/core';
 
 export interface PropertyGridItemMeta {
     name: string;
-    description: string;
+    description?: string;
     order?: string;
     group?: string;
     hidden?: boolean;
+    componentType?: Type<any>;
 }
 
 export const $meta = (meta: PropertyGridItemMeta) =>

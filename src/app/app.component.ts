@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {$meta} from './components/property-grid/property-grid-item-meta';
+import {PropertyGridComponent} from './components/property-grid/property-grid.component';
 
 @Component({
     selector: 'app-root',
@@ -25,4 +26,15 @@ export class Student {
 
     @$meta({name: '地址', description: '住址', group: '详细信息'})
     address: string;
+
+    @$meta({name: '分数', componentType: PropertyGridComponent})
+    score: Score;
+}
+
+
+export class Score {
+    @$meta({name: '数学', description: '数学分数'})
+    math: number;
+    @$meta({name: '英语', description: '英语分数'})
+    english: number;
 }

@@ -19,11 +19,12 @@
 
     .property-grid-label, .property-grid-control {
         border: 0.5px solid gray;
+        padding-left: 3px;
+        padding-right: 3px;
     }
 
     .property-grid-label {
         width: 100px;
-        padding-left: 3px;
     }
     .property-grid-control {
         flex: 1;
