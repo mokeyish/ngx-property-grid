@@ -27,8 +27,14 @@ export class Student {
     @$meta({name: '地址', description: '住址', group: '详细信息'})
     address: string;
 
-    @$meta({name: '分数', componentType: PropertyGridComponent})
-    score: Score;
+    @$meta({name: '颜色', description: '颜色', group: '详细信息', type: 'color'})
+    color: string;
+
+    @$meta({name: '是否通过', description: '是否通过', group: '详细信息', type: 'checkbox'})
+    isPass: string;
+
+    // @$meta({name: '分数', componentType: PropertyGridComponent, hidden: true})
+    // score: Score;
 }
 
 

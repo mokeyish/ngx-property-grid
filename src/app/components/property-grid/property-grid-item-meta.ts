@@ -5,8 +5,11 @@ export interface PropertyGridItemMeta {
     description?: string;
     order?: string;
     group?: string;
-    hidden?: boolean;
+    hidden?: boolean; // default false
     componentType?: Type<any>;
+    singleRow?: boolean; // default true
+    options?: any;
+    type?: string; // boolean number options label color
 }
 
 export const $meta = (meta: PropertyGridItemMeta) =>

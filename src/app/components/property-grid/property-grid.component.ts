@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, SimpleChange} from '@angular/core';
 import {PropertyGridItemMeta} from './property-grid-item-meta';
+import {ColorComponent} from './controls/color';
+import {CheckboxComponent} from './controls/checkbox';
 
 @Component({
     selector: 'ngx-property-grid',
@@ -9,28 +11,32 @@ import {PropertyGridItemMeta} from './property-grid-item-meta';
 export class PropertyGridComponent implements OnInit {
 
     private _options: any;
-
-    @Input()
-    meta: any;
+    private _meta: any;
 
     @Input()
     width: string| number;
 
     @Input()
-    set options(v: any) {
+    public set meta(v: any) {
+        this._meta = v;
+        this.initMeta();
+    }
+    public get meta(): any {
+        return this._meta;
+    }
+
+    @Input()
+    public set options(v: any) {
         if (v.__meta) {
             this.meta = v.__meta;
-            this.initMeta();
         }
         this._options = v;
     }
-    get options(): any {
+    public get options(): any {
         return this._options;
     }
 
-    public keys: string[];
-
-    public groups: Group[];
+    public rows: Array<Group | Item | any>;
 
 
     constructor() {
@@ -41,29 +47,65 @@ export class PropertyGridComponent implements OnInit {
 
     private initMeta(): void {
         const meta: object = this.meta;
-        this.groups = [];
+        this.rows = [];
         if (!meta) {
             return;
         }
 
-        const groups: Group[] = [{items: []}];
+        const groups: Group[] = [new Group(undefined)];
         for (const i in meta) {
             if (!meta.hasOwnProperty(i)) {
                 continue;
             }
-            const v = meta[i];
+            const v: PropertyGridItemMeta = meta[i];
             if (v.hidden) {
                 continue;
             }
+            switch (v.type) {
+                case 'color':
+                    v.componentType = ColorComponent;
+                    break;
+                case 'checkbox':
+                    v.componentType = CheckboxComponent;
+                    break;
+                default:
+                    break;
+            }
+
             let group = groups.find(o => o.name === v.group);
             if (!group) {
-                group = {name: v.group, items: []};
+                group = new Group(v.group);
                 groups.push(group);
             }
-            group.items.push({key: i, meta: v});
+            group.items.push(new Item(i, v));
         }
-        this.groups = groups;
+        const rows: Array<Group | Item> = [];
+        for (const g of groups) {
+            if (g.name) {
+                rows.push(g);
+            }
+            g.items.forEach(o => rows.push(o));
+        }
+        this.rows = rows;
     }
 }
 
-interface Group {name?: string; items: {key: string, meta: PropertyGridItemMeta}[]; }
+class Item {
+    public get name(): string {
+        return this.meta.name;
+    }
+    public get description(): string {
+        return this.meta.description;
+    }
+    public type = 'item';
+    constructor(public key: string, public meta: PropertyGridItemMeta) {
+    }
+}
+
+class Group {
+    public readonly items: Item[] = [];
+    public type = 'group';
+
+    constructor(public name: string) {
+    }
+}

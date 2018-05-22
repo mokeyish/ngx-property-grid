@@ -1,20 +1,14 @@
-<div class="property-grid" [ngStyle]="{width: width}">
-    <div  *ngFor="let group of groups">
-        <div class="property-grid-group">
-            <div class="property-grid-group-label">{{group.name}}</div>
-            <div class="property-grid-items">
-                <div class="property-grid-item" *ngFor="let item of group.items">
-                    <div>
-                        <div class="property-grid-label">
-                            <span>{{item.meta.name}}</span> <span *ngIf="item.meta.description" [title]="item.meta.description" style="margin-left: 7px">[?]</span>
-                        </div>
-
-                        <div class="property-grid-control">
-                            <span>{{options[item.key]}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="property-grid">
+    <table class="property-grid-table" [ngStyle]="{width: width}">
+        <tbody>
+        <tr [ngSwitch]="row.type" *ngFor="let row of rows" [ngClass]="row.type == 'group'? 'property-grid-group-row':'property-grid-row'">
+            <!--<td [attr.colspan]="row.colspan"></td>-->
+            <td *ngSwitchCase="'group'" colspan="2" class="property-grid-group">{{row.name}}</td>
+            <td *ngSwitchCase="'item'" colspan="1" class="property-grid-label">{{row.name}}<span *ngIf="row.description" [title]="row.description">[?]</span></td>
+            <td *ngSwitchCase="'item'" colspan="1" class="property-grid-control">
+                <dynamic-component [componentType]="row.meta.componentType"></dynamic-component>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>

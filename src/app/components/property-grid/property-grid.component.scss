@@ -1,32 +1,36 @@
 
 .property-grid {
 
+
+
+    .property-grid-table {
+        border: solid 1px #95B8E7;
+        border-spacing: 0;
+    }
+
+    .property-grid-group-row {
+        background-color: #368bffeb;
+        font-weight: bold;
+        color: white;
+    }
     .property-grid-group {
-        .property-grid-group-label {
-            padding-left: 3px;
-            background-color: cornflowerblue;
-            color: white;
-        }
     }
 
-    .property-grid-items {
-
-    }
-
-    .property-grid-item {
-        display: flex;
+    .property-grid-row {
     }
 
     .property-grid-label, .property-grid-control {
-        border: 0.5px solid gray;
-        padding-left: 3px;
-        padding-right: 3px;
+        //border: 0.5px solid gray;
+        //padding-left: 3px;
+        //padding-right: 3px;
+        border: dotted 1px #ccc;
+        padding: 2px 5px;
     }
 
     .property-grid-label {
-        width: 100px;
+        //width: 100px;
     }
     .property-grid-control {
-        flex: 1;
+        //flex: 1;
     }
 }
