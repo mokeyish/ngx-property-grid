@@ -15,7 +15,12 @@
 
                 <input *ngSwitchCase="'text'" type="text" [value]="options[row.key]" (change)="convertValue(row, $event.target.value)" />
 
+                <select *ngSwitchCase="'options'" (change)="convertValue(row, $event.target.value)">
+                    <option  [value]="optionValue(option)" *ngFor="let option of row.options">{{optionLabel(option)}}</option>
+                </select>
+
                 <label *ngSwitchCase="'label'" >{{options[row.key]}}</label>
+
 
                 <dynamic-component *ngSwitchDefault [componentType]="row.meta.componentType" ></dynamic-component>
             </td>

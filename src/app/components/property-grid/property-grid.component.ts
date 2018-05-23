@@ -50,6 +50,23 @@ export class PropertyGridComponent implements OnInit {
         this.options[meta.key] = meta.valueConvert ? meta.valueConvert(val) : val;
     }
 
+    public optionLabel(v: any): string {
+        if (typeof v === 'string') {
+            return v;
+        }
+        if (v.text) {
+            return v.text;
+        }
+        if (v.label) {
+            return v.label;
+        }
+        return v;
+    }
+
+    public optionValue(v: any): any {
+        return v && v.value ? v.value : v;
+    }
+
     private initMeta(): void {
         const meta: object = this.meta;
         this.rows = [];

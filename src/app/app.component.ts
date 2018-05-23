@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {$meta} from './components/property-grid/property-grid-item-meta';
 
 @Component({
@@ -8,6 +8,7 @@ import {$meta} from './components/property-grid/property-grid-item-meta';
 })
 export class AppComponent {
     public editor: EditorConf = new EditorConf();
+
     constructor() {
     }
 
@@ -32,6 +33,14 @@ export class EditorConf {
 
     @$meta({name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', type: 'checkbox'})
     modernizr = false;
+
+    @$meta({
+        name: 'Framework',
+        description: 'Whether to include any additional framework',
+        type: 'options',
+        options: ['None', {text: 'AngularJS', value: 'angular'}, {text: 'Backbone.js', value: 'backbone'}]
+    })
+    framework = 'None';
 
     // @$meta({name: '分数', componentType: PropertyGridComponent, hidden: true})
     // score: Score;
