@@ -33,7 +33,7 @@ export class PropertyGridComponent implements OnInit {
         return this._options;
     }
 
-    public rows: Array<Group | InternalPropertyGridItemMeta | any>;
+    public rows: Array<InternalGroup | InternalPropertyGridItemMeta | any>;
 
 
     constructor() {
@@ -42,7 +42,7 @@ export class PropertyGridComponent implements OnInit {
     ngOnInit() {
     }
 
-    public change(e: any) {
+    change(e: any) {
         console.log(e);
     }
 
@@ -50,7 +50,7 @@ export class PropertyGridComponent implements OnInit {
         this.options[meta.key] = meta.valueConvert ? meta.valueConvert(val) : val;
     }
 
-    public optionLabel(v: any): string {
+    optionLabel(v: any): string {
         if (typeof v === 'string') {
             return v;
         }
@@ -63,7 +63,7 @@ export class PropertyGridComponent implements OnInit {
         return v;
     }
 
-    public optionValue(v: any): any {
+    optionValue(v: any): any {
         return v && v.value ? v.value : v;
     }
 
@@ -74,7 +74,7 @@ export class PropertyGridComponent implements OnInit {
             return;
         }
 
-        const groups: Group[] = [new Group(undefined)];
+        const groups: InternalGroup[] = [new InternalGroup(undefined)];
         for (const i in meta) {
             if (!meta.hasOwnProperty(i)) {
                 continue;
@@ -90,12 +90,12 @@ export class PropertyGridComponent implements OnInit {
 
             let group = groups.find(o => o.name === v.group);
             if (!group) {
-                group = new Group(v.group);
+                group = new InternalGroup(v.group);
                 groups.push(group);
             }
             group.items.push(v);
         }
-        const rows: Array<Group | InternalPropertyGridItemMeta> = [];
+        const rows: Array<InternalGroup | InternalPropertyGridItemMeta> = [];
         for (const g of groups) {
             if (g.name) {
                 rows.push(g);
@@ -107,7 +107,7 @@ export class PropertyGridComponent implements OnInit {
 }
 
 
-class Group {
+export class InternalGroup {
     public readonly items: InternalPropertyGridItemMeta[] = [];
     public type = 'group';
 
@@ -115,6 +115,6 @@ class Group {
     }
 }
 
-interface InternalPropertyGridItemMeta extends PropertyGridItemMeta {
+export interface InternalPropertyGridItemMeta extends PropertyGridItemMeta {
     key: string;
 }
