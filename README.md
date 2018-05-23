@@ -1,5 +1,13 @@
 # NgxPropertyGrid
 
+A small and simple property grid in angular to view/edit POJOs, excellent if you have a "settings" object you want to give the user to edit (that's why I have created it).
+
+## Dependencies
+
+* angular
+
+## Usage
+
 ```TypeScript
 export class ExmapleEditorOptions {
     @$meta({name: 'Font', description: 'The font editor to use', group: 'Editor', hidden: false})
