@@ -8,11 +8,10 @@ import {
     OnInit, SimpleChanges, Type, ViewContainerRef
 } from '@angular/core';
 import {ComponentRef} from '@angular/core/src/linker/component_factory';
-import * as _ from 'lodash';
 
 @Component({
     selector: 'dynamic-component',
-    template: ``
+    template: ``,
 })
 export class DynamicComponent implements OnInit, DoCheck, OnChanges {
     private component: ComponentRef<IDynamicComponent>;
@@ -66,11 +65,6 @@ export class DynamicComponent implements OnInit, DoCheck, OnChanges {
             console.error(e);
         }
     }
-}
-
-export interface IComponentLoaderOptions {
-    componentType: Type<IDynamicComponent | any>;
-    componentOptions?: any;
 }
 
 export interface IDynamicComponent {

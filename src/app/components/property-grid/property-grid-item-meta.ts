@@ -10,6 +10,7 @@ export interface PropertyGridItemMeta {
     singleRow?: boolean; // default true
     options?: any;
     type?: string; // boolean number options label color
+    valueConvert?: (value: any) => any;
 }
 
 export const $meta = (meta: PropertyGridItemMeta) =>

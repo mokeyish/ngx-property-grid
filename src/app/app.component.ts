@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {$meta} from './components/property-grid/property-grid-item-meta';
-import {PropertyGridComponent} from './components/property-grid/property-grid.component';
 
 @Component({
     selector: 'app-root',
@@ -8,39 +7,32 @@ import {PropertyGridComponent} from './components/property-grid/property-grid.co
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'app';
-    public student: Student = new Student();
+    public editor: EditorConf = new EditorConf();
     constructor() {
-        this.student.name = '小明';
-        this.student.age = 19;
+    }
+
+    public get data(): string {
+        return JSON.stringify(this.editor);
     }
 }
 
 
-export class Student {
-    @$meta({name: '名字', description: '学生的名字', group: '基本信息', hidden: false})
-    name: string;
+export class EditorConf {
+    @$meta({name: 'Font', description: 'The font editor to use', group: 'Editor', hidden: false})
+    font = 'Source Code Pro';
 
-    @$meta({name: '年龄', description: '学生的年龄', group: '基本信息'})
-    age: number;
+    @$meta({name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt})
+    fontSize = 14;
 
-    @$meta({name: '地址', description: '住址', group: '详细信息'})
-    address: string;
+    @$meta({name: 'Font color', group: 'Editor', type: 'color'})
+    fontColor = '#51f41c';
 
-    @$meta({name: '颜色', description: '颜色', group: '详细信息', type: 'color'})
-    color: string;
+    @$meta({name: 'jQuery', group: 'Plugins', type: 'checkbox'})
+    jQuery = true;
 
-    @$meta({name: '是否通过', description: '是否通过', group: '详细信息', type: 'checkbox'})
-    isPass: string;
+    @$meta({name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', type: 'checkbox'})
+    modernizr = false;
 
     // @$meta({name: '分数', componentType: PropertyGridComponent, hidden: true})
     // score: Score;
-}
-
-
-export class Score {
-    @$meta({name: '数学', description: '数学分数'})
-    math: number;
-    @$meta({name: '英语', description: '英语分数'})
-    english: number;
 }

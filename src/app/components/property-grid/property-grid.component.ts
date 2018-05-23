@@ -1,7 +1,5 @@
-import {Component, Input, OnInit, SimpleChange} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PropertyGridItemMeta} from './property-grid-item-meta';
-import {ColorComponent} from './controls/color';
-import {CheckboxComponent} from './controls/checkbox';
 
 @Component({
     selector: 'ngx-property-grid',
@@ -9,7 +7,6 @@ import {CheckboxComponent} from './controls/checkbox';
     styleUrls: ['./property-grid.component.scss']
 })
 export class PropertyGridComponent implements OnInit {
-
     private _options: any;
     private _meta: any;
 
@@ -36,13 +33,21 @@ export class PropertyGridComponent implements OnInit {
         return this._options;
     }
 
-    public rows: Array<Group | Item | any>;
+    public rows: Array<Group | InternalPropertyGridItemMeta | any>;
 
 
     constructor() {
     }
 
     ngOnInit() {
+    }
+
+    public change(e: any) {
+        console.log(e);
+    }
+
+    public convertValue(meta: InternalPropertyGridItemMeta, val: any): void {
+        this.options[meta.key] = meta.valueConvert ? meta.valueConvert(val) : val;
     }
 
     private initMeta(): void {
@@ -57,19 +62,13 @@ export class PropertyGridComponent implements OnInit {
             if (!meta.hasOwnProperty(i)) {
                 continue;
             }
-            const v: PropertyGridItemMeta = meta[i];
+            const v: InternalPropertyGridItemMeta = meta[i];
             if (v.hidden) {
                 continue;
             }
-            switch (v.type) {
-                case 'color':
-                    v.componentType = ColorComponent;
-                    break;
-                case 'checkbox':
-                    v.componentType = CheckboxComponent;
-                    break;
-                default:
-                    break;
+            v.key = i;
+            if (!v.type && !v.componentType) {
+                v.type = 'text';
             }
 
             let group = groups.find(o => o.name === v.group);
@@ -77,9 +76,9 @@ export class PropertyGridComponent implements OnInit {
                 group = new Group(v.group);
                 groups.push(group);
             }
-            group.items.push(new Item(i, v));
+            group.items.push(v);
         }
-        const rows: Array<Group | Item> = [];
+        const rows: Array<Group | InternalPropertyGridItemMeta> = [];
         for (const g of groups) {
             if (g.name) {
                 rows.push(g);
@@ -90,22 +89,15 @@ export class PropertyGridComponent implements OnInit {
     }
 }
 
-class Item {
-    public get name(): string {
-        return this.meta.name;
-    }
-    public get description(): string {
-        return this.meta.description;
-    }
-    public type = 'item';
-    constructor(public key: string, public meta: PropertyGridItemMeta) {
-    }
-}
 
 class Group {
-    public readonly items: Item[] = [];
+    public readonly items: InternalPropertyGridItemMeta[] = [];
     public type = 'group';
 
     constructor(public name: string) {
     }
+}
+
+interface InternalPropertyGridItemMeta extends PropertyGridItemMeta {
+    key: string;
 }
