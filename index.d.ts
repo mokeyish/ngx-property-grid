@@ -1,2 +1,2 @@
 
-export * from './dist/components/property-grid';
+export * from './components/property-grid';
