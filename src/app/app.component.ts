@@ -7,7 +7,7 @@ import {$meta} from './components/property-grid/property-grid-item-meta';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    public editor: EditorConf = new EditorConf();
+    public editor: ExmapleEditorOptions = new ExmapleEditorOptions();
 
     constructor() {
     }
@@ -18,7 +18,7 @@ export class AppComponent {
 }
 
 
-export class EditorConf {
+export class ExmapleEditorOptions {
     @$meta({name: 'Font', description: 'The font editor to use', group: 'Editor', hidden: false})
     font = 'Source Code Pro';
 
@@ -41,7 +41,4 @@ export class EditorConf {
         options: ['None', {text: 'AngularJS', value: 'angular'}, {text: 'Backbone.js', value: 'backbone'}]
     })
     framework = 'None';
-
-    // @$meta({name: '分数', componentType: PropertyGridComponent, hidden: true})
-    // score: Score;
 }

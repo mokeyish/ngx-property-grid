@@ -1,27 +1,32 @@
 # NgxPropertyGrid
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
+```TypeScript
+export class ExmapleEditorOptions {
+    @$meta({name: 'Font', description: 'The font editor to use', group: 'Editor', hidden: false})
+    font = 'Source Code Pro';
 
-## Development server
+    @$meta({name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt})
+    fontSize = 14;
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    @$meta({name: 'Font color', group: 'Editor', type: 'color'})
+    fontColor = '#51f41c';
 
-## Code scaffolding
+    @$meta({name: 'jQuery', group: 'Plugins', type: 'checkbox'})
+    jQuery = true;
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    @$meta({name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', type: 'checkbox'})
+    modernizr = false;
 
-## Build
+    @$meta({
+        name: 'Framework',
+        description: 'Whether to include any additional framework',
+        type: 'options',
+        options: ['None', {text: 'AngularJS', value: 'angular'}, {text: 'Backbone.js', value: 'backbone'}]
+    })
+    framework = 'None';
+}
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```HTML
+<ngx-property-grid [width]="'300px'" [options]="editor"></ngx-property-grid>
+```
