@@ -11,4 +11,4 @@ export interface PropertyGridItemMeta {
     type?: string;
     valueConvert?: (value: any) => any;
 }
-export declare const $meta: (meta: PropertyGridItemMeta) => (target: any, key: string | symbol) => void;
+export declare const meta: (m: PropertyGridItemMeta) => (target: any, key: string | symbol) => void;

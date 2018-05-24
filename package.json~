@@ -1,9 +1,6 @@
 {
     "name": "ngx-property-grid",
-    "version": "1.0.0",
-    "main": "components/index.js",
-    "module": "components/index.js",
-    "typings": "components/index.d.ts",
+    "version": "0.0.0",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",

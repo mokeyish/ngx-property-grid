@@ -1,5 +1,5 @@
 import { OnInit } from '@angular/core';
-import { PropertyGridItemMeta } from './property-grid-item-meta';
+import { PropertyGridItemMeta } from '.';
 export declare class PropertyGridComponent implements OnInit {
     private _options;
     private _meta;

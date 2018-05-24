@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PropertyGridItemMeta} from './property-grid-item-meta';
+import {PropertyGridItemMeta} from '.';
 
 @Component({
     selector: 'ngx-property-grid',

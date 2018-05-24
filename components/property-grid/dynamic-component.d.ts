@@ -1,18 +1,20 @@
-/**
- * Created by YISH on 2018/01/12.
- */
-import { ComponentFactoryResolver, DoCheck, OnChanges, OnInit, SimpleChanges, Type, ViewContainerRef } from '@angular/core';
-export declare class DynamicComponent implements OnInit, DoCheck, OnChanges {
+import { ComponentFactoryResolver, EventEmitter, OnInit, Type } from '@angular/core';
+export declare class DynamicComponent implements OnInit, IDynamicComponent<any> {
     private componentFactoryResolver;
-    private entry;
+    private _value;
+    entry: any;
     private component;
     componentType: Type<any>;
-    constructor(componentFactoryResolver: ComponentFactoryResolver, entry: ViewContainerRef);
+    value: any;
+    readonly valueChange: EventEmitter<any>;
+    constructor(componentFactoryResolver: ComponentFactoryResolver);
     ngOnInit(): void;
-    ngDoCheck(): void;
-    ngOnChanges(changes: SimpleChanges): void;
+    private onValueChange(e);
     private buildComponent();
+    private initComponent(component);
+    private destroyComponent();
 }
-export interface IDynamicComponent {
-    options: any;
+export interface IDynamicComponent<TValue> {
+    value: TValue;
+    valueChange: EventEmitter<TValue>;
 }

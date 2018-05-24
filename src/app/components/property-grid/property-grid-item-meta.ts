@@ -13,12 +13,10 @@ export interface PropertyGridItemMeta {
     valueConvert?: (value: any) => any;
 }
 
-export const $meta = (meta: PropertyGridItemMeta) =>
+export const meta = (m: PropertyGridItemMeta) =>
     (target: any, key: string | symbol) => {
-    if (!target.__meta) {
-        target.__meta = {};
-    }
-    target.__meta[key] = meta;
-};
-
-
+        if (!target.__meta) {
+            target.__meta = {};
+        }
+        target.__meta[key] = m;
+    };

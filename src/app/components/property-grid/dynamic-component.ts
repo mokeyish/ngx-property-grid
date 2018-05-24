@@ -1,13 +1,15 @@
-/**
- * Created by YISH on 2018/01/12.
- */
-
 import {
     Component,
-    ComponentFactoryResolver, EventEmitter, Input,
-    OnInit, Output, Type, ViewChild, ViewContainerRef
+    ComponentFactoryResolver,
+    ComponentRef,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+    Type,
+    ViewChild,
+    ViewContainerRef
 } from '@angular/core';
-import {ComponentRef} from '@angular/core/src/linker/component_factory';
 
 @Component({
     selector: 'dynamic-component',

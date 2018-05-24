@@ -1,7 +1,4 @@
 "use strict";
-/**
- * Created by YISH on 2018/01/12.
- */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -14,45 +11,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var DynamicComponent = /** @class */ (function () {
-    function DynamicComponent(componentFactoryResolver, entry) {
+    function DynamicComponent(componentFactoryResolver) {
         this.componentFactoryResolver = componentFactoryResolver;
-        this.entry = entry;
+        this.valueChange = new core_1.EventEmitter();
     }
+    Object.defineProperty(DynamicComponent.prototype, "value", {
+        get: function () {
+            return this._value;
+        },
+        set: function (v) {
+            this._value = v;
+            if (this.component) {
+                this.component.instance.value = v;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     DynamicComponent.prototype.ngOnInit = function () {
         this.buildComponent();
     };
-    DynamicComponent.prototype.ngDoCheck = function () {
-        if (this.component) {
-            if (this.component.componentType !== this.componentType) {
-                this.buildComponent();
-            }
-            // if (!_.isEqual(this.component.instance.options, this.componentOptions)) {
-            //     this.options.componentOptions = this.componentOptions = this.component.instance.options;
-            // }
-        }
-    };
-    DynamicComponent.prototype.ngOnChanges = function (changes) {
-        // if (changes.options && changes.options.currentValue) {
-        //     if (changes.options.currentValue.componentOptions !== this.componentOptions) {
-        //         this.componentOptions = changes.options.currentValue.componentOptions;
-        //         if (this.component) {
-        //             this.component.instance.options = this.componentOptions;
-        //         }
-        //     }
-        // }
+    DynamicComponent.prototype.onValueChange = function (e) {
+        this._value = e;
+        this.valueChange.emit(e);
     };
     DynamicComponent.prototype.buildComponent = function () {
         if (!this.componentType) {
             return;
         }
         try {
-            if (this.component) {
-                this.component.destroy();
-            }
+            this.destroyComponent();
             // this.entry.clear();
             var componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.componentType);
-            var component = this.entry.createComponent(componentFactory);
-            // component.instance.options = this.componentOptions;
+            var component = this.entry.createComponent(componentFactory, 0);
+            this.initComponent(component);
             this.component = component;
         }
         catch (e) {
@@ -60,16 +52,45 @@ var DynamicComponent = /** @class */ (function () {
             console.error(e);
         }
     };
+    DynamicComponent.prototype.initComponent = function (component) {
+        var _this = this;
+        component.instance.value = this._value;
+        if (component.instance.valueChange) {
+            component.instance.valueChange.subscribe(function (e) { return _this.onValueChange(e); });
+        }
+        else {
+            component.instance.valueChange = new core_1.EventEmitter();
+            component.instance.valueChange.subscribe(function (e) { return _this.onValueChange(e); });
+        }
+    };
+    DynamicComponent.prototype.destroyComponent = function () {
+        if (this.component) {
+            this.component.destroy();
+        }
+    };
+    __decorate([
+        core_1.ViewChild('container', { read: core_1.ViewContainerRef }),
+        __metadata("design:type", Object)
+    ], DynamicComponent.prototype, "entry", void 0);
     __decorate([
         core_1.Input(),
         __metadata("design:type", core_1.Type)
     ], DynamicComponent.prototype, "componentType", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], DynamicComponent.prototype, "value", null);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], DynamicComponent.prototype, "valueChange", void 0);
     DynamicComponent = __decorate([
         core_1.Component({
             selector: 'dynamic-component',
-            template: "",
+            template: '<ng-container #container></ng-container>',
         }),
-        __metadata("design:paramtypes", [core_1.ComponentFactoryResolver, core_1.ViewContainerRef])
+        __metadata("design:paramtypes", [core_1.ComponentFactoryResolver])
     ], DynamicComponent);
     return DynamicComponent;
 }());

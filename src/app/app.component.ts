@@ -1,6 +1,5 @@
 import {Component, EventEmitter} from '@angular/core';
-import {$meta} from './components/property-grid/property-grid-item-meta';
-import {IDynamicComponent} from './components/property-grid/dynamic-component';
+import {meta, IDynamicComponent} from './components/property-grid';
 
 @Component({
     selector: 'app-root',
@@ -31,22 +30,22 @@ export class SimpleTextEditorComponent implements IDynamicComponent<string> {
 
 
 export class ExampleEditorOptions {
-    @$meta({name: 'Font', description: 'The font editor to use', componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false})
+    @meta({name: 'Font', description: 'The font editor to use', componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false})
     font = 'Source Code Pro';
 
-    @$meta({name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt})
+    @meta({name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt})
     fontSize = 14;
 
-    @$meta({name: 'Font color', group: 'Editor', type: 'color'})
+    @meta({name: 'Font color', group: 'Editor', type: 'color'})
     fontColor = '#51f41c';
 
-    @$meta({name: 'jQuery', group: 'Plugins', type: 'checkbox'})
+    @meta({name: 'jQuery', group: 'Plugins', type: 'checkbox'})
     jQuery = true;
 
-    @$meta({name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', type: 'checkbox'})
+    @meta({name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', type: 'checkbox'})
     modernizr = false;
 
-    @$meta({
+    @meta({
         name: 'Framework',
         description: 'Whether to include any additional framework',
         type: 'options',

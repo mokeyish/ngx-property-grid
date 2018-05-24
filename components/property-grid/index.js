@@ -6,14 +6,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var property_grid_component_1 = require("./property-grid.component");
 var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
 var dynamic_component_1 = require("./dynamic-component");
-var property_grid_item_meta_1 = require("./property-grid-item-meta");
-exports.$meta = property_grid_item_meta_1.$meta;
+var property_grid_component_1 = require("./property-grid.component");
 var property_grid_component_2 = require("./property-grid.component");
 exports.PropertyGridComponent = property_grid_component_2.PropertyGridComponent;
+var property_grid_item_meta_1 = require("./property-grid-item-meta");
+exports.meta = property_grid_item_meta_1.meta;
 var PropertyGridModule = /** @class */ (function () {
     function PropertyGridModule() {
     }
@@ -24,7 +24,7 @@ var PropertyGridModule = /** @class */ (function () {
             ],
             declarations: [
                 property_grid_component_1.PropertyGridComponent,
-                dynamic_component_1.DynamicComponent,
+                dynamic_component_1.DynamicComponent
             ],
             exports: [
                 property_grid_component_1.PropertyGridComponent,
