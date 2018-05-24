@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<ngx-property-grid [width]=\"'300px'\" [options]=\"editor\"></ngx-property-grid>\n\n\n<code>\n    {{data}}\n</code>\n\n\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<ngx-property-grid [width]=\"'350px'\" [options]=\"editor\"></ngx-property-grid>\n\n\n<code>\n    {{data}}\n</code>\n\n\n"
 
 /***/ }),
 
@@ -49,15 +49,16 @@ module.exports = ""
 /*!**********************************!*\
   !*** ./src/app/app.component.ts ***!
   \**********************************/
-/*! exports provided: AppComponent, ExmapleEditorOptions */
+/*! exports provided: AppComponent, SimpleTextEditorComponent, ExampleEditorOptions */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExmapleEditorOptions", function() { return ExmapleEditorOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SimpleTextEditorComponent", function() { return SimpleTextEditorComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExampleEditorOptions", function() { return ExampleEditorOptions; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _components_property_grid_property_grid_item_meta__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/property-grid/property-grid-item-meta */ "./src/app/components/property-grid/property-grid-item-meta.ts");
+/* harmony import */ var _components_property_grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/property-grid */ "./src/app/components/property-grid/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -71,7 +72,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.editor = new ExmapleEditorOptions();
+        this.editor = new ExampleEditorOptions();
     }
     Object.defineProperty(AppComponent.prototype, "data", {
         get: function () {
@@ -91,8 +92,21 @@ var AppComponent = /** @class */ (function () {
     return AppComponent;
 }());
 
-var ExmapleEditorOptions = /** @class */ (function () {
-    function ExmapleEditorOptions() {
+var SimpleTextEditorComponent = /** @class */ (function () {
+    function SimpleTextEditorComponent() {
+        this.valueChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    SimpleTextEditorComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-text-editor',
+            template: "<input type=\"text\" [value]=\"value\" (change)=\"valueChange.emit($event.target.value)\"/>"
+        })
+    ], SimpleTextEditorComponent);
+    return SimpleTextEditorComponent;
+}());
+
+var ExampleEditorOptions = /** @class */ (function () {
+    function ExampleEditorOptions() {
         this.font = 'Source Code Pro';
         this.fontSize = 14;
         this.fontColor = '#51f41c';
@@ -101,35 +115,35 @@ var ExmapleEditorOptions = /** @class */ (function () {
         this.framework = 'None';
     }
     __decorate([
-        Object(_components_property_grid_property_grid_item_meta__WEBPACK_IMPORTED_MODULE_1__["$meta"])({ name: 'Font', description: 'The font editor to use', group: 'Editor', hidden: false }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Font', description: 'The font editor to use', componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false }),
         __metadata("design:type", Object)
-    ], ExmapleEditorOptions.prototype, "font", void 0);
+    ], ExampleEditorOptions.prototype, "font", void 0);
     __decorate([
-        Object(_components_property_grid_property_grid_item_meta__WEBPACK_IMPORTED_MODULE_1__["$meta"])({ name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt }),
         __metadata("design:type", Object)
-    ], ExmapleEditorOptions.prototype, "fontSize", void 0);
+    ], ExampleEditorOptions.prototype, "fontSize", void 0);
     __decorate([
-        Object(_components_property_grid_property_grid_item_meta__WEBPACK_IMPORTED_MODULE_1__["$meta"])({ name: 'Font color', group: 'Editor', type: 'color' }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Font color', group: 'Editor', type: 'color' }),
         __metadata("design:type", Object)
-    ], ExmapleEditorOptions.prototype, "fontColor", void 0);
+    ], ExampleEditorOptions.prototype, "fontColor", void 0);
     __decorate([
-        Object(_components_property_grid_property_grid_item_meta__WEBPACK_IMPORTED_MODULE_1__["$meta"])({ name: 'jQuery', group: 'Plugins', type: 'checkbox' }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'jQuery', group: 'Plugins', type: 'checkbox' }),
         __metadata("design:type", Object)
-    ], ExmapleEditorOptions.prototype, "jQuery", void 0);
+    ], ExampleEditorOptions.prototype, "jQuery", void 0);
     __decorate([
-        Object(_components_property_grid_property_grid_item_meta__WEBPACK_IMPORTED_MODULE_1__["$meta"])({ name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', type: 'checkbox' }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', type: 'checkbox' }),
         __metadata("design:type", Object)
-    ], ExmapleEditorOptions.prototype, "modernizr", void 0);
+    ], ExampleEditorOptions.prototype, "modernizr", void 0);
     __decorate([
-        Object(_components_property_grid_property_grid_item_meta__WEBPACK_IMPORTED_MODULE_1__["$meta"])({
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({
             name: 'Framework',
             description: 'Whether to include any additional framework',
             type: 'options',
             options: ['None', { text: 'AngularJS', value: 'angular' }, { text: 'Backbone.js', value: 'backbone' }]
         }),
         __metadata("design:type", Object)
-    ], ExmapleEditorOptions.prototype, "framework", void 0);
-    return ExmapleEditorOptions;
+    ], ExampleEditorOptions.prototype, "framework", void 0);
+    return ExampleEditorOptions;
 }());
 
 
@@ -165,11 +179,12 @@ var AppModule = /** @class */ (function () {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
-            ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _components_property_grid__WEBPACK_IMPORTED_MODULE_3__["PropertyGridModule"]
+            ],
+            entryComponents: [_app_component__WEBPACK_IMPORTED_MODULE_2__["SimpleTextEditorComponent"]],
+            declarations: [
+                _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _app_component__WEBPACK_IMPORTED_MODULE_2__["SimpleTextEditorComponent"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
@@ -193,9 +208,6 @@ var AppModule = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DynamicComponent", function() { return DynamicComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/**
- * Created by YISH on 2018/01/12.
- */
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -207,45 +219,40 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 var DynamicComponent = /** @class */ (function () {
-    function DynamicComponent(componentFactoryResolver, entry) {
+    function DynamicComponent(componentFactoryResolver) {
         this.componentFactoryResolver = componentFactoryResolver;
-        this.entry = entry;
+        this.valueChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
+    Object.defineProperty(DynamicComponent.prototype, "value", {
+        get: function () {
+            return this._value;
+        },
+        set: function (v) {
+            this._value = v;
+            if (this.component) {
+                this.component.instance.value = v;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     DynamicComponent.prototype.ngOnInit = function () {
         this.buildComponent();
     };
-    DynamicComponent.prototype.ngDoCheck = function () {
-        if (this.component) {
-            if (this.component.componentType !== this.componentType) {
-                this.buildComponent();
-            }
-            // if (!_.isEqual(this.component.instance.options, this.componentOptions)) {
-            //     this.options.componentOptions = this.componentOptions = this.component.instance.options;
-            // }
-        }
-    };
-    DynamicComponent.prototype.ngOnChanges = function (changes) {
-        // if (changes.options && changes.options.currentValue) {
-        //     if (changes.options.currentValue.componentOptions !== this.componentOptions) {
-        //         this.componentOptions = changes.options.currentValue.componentOptions;
-        //         if (this.component) {
-        //             this.component.instance.options = this.componentOptions;
-        //         }
-        //     }
-        // }
+    DynamicComponent.prototype.onValueChange = function (e) {
+        this._value = e;
+        this.valueChange.emit(e);
     };
     DynamicComponent.prototype.buildComponent = function () {
         if (!this.componentType) {
             return;
         }
         try {
-            if (this.component) {
-                this.component.destroy();
-            }
+            this.destroyComponent();
             // this.entry.clear();
             var componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.componentType);
-            var component = this.entry.createComponent(componentFactory);
-            // component.instance.options = this.componentOptions;
+            var component = this.entry.createComponent(componentFactory, 0);
+            this.initComponent(component);
             this.component = component;
         }
         catch (e) {
@@ -253,16 +260,45 @@ var DynamicComponent = /** @class */ (function () {
             console.error(e);
         }
     };
+    DynamicComponent.prototype.initComponent = function (component) {
+        var _this = this;
+        component.instance.value = this._value;
+        if (component.instance.valueChange) {
+            component.instance.valueChange.subscribe(function (e) { return _this.onValueChange(e); });
+        }
+        else {
+            component.instance.valueChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+            component.instance.valueChange.subscribe(function (e) { return _this.onValueChange(e); });
+        }
+    };
+    DynamicComponent.prototype.destroyComponent = function () {
+        if (this.component) {
+            this.component.destroy();
+        }
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('container', { read: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }),
+        __metadata("design:type", Object)
+    ], DynamicComponent.prototype, "entry", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["Type"])
     ], DynamicComponent.prototype, "componentType", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], DynamicComponent.prototype, "value", null);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], DynamicComponent.prototype, "valueChange", void 0);
     DynamicComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'dynamic-component',
-            template: "",
+            template: '<ng-container #container></ng-container>',
         }),
-        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]])
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]])
     ], DynamicComponent);
     return DynamicComponent;
 }());
@@ -275,18 +311,20 @@ var DynamicComponent = /** @class */ (function () {
 /*!***************************************************!*\
   !*** ./src/app/components/property-grid/index.ts ***!
   \***************************************************/
-/*! exports provided: $meta, PropertyGridModule */
+/*! exports provided: PropertyGridComponent, meta, PropertyGridModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PropertyGridModule", function() { return PropertyGridModule; });
-/* harmony import */ var _property_grid_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./property-grid.component */ "./src/app/components/property-grid/property-grid.component.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _dynamic_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dynamic-component */ "./src/app/components/property-grid/dynamic-component.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _dynamic_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dynamic-component */ "./src/app/components/property-grid/dynamic-component.ts");
+/* harmony import */ var _property_grid_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./property-grid.component */ "./src/app/components/property-grid/property-grid.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PropertyGridComponent", function() { return _property_grid_component__WEBPACK_IMPORTED_MODULE_3__["PropertyGridComponent"]; });
+
 /* harmony import */ var _property_grid_item_meta__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./property-grid-item-meta */ "./src/app/components/property-grid/property-grid-item-meta.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "$meta", function() { return _property_grid_item_meta__WEBPACK_IMPORTED_MODULE_4__["$meta"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "meta", function() { return _property_grid_item_meta__WEBPACK_IMPORTED_MODULE_4__["meta"]; });
 
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -299,20 +337,21 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var PropertyGridModule = /** @class */ (function () {
     function PropertyGridModule() {
     }
     PropertyGridModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             imports: [
-                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]
+                _angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"]
             ],
             declarations: [
-                _property_grid_component__WEBPACK_IMPORTED_MODULE_0__["PropertyGridComponent"],
-                _dynamic_component__WEBPACK_IMPORTED_MODULE_3__["DynamicComponent"],
+                _property_grid_component__WEBPACK_IMPORTED_MODULE_3__["PropertyGridComponent"],
+                _dynamic_component__WEBPACK_IMPORTED_MODULE_2__["DynamicComponent"]
             ],
             exports: [
-                _property_grid_component__WEBPACK_IMPORTED_MODULE_0__["PropertyGridComponent"],
+                _property_grid_component__WEBPACK_IMPORTED_MODULE_3__["PropertyGridComponent"],
             ]
         })
     ], PropertyGridModule);
@@ -327,43 +366,21 @@ var PropertyGridModule = /** @class */ (function () {
 /*!*********************************************************************!*\
   !*** ./src/app/components/property-grid/property-grid-item-meta.ts ***!
   \*********************************************************************/
-/*! exports provided: $meta */
+/*! exports provided: meta */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "$meta", function() { return $meta; });
-var $meta = function (meta) {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "meta", function() { return meta; });
+var meta = function (m) {
     return function (target, key) {
         if (!target.__meta) {
             target.__meta = {};
         }
-        target.__meta[key] = meta;
+        target.__meta[key] = m;
     };
 };
 
-
-/***/ }),
-
-/***/ "./src/app/components/property-grid/property-grid.component.html":
-/*!***********************************************************************!*\
-  !*** ./src/app/components/property-grid/property-grid.component.html ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"property-grid\">\n    <table class=\"property-grid-table\" [ngStyle]=\"{width: width}\">\n        <tbody>\n        <tr [ngSwitch]=\"row.type\" *ngFor=\"let row of rows\" [ngClass]=\"row.type == 'group'? 'property-grid-group-row':'property-grid-row'\">\n            <!--<td [attr.colspan]=\"row.colspan\"></td>-->\n            <td *ngSwitchCase=\"'group'\" colspan=\"2\" class=\"property-grid-group\">{{row.name}}</td>\n            <td *ngSwitchDefault colspan=\"1\" class=\"property-grid-label\">{{row.name}}<span *ngIf=\"row.description\" [title]=\"row.description\">[?]</span></td>\n            <td [ngSwitch]=\"row.type\" *ngSwitchDefault colspan=\"1\" class=\"property-grid-control\">\n\n                <input *ngSwitchCase=\"'checkbox'\" type=\"checkbox\" [checked]=\"options[row.key]\" (change)=\"convertValue(row, $event.target.checked)\"/>\n\n                <input *ngSwitchCase=\"'color'\" type=\"color\" [value]=\"options[row.key]\" (change)=\"convertValue(row, $event.target.value)\" />\n\n                <input *ngSwitchCase=\"'number'\" type=\"text\" [value]=\"options[row.key]\" (change)=\"convertValue(row, $event.target.value)\" />\n\n                <input *ngSwitchCase=\"'text'\" type=\"text\" [value]=\"options[row.key]\" (change)=\"convertValue(row, $event.target.value)\" />\n\n                <select *ngSwitchCase=\"'options'\" (change)=\"convertValue(row, $event.target.value)\">\n                    <option  [value]=\"optionValue(option)\" *ngFor=\"let option of row.options\">{{optionLabel(option)}}</option>\n                </select>\n\n                <label *ngSwitchCase=\"'label'\" >{{options[row.key]}}</label>\n\n\n                <dynamic-component *ngSwitchDefault [componentType]=\"row.meta.componentType\" ></dynamic-component>\n            </td>\n        </tr>\n        </tbody>\n    </table>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/components/property-grid/property-grid.component.scss":
-/*!***********************************************************************!*\
-  !*** ./src/app/components/property-grid/property-grid.component.scss ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".property-grid .property-grid-table {\n  border: solid 1px #95B8E7;\n  border-spacing: 0; }\n\n.property-grid .property-grid-group-row {\n  background-color: #368bffeb;\n  font-weight: bold;\n  color: white; }\n\n.property-grid .property-grid-label, .property-grid .property-grid-control {\n  border: dotted 1px #ccc;\n  padding: 2px 5px; }\n"
 
 /***/ }),
 
@@ -495,8 +512,10 @@ var PropertyGridComponent = /** @class */ (function () {
     PropertyGridComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ngx-property-grid',
-            template: __webpack_require__(/*! ./property-grid.component.html */ "./src/app/components/property-grid/property-grid.component.html"),
-            styles: [__webpack_require__(/*! ./property-grid.component.scss */ "./src/app/components/property-grid/property-grid.component.scss")]
+            template: "\n        <div class=\"property-grid\">\n            <table class=\"property-grid-table\" [ngStyle]=\"{width: width}\">\n                <tbody>\n                <tr [ngSwitch]=\"row.type\" *ngFor=\"let row of rows\"\n                    [ngClass]=\"row.type == 'group'? 'property-grid-group-row':'property-grid-row'\">\n                    <!--<td [attr.colspan]=\"row.colspan\"></td>-->\n                    <td *ngSwitchCase=\"'group'\" colspan=\"2\" class=\"property-grid-group\">{{row.name}}</td>\n                    <td *ngSwitchDefault colspan=\"1\" class=\"property-grid-label\">{{row.name}}\n                        <span *ngIf=\"row.description\" [title]=\"row.description\">[?]</span>\n                    </td>\n                    <td [ngSwitch]=\"row.type\" *ngSwitchDefault colspan=\"1\" class=\"property-grid-control\">\n\n                        <input *ngSwitchCase=\"'checkbox'\" type=\"checkbox\" [checked]=\"options[row.key]\"\n                               (change)=\"convertValue(row, $event.target.checked)\"/>\n\n                        <input *ngSwitchCase=\"'color'\" type=\"color\" [value]=\"options[row.key]\"\n                               (change)=\"convertValue(row, $event.target.value)\"/>\n\n                        <input *ngSwitchCase=\"'number'\" type=\"text\" [value]=\"options[row.key]\"\n                               (change)=\"convertValue(row, $event.target.value)\"/>\n\n                        <input *ngSwitchCase=\"'text'\" type=\"text\" [value]=\"options[row.key]\"\n                               (change)=\"convertValue(row, $event.target.value)\"/>\n\n                        <select *ngSwitchCase=\"'options'\" (change)=\"convertValue(row, $event.target.value)\">\n                            <option [value]=\"optionValue(option)\" *ngFor=\"let option of row.options\">{{optionLabel(option)}}</option>\n                        </select>\n\n                        <label *ngSwitchCase=\"'label'\">{{options[row.key]}}</label>\n\n\n                        <dynamic-component *ngSwitchDefault\n                                           [componentType]=\"row.componentType\"\n                                           [value]=\"options[row.key]\"\n                                           (valueChange)=\"convertValue(row, $event)\">\n\n                        </dynamic-component>\n                    </td>\n                </tr>\n                </tbody>\n            </table>\n        </div>\n    ",
+            styles: [
+                "\n            .property-grid-table {\n                border: solid 1px #95B8E7;\n                border-spacing: 0;\n            }\n\n            .property-grid-group {\n                background-color: #368bffeb;\n                font-weight: bold;\n                color: white;\n            }\n\n            .property-grid-label, .property-grid-control {\n                border: dotted 1px #ccc;\n                padding: 2px 5px;\n            }\n        "
+            ]
         }),
         __metadata("design:paramtypes", [])
     ], PropertyGridComponent);
