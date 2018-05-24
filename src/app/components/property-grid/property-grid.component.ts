@@ -41,7 +41,25 @@ import {PropertyGridItemMeta} from './property-grid-item-meta';
             </table>
         </div>
     `,
-    styleUrls: ['./property-grid.component.scss']
+    styles: [
+            `
+            .property-grid .property-grid-table {
+                border: solid 1px #95B8E7;
+                border-spacing: 0;
+            }
+
+            .property-grid .property-grid-group {
+                background-color: #368bffeb;
+                font-weight: bold;
+                color: white;
+            }
+
+            .property-grid .property-grid-label, .property-grid .property-grid-control {
+                border: dotted 1px #ccc;
+                padding: 2px 5px;
+            }
+        `
+    ]
 })
 export class PropertyGridComponent implements OnInit {
     private _options: any;

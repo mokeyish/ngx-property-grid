@@ -6,15 +6,10 @@
         border-spacing: 0;
     }
 
-    .property-grid-group-row {
+    .property-grid-group {
         background-color: #368bffeb;
         font-weight: bold;
         color: white;
-    }
-    .property-grid-group {
-    }
-
-    .property-grid-row {
     }
 
     .property-grid-label, .property-grid-control {
@@ -23,12 +18,5 @@
         //padding-right: 3px;
         border: dotted 1px #ccc;
         padding: 2px 5px;
-    }
-
-    .property-grid-label {
-        //width: 100px;
-    }
-    .property-grid-control {
-        //flex: 1;
     }
 }
