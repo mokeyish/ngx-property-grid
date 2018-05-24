@@ -3,7 +3,44 @@ import {PropertyGridItemMeta} from './property-grid-item-meta';
 
 @Component({
     selector: 'ngx-property-grid',
-    templateUrl: './property-grid.component.html',
+    template: `
+        <div class="property-grid">
+            <table class="property-grid-table" [ngStyle]="{width: width}">
+                <tbody>
+                <tr [ngSwitch]="row.type" *ngFor="let row of rows"
+                    [ngClass]="row.type == 'group'? 'property-grid-group-row':'property-grid-row'">
+                    <!--<td [attr.colspan]="row.colspan"></td>-->
+                    <td *ngSwitchCase="'group'" colspan="2" class="property-grid-group">{{row.name}}</td>
+                    <td *ngSwitchDefault colspan="1" class="property-grid-label">{{row.name}}<span *ngIf="row.description"
+                                                                                                   [title]="row.description">[?]</span></td>
+                    <td [ngSwitch]="row.type" *ngSwitchDefault colspan="1" class="property-grid-control">
+
+                        <input *ngSwitchCase="'checkbox'" type="checkbox" [checked]="options[row.key]"
+                               (change)="convertValue(row, $event.target.checked)"/>
+
+                        <input *ngSwitchCase="'color'" type="color" [value]="options[row.key]"
+                               (change)="convertValue(row, $event.target.value)"/>
+
+                        <input *ngSwitchCase="'number'" type="text" [value]="options[row.key]"
+                               (change)="convertValue(row, $event.target.value)"/>
+
+                        <input *ngSwitchCase="'text'" type="text" [value]="options[row.key]"
+                               (change)="convertValue(row, $event.target.value)"/>
+
+                        <select *ngSwitchCase="'options'" (change)="convertValue(row, $event.target.value)">
+                            <option [value]="optionValue(option)" *ngFor="let option of row.options">{{optionLabel(option)}}</option>
+                        </select>
+
+                        <label *ngSwitchCase="'label'">{{options[row.key]}}</label>
+
+
+                        <dynamic-component *ngSwitchDefault [componentType]="row.meta.componentType"></dynamic-component>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
     styleUrls: ['./property-grid.component.scss']
 })
 export class PropertyGridComponent implements OnInit {
@@ -11,13 +48,14 @@ export class PropertyGridComponent implements OnInit {
     private _meta: any;
 
     @Input()
-    width: string| number;
+    width: string | number;
 
     @Input()
     public set meta(v: any) {
         this._meta = v;
         this.initMeta();
     }
+
     public get meta(): any {
         return this._meta;
     }
@@ -29,6 +67,7 @@ export class PropertyGridComponent implements OnInit {
         }
         this._options = v;
     }
+
     public get options(): any {
         return this._options;
     }
