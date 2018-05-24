@@ -4,47 +4,48 @@
 
 import {
     Component,
-    ComponentFactoryResolver, DoCheck, Input, OnChanges,
-    OnInit, SimpleChanges, Type, ViewContainerRef
+    ComponentFactoryResolver, EventEmitter, Input,
+    OnInit, Output, Type, ViewChild, ViewContainerRef
 } from '@angular/core';
 import {ComponentRef} from '@angular/core/src/linker/component_factory';
 
 @Component({
     selector: 'dynamic-component',
-    template: ``,
+    template: '<ng-container #container></ng-container>',
 })
-export class DynamicComponent implements OnInit, DoCheck, OnChanges {
-    private component: ComponentRef<IDynamicComponent>;
+export class DynamicComponent implements OnInit, IDynamicComponent<any> {
+    private _value: any;
+
+    @ViewChild('container', { read: ViewContainerRef }) entry;
+    private component: ComponentRef<IDynamicComponent<any>>;
 
     @Input() componentType: Type<any>;
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver, private entry: ViewContainerRef) {
+    @Input()
+    set value(v: any) {
+        this._value = v;
+        if (this.component) {
+            this.component.instance.value =  v;
+        }
+    }
+    get value(): any {
+        return this._value;
+    }
+
+    @Output()
+    readonly valueChange: EventEmitter<any> = new EventEmitter<any>();
+
+
+    constructor(private componentFactoryResolver: ComponentFactoryResolver) {
     }
 
     ngOnInit() {
         this.buildComponent();
     }
 
-    ngDoCheck(): void {
-        if (this.component) {
-            if (this.component.componentType !== this.componentType) {
-                this.buildComponent();
-            }
-            // if (!_.isEqual(this.component.instance.options, this.componentOptions)) {
-            //     this.options.componentOptions = this.componentOptions = this.component.instance.options;
-            // }
-        }
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        // if (changes.options && changes.options.currentValue) {
-        //     if (changes.options.currentValue.componentOptions !== this.componentOptions) {
-        //         this.componentOptions = changes.options.currentValue.componentOptions;
-        //         if (this.component) {
-        //             this.component.instance.options = this.componentOptions;
-        //         }
-        //     }
-        // }
+    private onValueChange(e: any): void {
+        this._value = e;
+        this.valueChange.emit(e);
     }
 
     private buildComponent(): void {
@@ -52,21 +53,36 @@ export class DynamicComponent implements OnInit, DoCheck, OnChanges {
             return;
         }
         try {
-            if (this.component) {
-                this.component.destroy();
-            }
+            this.destroyComponent();
             // this.entry.clear();
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory<IDynamicComponent>(this.componentType);
-            const component = this.entry.createComponent(componentFactory);
-            // component.instance.options = this.componentOptions;
+            const componentFactory = this.componentFactoryResolver.resolveComponentFactory<IDynamicComponent<any>>(this.componentType);
+            const component = this.entry.createComponent(componentFactory, 0);
+            this.initComponent(component);
             this.component = component;
         } catch (e) {
             console.error('load component error.');
             console.error(e);
         }
     }
+
+    private initComponent(component: ComponentRef<IDynamicComponent<any>>) {
+        component.instance.value = this._value;
+        if (component.instance.valueChange) {
+            component.instance.valueChange.subscribe((e: any) => this.onValueChange(e));
+        } else {
+            component.instance.valueChange = new EventEmitter<any>();
+            component.instance.valueChange.subscribe((e: any) => this.onValueChange(e));
+        }
+    }
+
+    private destroyComponent(): void {
+        if (this.component) {
+            this.component.destroy();
+        }
+    }
 }
 
-export interface IDynamicComponent {
-    options: any;
+export interface IDynamicComponent<TValue> {
+    value: TValue;
+    valueChange: EventEmitter<TValue>;
 }

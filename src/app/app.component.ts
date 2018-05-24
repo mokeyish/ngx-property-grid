@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter} from '@angular/core';
 import {$meta} from './components/property-grid/property-grid-item-meta';
+import {IDynamicComponent} from './components/property-grid/dynamic-component';
 
 @Component({
     selector: 'app-root',
@@ -7,7 +8,7 @@ import {$meta} from './components/property-grid/property-grid-item-meta';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    public editor: ExmapleEditorOptions = new ExmapleEditorOptions();
+    public editor: ExampleEditorOptions = new ExampleEditorOptions();
 
     constructor() {
     }
@@ -15,11 +16,22 @@ export class AppComponent {
     public get data(): string {
         return JSON.stringify(this.editor);
     }
+
+    text: string;
+}
+
+@Component({
+    selector: 'app-text-editor',
+    template: `<input type="text" [value]="value" (change)="valueChange.emit($event.target.value)"/>`
+})
+export class SimpleTextEditorComponent implements IDynamicComponent<string> {
+    value: string;
+    valueChange: EventEmitter<string> = new EventEmitter<string>();
 }
 
 
-export class ExmapleEditorOptions {
-    @$meta({name: 'Font', description: 'The font editor to use', group: 'Editor', hidden: false})
+export class ExampleEditorOptions {
+    @$meta({name: 'Font', description: 'The font editor to use', componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false})
     font = 'Source Code Pro';
 
     @$meta({name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt})

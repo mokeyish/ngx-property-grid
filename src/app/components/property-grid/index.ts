@@ -2,10 +2,11 @@ import {PropertyGridComponent} from './property-grid.component';
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {DynamicComponent} from './dynamic-component';
+import {DynamicComponent, IDynamicComponent} from './dynamic-component';
 
 export {PropertyGridItemMeta, $meta} from './property-grid-item-meta';
 export {PropertyGridComponent} from './property-grid.component';
+export {IDynamicComponent} from './dynamic-component';
 
 @NgModule({
     imports: [

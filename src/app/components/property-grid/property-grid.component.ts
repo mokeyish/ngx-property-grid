@@ -11,8 +11,9 @@ import {PropertyGridItemMeta} from './property-grid-item-meta';
                     [ngClass]="row.type == 'group'? 'property-grid-group-row':'property-grid-row'">
                     <!--<td [attr.colspan]="row.colspan"></td>-->
                     <td *ngSwitchCase="'group'" colspan="2" class="property-grid-group">{{row.name}}</td>
-                    <td *ngSwitchDefault colspan="1" class="property-grid-label">{{row.name}}<span *ngIf="row.description"
-                                                                                                   [title]="row.description">[?]</span></td>
+                    <td *ngSwitchDefault colspan="1" class="property-grid-label">{{row.name}}
+                        <span *ngIf="row.description" [title]="row.description">[?]</span>
+                    </td>
                     <td [ngSwitch]="row.type" *ngSwitchDefault colspan="1" class="property-grid-control">
 
                         <input *ngSwitchCase="'checkbox'" type="checkbox" [checked]="options[row.key]"
@@ -34,7 +35,12 @@ import {PropertyGridItemMeta} from './property-grid-item-meta';
                         <label *ngSwitchCase="'label'">{{options[row.key]}}</label>
 
 
-                        <dynamic-component *ngSwitchDefault [componentType]="row.meta.componentType"></dynamic-component>
+                        <dynamic-component *ngSwitchDefault
+                                           [componentType]="row.componentType"
+                                           [value]="options[row.key]"
+                                           (valueChange)="convertValue(row, $event)">
+
+                        </dynamic-component>
                     </td>
                 </tr>
                 </tbody>
@@ -43,18 +49,18 @@ import {PropertyGridItemMeta} from './property-grid-item-meta';
     `,
     styles: [
             `
-            .property-grid .property-grid-table {
+            .property-grid-table {
                 border: solid 1px #95B8E7;
                 border-spacing: 0;
             }
 
-            .property-grid .property-grid-group {
+            .property-grid-group {
                 background-color: #368bffeb;
                 font-weight: bold;
                 color: white;
             }
 
-            .property-grid .property-grid-label, .property-grid .property-grid-control {
+            .property-grid-label, .property-grid-control {
                 border: dotted 1px #ccc;
                 padding: 2px 5px;
             }
