@@ -12,7 +12,13 @@
         "lint": "ng lint",
         "e2e": "ng e2e"
     },
-    "private": true,
+    "private": false,
+    "authors": ["mokeyish"],
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mokeyish/ngx-property-grid.git"
+    },
     "dependencies": {
     },
     "devDependencies": {
