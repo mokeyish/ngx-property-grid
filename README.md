@@ -59,3 +59,5 @@ export class ExampleEditorOptions {
 ```HTML
 <ngx-property-grid [width]="'300px'" [options]="editor"></ngx-property-grid>
 ```
+
+* The result would be: [See here](https://stackblitz.com/edit/angular-veuf4i)
