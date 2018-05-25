@@ -30,7 +30,8 @@ export class SimpleTextEditorComponent implements IDynamicComponent<string> {
 
 
 export class ExampleEditorOptions {
-    @meta({name: 'Font', description: 'The font editor to use', componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false})
+    @meta({name: 'Font', description: 'The font editor to use', colSpan2: true,
+        componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false})
     font = 'Source Code Pro';
 
     @meta({name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt})

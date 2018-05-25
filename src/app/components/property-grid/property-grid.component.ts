@@ -7,14 +7,16 @@ import {PropertyGridItemMeta} from '.';
         <div class="property-grid">
             <table class="property-grid-table" [ngStyle]="{width: width}">
                 <tbody>
-                <tr [ngSwitch]="row.type" *ngFor="let row of rows"
+                <tr *ngFor="let row of rows"
                     [ngClass]="row.type == 'group'? 'property-grid-group-row':'property-grid-row'">
+
                     <!--<td [attr.colspan]="row.colspan"></td>-->
-                    <td *ngSwitchCase="'group'" colspan="2" class="property-grid-group">{{row.name}}</td>
-                    <td *ngSwitchDefault colspan="1" class="property-grid-label">{{row.name}}
+                    <td *ngIf="row.type == 'group'" colspan="2" class="property-grid-group">{{row.name}}</td>
+                    <td *ngIf="row.type != 'group' && row.colSpan2 != true" colspan="1" class="property-grid-label">{{row.name}}
                         <span *ngIf="row.description" [title]="row.description">[?]</span>
                     </td>
-                    <td [ngSwitch]="row.type" *ngSwitchDefault colspan="1" class="property-grid-control">
+                    <td *ngIf="row.type != 'group'" [ngSwitch]="row.type" [attr.colspan]="row.colSpan2 == true ? 2 : 1"
+                        class="property-grid-control">
 
                         <input *ngSwitchCase="'checkbox'" type="checkbox" [checked]="options[row.key]"
                                (change)="convertValue(row, $event.target.checked)"/>
