@@ -1,7 +1,6 @@
-# NgxPropertyGrid
+# NgxPropertyGrid [![Build Status](https://travis-ci.org/mokeyish/ngx-property-grid.svg?branch=master)](https://travis-ci.org/mokeyish/ngx-property-grid)
 
 A small and simple property grid in angular to view/edit POJOs, excellent if you have a "settings" object you want to give the user to edit (that's why I have created it). [Play online](https://stackblitz.com/edit/angular-veuf4i).
-[![Build Status](https://travis-ci.org/mokeyish/ngx-property-grid.svg?branch=master)](https://travis-ci.org/mokeyish/ngx-property-grid)
 ## Dependencies
 
 * angular
