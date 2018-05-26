@@ -1,26 +1,35 @@
-import { OnInit } from '@angular/core';
-import { PropertyGridItemMeta } from '.';
-export declare class PropertyGridComponent implements OnInit {
+import { AfterContentInit, OnInit, QueryList, TemplateRef } from '@angular/core';
+import { InternalPropertyItemMeta } from './property-item-meta';
+export declare class PropertyGridComponent implements OnInit, AfterContentInit {
     private _options;
     private _meta;
+    private _templateMap;
+    state: string;
     width: string | number;
+    labelWidth: string | number;
     meta: any;
     options: any;
-    rows: Array<InternalGroup | InternalPropertyGridItemMeta | any>;
+    templates: QueryList<any>;
+    rows: Array<InternalGroup | InternalPropertyItemMeta | any>;
+    subItems: InternalPropertyItemMeta[];
     constructor();
     ngOnInit(): void;
-    change(e: any): void;
-    convertValue(meta: InternalPropertyGridItemMeta, val: any): void;
-    optionLabel(v: any): string;
-    optionValue(v: any): any;
+    ngAfterContentInit(): void;
+    getTemplate(type: string): TemplateRef<any>;
+    propertyValue(meta: InternalPropertyItemMeta): PropertyValue;
+    toggle(): void;
+    convertValue(meta: InternalPropertyItemMeta, val: any): void;
     private initMeta();
+}
+export declare class PropertyValue {
+    private o;
+    meta: InternalPropertyItemMeta;
+    value: any;
+    constructor(o: any, meta: InternalPropertyItemMeta);
 }
 export declare class InternalGroup {
     name: string;
-    readonly items: InternalPropertyGridItemMeta[];
+    readonly items: InternalPropertyItemMeta[];
     type: string;
     constructor(name: string);
-}
-export interface InternalPropertyGridItemMeta extends PropertyGridItemMeta {
-    key: string;
 }

@@ -10,18 +10,23 @@ import {
     ViewChild,
     ViewContainerRef
 } from '@angular/core';
+import {ControlValueAccessor} from '@angular/forms';
 
 @Component({
-    selector: 'dynamic-component',
+    selector: 'custom-component',
     template: '<ng-container #container></ng-container>',
 })
-export class DynamicComponent implements OnInit, IDynamicComponent<any> {
+export class CustomComponent implements OnInit, ICustomDynamicComponent<any> {
+    private readonly _controlValueChangeFn: (value: any) => void;
     private _value: any;
 
     @ViewChild('container', { read: ViewContainerRef }) entry;
-    private component: ComponentRef<IDynamicComponent<any>>;
+    private component: ComponentRef<ICustomDynamicComponent<any>>;
 
-    @Input() componentType: Type<any>;
+    @Input() componentType: Type<PropertyValueAccess>;
+
+    @Input()
+    componentOptions: any;
 
     @Input()
     set value(v: any) {
@@ -39,6 +44,7 @@ export class DynamicComponent implements OnInit, IDynamicComponent<any> {
 
 
     constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+        this._controlValueChangeFn = (value: any) => this.onValueChange(value);
     }
 
     ngOnInit() {
@@ -57,7 +63,7 @@ export class DynamicComponent implements OnInit, IDynamicComponent<any> {
         try {
             this.destroyComponent();
             // this.entry.clear();
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory<IDynamicComponent<any>>(this.componentType);
+            const componentFactory = this.componentFactoryResolver.resolveComponentFactory<PropertyValueAccess>(this.componentType);
             const component = this.entry.createComponent(componentFactory, 0);
             this.initComponent(component);
             this.component = component;
@@ -67,13 +73,17 @@ export class DynamicComponent implements OnInit, IDynamicComponent<any> {
         }
     }
 
-    private initComponent(component: ComponentRef<IDynamicComponent<any>>) {
+    private initComponent(component: ComponentRef<PropertyValueAccess>) {
         component.instance.value = this._value;
+        if (component.instance.registerOnChange) {
+            component.instance.registerOnChange(this._controlValueChangeFn);
+        }
         if (component.instance.valueChange) {
-            component.instance.valueChange.subscribe((e: any) => this.onValueChange(e));
-        } else {
-            component.instance.valueChange = new EventEmitter<any>();
-            component.instance.valueChange.subscribe((e: any) => this.onValueChange(e));
+            component.instance.valueChange.subscribe(this._controlValueChangeFn);
+        }
+
+        if (this.componentOptions) {
+            Object.assign(component.instance, this.componentOptions);
         }
     }
 
@@ -84,7 +94,10 @@ export class DynamicComponent implements OnInit, IDynamicComponent<any> {
     }
 }
 
-export interface IDynamicComponent<TValue> {
+export interface PropertyValueAccess extends ControlValueAccessor, ICustomDynamicComponent<any> {
+}
+
+export interface ICustomDynamicComponent<TValue> {
     value: TValue;
     valueChange: EventEmitter<TValue>;
 }
