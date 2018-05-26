@@ -1,6 +1,6 @@
 import {Component, EventEmitter} from '@angular/core';
 import {meta, ICustomDynamicComponent} from './components/property-grid';
-import {MatCheckbox, MatCheckboxModule, MatDatepicker, MatSlider, MatSlideToggle} from '@angular/material';
+import {MatCheckbox, MatSlider, MatSlideToggle} from '@angular/material';
 
 @Component({
     selector: 'app-root',
@@ -66,10 +66,10 @@ export class ExampleEditorOptions {
 }
 
 export class ExampleStudentOptions {
-    @meta({name: 'Name', group: 'Basic', type: 'text'})
+    @meta({name: 'Name', group: 'Basic', type: 'text', order: 4})
     name = 'Lily';
 
-    @meta({name: 'Age', group: 'Basic', valueConvert: parseInt, type: 'text'})
+    @meta({name: 'Age', group: 'Basic', valueConvert: parseInt, type: 'text', order: 2})
     age = 19;
 
     @meta({name: 'Editor', type: 'subItems', initState: 'visible'})

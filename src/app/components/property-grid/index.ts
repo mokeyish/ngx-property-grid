@@ -14,13 +14,13 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
 
 export {ICustomDynamicComponent} from './custom.component';
 export {PropertyGridComponent, PropertyValue} from './property-grid.component';
-
-export {meta, PropertyGridItemMeta} from './property-grid-item-meta';
+export {meta, PropertyItemMeta} from './property-item-meta';
 
 defaultProvider.register('checkbox', SimpleCheckboxComponent);
 defaultProvider.register('color', SimpleColorComponent);
 defaultProvider.register('label', SimpleLabelComponent);
 defaultProvider.register('text', SimpleTextComponent);
+defaultProvider.register('number', SimpleTextComponent);
 defaultProvider.register('options', SimpleSelectComponent);
 defaultProvider.register('date', SimpleDateComponent);
 

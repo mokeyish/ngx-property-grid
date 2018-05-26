@@ -1,5 +1,5 @@
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList, TemplateRef} from '@angular/core';
-import {InternalPropertyGridItemMeta} from './property-grid-item-meta';
+import {InternalPropertyItemMeta} from './property-item-meta';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {PropertyItemTemplateDirective} from './property-item-template.directive';
 
@@ -137,8 +137,8 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
     @Input()
     public set options(v: any) {
         this._options = v;
-        if (v.__meta) {
-            this.meta = v.__meta;
+        if (v.__meta__) {
+            this.meta = v.__meta__;
         }
     }
 
@@ -149,8 +149,8 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
     @ContentChildren(PropertyItemTemplateDirective) templates: QueryList<any>;
 
 
-    public rows: Array<InternalGroup | InternalPropertyGridItemMeta | any>;
-    public subItems: InternalPropertyGridItemMeta[];
+    public rows: Array<InternalGroup | InternalPropertyItemMeta | any>;
+    public subItems: InternalPropertyItemMeta[];
 
     constructor() {
     }
@@ -176,7 +176,7 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
         }
     }
 
-    public propertyValue(meta: InternalPropertyGridItemMeta): PropertyValue {
+    public propertyValue(meta: InternalPropertyItemMeta): PropertyValue {
         return new PropertyValue(this.options, meta);
     }
 
@@ -184,7 +184,7 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
         this.state = this.state === 'visible' ? 'hidden' : 'visible';
     }
 
-    public convertValue(meta: InternalPropertyGridItemMeta, val: any): void {
+    public convertValue(meta: InternalPropertyItemMeta, val: any): void {
         this.options[meta.key] = meta.valueConvert ? meta.valueConvert(val) : val;
     }
 
@@ -197,27 +197,29 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
         }
 
         const groups: InternalGroup[] = [new InternalGroup(undefined)];
-        const subItems: InternalPropertyGridItemMeta[] = [];
+        const subItems: InternalPropertyItemMeta[] = [];
         for (const i in meta) {
             if (!meta.hasOwnProperty(i)) {
                 continue;
             }
-            const v: InternalPropertyGridItemMeta = meta[i];
+            const v: InternalPropertyItemMeta = meta[i];
             if (v.hidden) {
                 continue;
             }
             if (v.type === 'subItems') {
                 subItems.push(v);
-            } else {
-                let group = groups.find(o => o.name === v.group);
-                if (!group) {
-                    group = new InternalGroup(v.group);
-                    groups.push(group);
-                }
-                group.items.push(v);
+                continue;
             }
+
+            let group = groups.find(o => o.name === v.group);
+            if (!group) {
+                group = new InternalGroup(v.group);
+                groups.push(group);
+            }
+            group.items.push(v);
         }
-        const rows: Array<InternalGroup | InternalPropertyGridItemMeta> = [];
+        groups.forEach(o => o.items.sort((a, b) => a.order - b.order));
+        const rows: Array<InternalGroup | InternalPropertyItemMeta> = [];
         for (const g of groups) {
             if (g.name) {
                 rows.push(g);
@@ -236,12 +238,12 @@ export class PropertyValue {
     public set value(val: any) {
         this.o[this.meta.key] = this.meta.valueConvert ? this.meta.valueConvert(val) : val;
     }
-    constructor(private o: any, public meta: InternalPropertyGridItemMeta) {
+    constructor(private o: any, public meta: InternalPropertyItemMeta) {
     }
 }
 
 export class InternalGroup {
-    public readonly items: InternalPropertyGridItemMeta[] = [];
+    public readonly items: InternalPropertyItemMeta[] = [];
     public type = 'group';
 
     constructor(public name: string) {

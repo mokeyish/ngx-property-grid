@@ -23,7 +23,7 @@ export class CustomComponent implements OnInit, ICustomDynamicComponent<any> {
     @ViewChild('container', { read: ViewContainerRef }) entry;
     private component: ComponentRef<ICustomDynamicComponent<any>>;
 
-    @Input() componentType: Type<any>;
+    @Input() componentType: Type<ValueAccess>;
 
     @Input()
     componentOptions: any;
@@ -63,8 +63,7 @@ export class CustomComponent implements OnInit, ICustomDynamicComponent<any> {
         try {
             this.destroyComponent();
             // this.entry.clear();
-            const componentFactory = this.componentFactoryResolver
-                .resolveComponentFactory<ICustomDynamicComponent<any>>(this.componentType);
+            const componentFactory = this.componentFactoryResolver.resolveComponentFactory<ValueAccess>(this.componentType);
             const component = this.entry.createComponent(componentFactory, 0);
             this.initComponent(component);
             this.component = component;
