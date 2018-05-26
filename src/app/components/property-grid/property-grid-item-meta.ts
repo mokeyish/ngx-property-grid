@@ -1,4 +1,5 @@
 import {Type} from '@angular/core';
+import {defaultProvider} from './property-grid-control-provider';
 
 export interface PropertyGridItemMeta {
     name: string; // The display name of the property in the grid
@@ -9,15 +10,27 @@ export interface PropertyGridItemMeta {
     componentType?: Type<any>;
     colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
     // (useful for textarea custom type)
-    options?: any;
+    componentOptions?: any;
     type?: string; // boolean number options label color
     valueConvert?: (value: any) => any;
 }
 
+export interface InternalPropertyGridItemMeta extends PropertyGridItemMeta {
+    key: string | symbol;
+}
+
 export const meta = (m: PropertyGridItemMeta) =>
     (target: any, key: string | symbol) => {
+        const xMeta = m as InternalPropertyGridItemMeta;
         if (!target.__meta) {
             target.__meta = {};
         }
-        target.__meta[key] = m;
+        if (!xMeta.componentType) {
+            if (!xMeta.type) {
+                xMeta.type = 'text';
+            }
+            xMeta.componentType = defaultProvider.getComponentType(m.type);
+        }
+        xMeta.key = key;
+        target.__meta[key] = xMeta;
     };

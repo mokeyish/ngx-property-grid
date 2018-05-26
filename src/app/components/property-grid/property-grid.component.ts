@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PropertyGridItemMeta} from '.';
+import {InternalPropertyGridItemMeta} from './property-grid-item-meta';
 
 @Component({
     selector: 'ngx-property-grid',
@@ -15,34 +15,14 @@ import {PropertyGridItemMeta} from '.';
                     <td *ngIf="row.type != 'group' && row.colSpan2 != true" colspan="1" class="property-grid-label">{{row.name}}
                         <span *ngIf="row.description" [title]="row.description">[?]</span>
                     </td>
-                    <td *ngIf="row.type != 'group'" [ngSwitch]="row.type" [attr.colspan]="row.colSpan2 == true ? 2 : 1"
-                        class="property-grid-control">
-
-                        <input *ngSwitchCase="'checkbox'" type="checkbox" [checked]="options[row.key]"
-                               (change)="convertValue(row, $event.target.checked)"/>
-
-                        <input *ngSwitchCase="'color'" type="color" [value]="options[row.key]"
-                               (change)="convertValue(row, $event.target.value)"/>
-
-                        <input *ngSwitchCase="'number'" type="text" [value]="options[row.key]"
-                               (change)="convertValue(row, $event.target.value)"/>
-
-                        <input *ngSwitchCase="'text'" type="text" [value]="options[row.key]"
-                               (change)="convertValue(row, $event.target.value)"/>
-
-                        <select *ngSwitchCase="'options'" (change)="convertValue(row, $event.target.value)">
-                            <option [value]="optionValue(option)" *ngFor="let option of row.options">{{optionLabel(option)}}</option>
-                        </select>
-
-                        <label *ngSwitchCase="'label'">{{options[row.key]}}</label>
-
-
-                        <dynamic-component *ngSwitchDefault
-                                           [componentType]="row.componentType"
-                                           [value]="options[row.key]"
-                                           (valueChange)="convertValue(row, $event)">
-
-                        </dynamic-component>
+                    <td *ngIf="row.type != 'group'" [ngSwitch]="row.type"
+                        [attr.colspan]="row.colSpan2 == true ? 2 : 1" class="property-grid-control">
+                        <custom-component *ngSwitchDefault
+                                          [componentType]="row.componentType"
+                                          [componentOptions]="row.componentOptions"
+                                          [value]="options[row.key]"
+                                          (valueChange)="convertValue(row, $event)">
+                        </custom-component>
                     </td>
                 </tr>
                 </tbody>
@@ -107,29 +87,8 @@ export class PropertyGridComponent implements OnInit {
     ngOnInit() {
     }
 
-    change(e: any) {
-        console.log(e);
-    }
-
     public convertValue(meta: InternalPropertyGridItemMeta, val: any): void {
         this.options[meta.key] = meta.valueConvert ? meta.valueConvert(val) : val;
-    }
-
-    optionLabel(v: any): string {
-        if (typeof v === 'string') {
-            return v;
-        }
-        if (v.text) {
-            return v.text;
-        }
-        if (v.label) {
-            return v.label;
-        }
-        return v;
-    }
-
-    optionValue(v: any): any {
-        return v && v.value ? v.value : v;
     }
 
     private initMeta(): void {
@@ -149,10 +108,6 @@ export class PropertyGridComponent implements OnInit {
                 continue;
             }
             v.key = i;
-            if (!v.type && !v.componentType) {
-                v.type = 'text';
-            }
-
             let group = groups.find(o => o.name === v.group);
             if (!group) {
                 group = new InternalGroup(v.group);
@@ -178,8 +133,4 @@ export class InternalGroup {
 
     constructor(public name: string) {
     }
-}
-
-export interface InternalPropertyGridItemMeta extends PropertyGridItemMeta {
-    key: string;
 }
