@@ -15,6 +15,9 @@ before_install:
 script: # the build step
    - node_modules/.bin/ng test --colors=false --progress=false --single-run
 
+notifications:
+  email:
+    on_success: never
 
 cache:
   yarn: true
