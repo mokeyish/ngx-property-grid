@@ -9,6 +9,7 @@ import {SimpleLabelComponent} from './controls/simple-label.component';
 import {SimpleTextComponent} from './controls/simple-text.component';
 import {SimpleSelectComponent} from './controls/simple-select.component';
 import {SimpleDateComponent} from './controls/simple-date-picker.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 export {ICustomDynamicComponent} from './custom.component';
 export {PropertyGridComponent} from './property-grid.component';
@@ -24,7 +25,7 @@ defaultProvider.register('date', SimpleDateComponent);
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule, BrowserAnimationsModule,
     ],
     entryComponents: defaultProvider.components,
     declarations: [

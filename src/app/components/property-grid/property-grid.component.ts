@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {InternalPropertyGridItemMeta} from './property-grid-item-meta';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
     selector: 'ngx-property-grid',
@@ -28,19 +29,28 @@ import {InternalPropertyGridItemMeta} from './property-grid-item-meta';
             </table>
 
             <div *ngFor="let item of subItems" class="internal-property-grid">
-                <div>{{item.name}}</div>
-                <ngx-property-grid [options]="options[item.key]" [width]="width" [labelWidth]="labelWidth"></ngx-property-grid>
+                <div (click)="pg.toggle()" class="property-grid-header"><b>{{item.name}}</b></div>
+                <ngx-property-grid
+                    [@internalPropertyGrid]="pg.state"
+                    [options]="options[item.key]"
+                    [width]="width"
+                    [labelWidth]="labelWidth"
+                    style="display: block;overflow: hidden"
+                    #pg>
+                </ngx-property-grid>
             </div>
         </div>
     `,
     styles: [
             `
             .property-grid {
-                border: solid 1px #95B8E7;
-            }
-            .property-grid-table {
                 /*border: solid 1px #95B8E7;*/
+            }
+
+            .property-grid-table {
+                border: solid 1px #ddd;
                 border-spacing: 0;
+                border-top: 1px solid #dbdbdb;
             }
 
             .property-grid-group {
@@ -53,15 +63,52 @@ import {InternalPropertyGridItemMeta} from './property-grid-item-meta';
                 border: dotted 1px #ccc;
                 padding: 2px 5px;
             }
+
+            .internal-property-grid {
+                margin-top: 12px;
+                -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+                box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+                border: solid 1px #ddd;
+            }
+
             .internal-property-grid .property-grid {
                 border-width: 0;
             }
+
+            .internal-property-grid .property-grid-header {
+                margin-bottom: 5px;
+                background-color: #f5f5f5;
+                padding-bottom: 5px;
+                padding-top: 5px;
+                padding-left: 5px;
+                box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+                -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+            }
+
+            .internal-property-grid .property-grid-table {
+                border-width: 0;
+                /*border-top: 1px solid #dbdbdb;*/
+            }
         `
+    ],
+    animations: [
+        trigger('internalPropertyGrid', [
+            state('hidden', style({
+                height: '0',
+                // overflow: 'hidden'
+            })),
+            state('visible', style({
+                height: '*'
+            })),
+            transition('visible <=> hidden', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
+        ])
     ]
 })
 export class PropertyGridComponent implements OnInit {
     private _options: any;
     private _meta: any;
+
+    public state = 'visible';
 
     @Input()
     width: string | number;
@@ -99,6 +146,10 @@ export class PropertyGridComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    toggle(): void {
+        this.state = this.state === 'visible' ? 'hidden' : 'visible';
     }
 
     public convertValue(meta: InternalPropertyGridItemMeta, val: any): void {
