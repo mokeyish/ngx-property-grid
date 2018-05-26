@@ -13,7 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PropertyItemTemplateDirective} from './property-item-template.directive';
 
 export {ICustomDynamicComponent} from './custom.component';
-export {PropertyGridComponent} from './property-grid.component';
+export {PropertyGridComponent, PropertyValue} from './property-grid.component';
 
 export {meta, PropertyGridItemMeta} from './property-grid-item-meta';
 

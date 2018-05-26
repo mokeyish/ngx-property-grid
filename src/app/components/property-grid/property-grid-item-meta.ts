@@ -7,6 +7,7 @@ export interface PropertyGridItemMeta {
     order?: string;
     group?: string; //  The group this property belongs to
     hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
+    initState?: string; // - hidden/visible.
     componentType?: Type<any>;
     colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
     // (useful for textarea custom type)
@@ -30,6 +31,9 @@ export const meta = (m: PropertyGridItemMeta) =>
                 xMeta.type = 'text';
             }
             xMeta.componentType = defaultProvider.getComponentType(m.type);
+        }
+        if (!xMeta.initState) {
+            xMeta.initState = 'hidden';
         }
         xMeta.key = key;
         target.__meta[key] = xMeta;

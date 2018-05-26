@@ -72,6 +72,6 @@ export class ExampleStudentOptions {
     @meta({name: 'Age', group: 'Basic', valueConvert: parseInt, type: 'text'})
     age = 19;
 
-    @meta({name: 'Editor', type: 'subItems'})
+    @meta({name: 'Editor', type: 'subItems', initState: 'visible'})
     editor: ExampleEditorOptions = new ExampleEditorOptions();
 }

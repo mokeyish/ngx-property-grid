@@ -35,6 +35,7 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
             <div *ngFor="let item of subItems" class="internal-property-grid">
                 <div (click)="pg.toggle()" class="property-grid-header"><b>{{item.name}}</b></div>
                 <ngx-property-grid
+                    [state]="item.initState"
                     [@internalPropertyGrid]="pg.state"
                     [options]="options[item.key]"
                     [width]="width"
@@ -111,7 +112,9 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
 export class PropertyGridComponent implements OnInit, AfterContentInit {
     private _options: any;
     private _meta: any;
+    private _templateMap: any;
 
+    @Input()
     public state = 'visible';
 
     @Input()
@@ -145,7 +148,6 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
 
     @ContentChildren(PropertyItemTemplateDirective) templates: QueryList<any>;
 
-    public templateMap: any;
 
     public rows: Array<InternalGroup | InternalPropertyGridItemMeta | any>;
     public subItems: InternalPropertyGridItemMeta[];
@@ -159,26 +161,26 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
 
     ngAfterContentInit(): void {
         if (this.templates.length) {
-            this.templateMap = {};
+            this._templateMap = {};
         }
 
         this.templates.forEach((item) => {
-            this.templateMap[item.name] = item.template;
+            this._templateMap[item.name] = item.template;
         });
     }
-    getTemplate(type: string): TemplateRef<any> {
-        if (this.templateMap) {
-            return type ? this.templateMap[type] : this.templateMap['default'];
+    public getTemplate(type: string): TemplateRef<any> {
+        if (this._templateMap) {
+            return type ? this._templateMap[type] : this._templateMap['default'];
         } else {
             return null;
         }
     }
 
-    propertyValue(meta: InternalPropertyGridItemMeta): PropertyValue {
+    public propertyValue(meta: InternalPropertyGridItemMeta): PropertyValue {
         return new PropertyValue(this.options, meta);
     }
 
-    toggle(): void {
+    public toggle(): void {
         this.state = this.state === 'visible' ? 'hidden' : 'visible';
     }
 
@@ -227,7 +229,7 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
     }
 }
 
-class PropertyValue {
+export class PropertyValue {
     public get value(): any {
         return this.o[this.meta.key];
     }
