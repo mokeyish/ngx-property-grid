@@ -2,7 +2,11 @@
 
 The Object:<code>{{data}}</code>
 <br>
-<ngx-property-grid [width]="'350px'" [options]="student"></ngx-property-grid>
+<ngx-property-grid [width]="'350px'" [options]="student">
+    <ng-template propertyType="text" let-p>
+       <input type="text" [value]="p.value" (change)="p.value = $event.target.value">
+    </ng-template>
+</ngx-property-grid>
 
 
 

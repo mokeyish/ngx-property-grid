@@ -10,6 +10,7 @@ import {SimpleTextComponent} from './controls/simple-text.component';
 import {SimpleSelectComponent} from './controls/simple-select.component';
 import {SimpleDateComponent} from './controls/simple-date-picker.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PropertyItemTemplateDirective} from './property-item-template.directive';
 
 export {ICustomDynamicComponent} from './custom.component';
 export {PropertyGridComponent} from './property-grid.component';
@@ -31,6 +32,7 @@ defaultProvider.register('date', SimpleDateComponent);
     declarations: [
         PropertyGridComponent,
         CustomComponent,
+        PropertyItemTemplateDirective,
         SimpleCheckboxComponent,
         SimpleColorComponent,
         SimpleLabelComponent,
@@ -40,7 +42,7 @@ defaultProvider.register('date', SimpleDateComponent);
     ],
     providers: [{provide: PropertyGridControlProvider, useValue: defaultProvider}],
     exports: [
-        PropertyGridComponent
+        PropertyGridComponent, PropertyItemTemplateDirective
     ]
 })
 export class PropertyGridModule {

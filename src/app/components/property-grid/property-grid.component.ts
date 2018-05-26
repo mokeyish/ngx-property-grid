@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList, TemplateRef} from '@angular/core';
 import {InternalPropertyGridItemMeta} from './property-grid-item-meta';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {PropertyItemTemplateDirective} from './property-item-template.directive';
 
 @Component({
     selector: 'ngx-property-grid',
@@ -18,11 +19,14 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
                     </td>
                     <td *ngIf="row.type != 'group'" [attr.colspan]="row.colSpan2 == true ? 2 : 1" class="property-grid-control">
                         <custom-component
+                            *ngIf="!getTemplate(row.type)"
                             [componentType]="row.componentType"
                             [componentOptions]="row.componentOptions"
                             [value]="options[row.key]"
                             (valueChange)="convertValue(row, $event)">
                         </custom-component>
+                        <ng-container *ngTemplateOutlet="getTemplate(row.type); context: {$implicit: propertyValue(row)}">
+                        </ng-container>
                     </td>
                 </tr>
                 </tbody>
@@ -104,7 +108,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
         ])
     ]
 })
-export class PropertyGridComponent implements OnInit {
+export class PropertyGridComponent implements OnInit, AfterContentInit {
     private _options: any;
     private _meta: any;
 
@@ -129,15 +133,19 @@ export class PropertyGridComponent implements OnInit {
 
     @Input()
     public set options(v: any) {
+        this._options = v;
         if (v.__meta) {
             this.meta = v.__meta;
         }
-        this._options = v;
     }
 
     public get options(): any {
         return this._options;
     }
+
+    @ContentChildren(PropertyItemTemplateDirective) templates: QueryList<any>;
+
+    public templateMap: any;
 
     public rows: Array<InternalGroup | InternalPropertyGridItemMeta | any>;
     public subItems: InternalPropertyGridItemMeta[];
@@ -146,6 +154,28 @@ export class PropertyGridComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log(this);
+    }
+
+    ngAfterContentInit(): void {
+        if (this.templates.length) {
+            this.templateMap = {};
+        }
+
+        this.templates.forEach((item) => {
+            this.templateMap[item.name] = item.template;
+        });
+    }
+    getTemplate(type: string): TemplateRef<any> {
+        if (this.templateMap) {
+            return type ? this.templateMap[type] : this.templateMap['default'];
+        } else {
+            return null;
+        }
+    }
+
+    propertyValue(meta: InternalPropertyGridItemMeta): PropertyValue {
+        return new PropertyValue(this.options, meta);
     }
 
     toggle(): void {
@@ -197,6 +227,16 @@ export class PropertyGridComponent implements OnInit {
     }
 }
 
+class PropertyValue {
+    public get value(): any {
+        return this.o[this.meta.key];
+    }
+    public set value(val: any) {
+        this.o[this.meta.key] = this.meta.valueConvert ? this.meta.valueConvert(val) : val;
+    }
+    constructor(private o: any, public meta: InternalPropertyGridItemMeta) {
+    }
+}
 
 export class InternalGroup {
     public readonly items: InternalPropertyGridItemMeta[] = [];
