@@ -1,14 +1,27 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import {AppComponent, SimpleTextEditorComponent} from './app.component';
 import {PropertyGridModule} from './components/property-grid';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+    MatCheckboxModule,
+    MatSlider,
+    MatSliderModule,
+    MatDatepickerModule,
+    MatDatepicker,
+    MatSlideToggleModule,
+    MatSlideToggle
+} from '@angular/material';
+import {MatCheckbox} from '@angular/material';
 
 @NgModule({
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-        BrowserModule, PropertyGridModule
+        BrowserModule, NoopAnimationsModule, PropertyGridModule,
+        MatCheckboxModule, MatSliderModule, MatDatepickerModule, MatSlideToggleModule,
     ],
-    entryComponents: [SimpleTextEditorComponent],
+    entryComponents: [SimpleTextEditorComponent, MatCheckbox, MatSlider, MatDatepicker, MatSlideToggle],
     declarations: [
         AppComponent, SimpleTextEditorComponent
     ],

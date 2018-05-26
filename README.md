@@ -1,32 +1,40 @@
-# NgxPropertyGrid [![Build Status](https://travis-ci.org/mokeyish/ngx-property-grid.svg?branch=master)](https://travis-ci.org/mokeyish/ngx-property-grid)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/ngx-property-grid.svg)](https://badge.fury.io/js/ngx-property-grid)
+[![Build Status](https://travis-ci.org/mokeyish/ngx-property-grid.svg?branch=master)](https://travis-ci.org/mokeyish/ngx-property-grid)
+# NgxPropertyGrid
 
 A small and simple property grid in angular to view/edit POJOs, excellent if you have a "settings" object you want to give the user to edit (that's why I have created it). [Play online](https://stackblitz.com/edit/angular-veuf4i).
+
 ## Dependencies
 
 * angular
 
 ## Usage
 
-* The Options
+* The metadata options
 
 ```ts
-export interface PropertyGridItemMeta {
-    name: string;
-    description?: string;
-    order?: string;
-    group?: string;
-    hidden?: boolean; // default false
-    componentType?: Type<any>; // for create custom component
-    singleRow?: boolean; // default true
-    options?: any;
+export interface PropertyItemMeta {
+    name: string; // The display name of the property in the grid
+    description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text "[?]")
+    order?: number; // The display order.
+    group?: string; //  The group this property belongs to
+    hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
+    initState?: string; // - hidden/visible.
+    componentType?: Type<ControlValueAccessor | ICustomDynamicComponent<any>>; // an custom component should be implement
+    // ControlValueAccessor or ICustomDynamicComponent<any>
+    componentOptions?: any;
+    colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
+    // (useful for textarea custom type)
     type?: string; // boolean number options label color
-    valueConvert?: (value: any) => any;
+    valueConvert?: (value: any) => any; // convert the value, eg. parseInt
 }
 ```
 
 * The Example Options
 
-```TypeScript
+```ts
 export class ExampleEditorOptions {
     @meta({name: 'Font', description: 'The font editor to use', componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false})
     font = 'Source Code Pro';
@@ -55,8 +63,41 @@ export class ExampleEditorOptions {
 
 * The html part:
 
-```HTML
-<ngx-property-grid [width]="'300px'" [options]="editor"></ngx-property-grid>
-```
+  * Basic
+
+    ```HTML
+    <ngx-property-grid [width]="'300px'" [options]="editor"></ngx-property-grid>
+    ```
+
+  * template
+
+    ```HTML
+    <ngx-property-grid [width]="'300px'" [options]="editor">
+        <ng-template propertyType="text" let-p>
+            <input type="text" [value]="p.value" (change)="p.value = $event.target.value">
+        </ng-template>
+        <ng-template propertyType="color" let-p>
+            <input type="color" [value]="p.value" (change)="p.value = $event.target.value">
+        </ng-template>
+    </ngx-property-grid>
+    ```
 
 * The result would be: [See here](https://stackblitz.com/edit/angular-veuf4i)
+
+## The metadata object
+
+As seen from the example above the metadata object **can** be used (it's optional) in order to describe the object properties.
+Each proprty in the metadata object could have the following:
+
+* name - The display name of the property in the grid
+* description - A description of the property, will be used as tooltip on an hint element (a span with text "[?]")
+* hidden - Whether this property should be hidden in the grid, default is false (can be omitted).
+* group - The group this property belongs to
+* type - The type of the property, supported are:
+  * boolean or checkbox - A checkbox would be used
+  * number -  simple textbox
+  * color - simple textbox
+  * options - A dropdown list would be used in case the metadata contains the `options` array property
+  * label - A label will be used, useful for uneditable / read-only properties
+* componentType - An angular component
+* colspan2 - true/false. If true then property input will span both columns and will have no name/label (useful for textarea custom type, see example/index.html)
