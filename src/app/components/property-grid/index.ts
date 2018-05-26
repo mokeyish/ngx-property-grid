@@ -8,6 +8,7 @@ import {SimpleColorComponent} from './controls/simple-color-picker.omponent';
 import {SimpleLabelComponent} from './controls/simple-label.component';
 import {SimpleTextComponent} from './controls/simple-text.component';
 import {SimpleSelectComponent} from './controls/simple-select.component';
+import {SimpleDateComponent} from './controls/simple-date-picker.component';
 
 export {ICustomDynamicComponent} from './custom.component';
 export {PropertyGridComponent} from './property-grid.component';
@@ -19,6 +20,7 @@ defaultProvider.register('color', SimpleColorComponent);
 defaultProvider.register('label', SimpleLabelComponent);
 defaultProvider.register('text', SimpleTextComponent);
 defaultProvider.register('options', SimpleSelectComponent);
+defaultProvider.register('date', SimpleDateComponent);
 
 @NgModule({
     imports: [
@@ -32,7 +34,8 @@ defaultProvider.register('options', SimpleSelectComponent);
         SimpleColorComponent,
         SimpleLabelComponent,
         SimpleTextComponent,
-        SimpleSelectComponent
+        SimpleSelectComponent,
+        SimpleDateComponent
     ],
     providers: [{provide: PropertyGridControlProvider, useValue: defaultProvider}],
     exports: [

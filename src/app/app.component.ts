@@ -1,6 +1,6 @@
 import {Component, EventEmitter} from '@angular/core';
 import {meta, ICustomDynamicComponent} from './components/property-grid';
-import {MatCheckbox, MatCheckboxModule, MatSlider} from '@angular/material';
+import {MatCheckbox, MatCheckboxModule, MatDatepicker, MatSlider, MatSlideToggle} from '@angular/material';
 
 @Component({
     selector: 'app-root',
@@ -40,7 +40,7 @@ export class SimpleTextEditorComponent implements ICustomDynamicComponent<string
 
 
 export class ExampleEditorOptions {
-    @meta({name: 'Font', description: 'The font editor to use', colSpan2: true,
+    @meta({name: 'Font', description: 'The font editor to use', colSpan2: false,
         componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false})
     font = 'Source Code Pro';
 
@@ -53,7 +53,7 @@ export class ExampleEditorOptions {
     @meta({name: 'jQuery', group: 'Plugins', componentType: MatCheckbox})
     jQuery = true;
 
-    @meta({name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', type: 'checkbox'})
+    @meta({name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', componentType: MatSlideToggle})
     modernizr = false;
 
     @meta({
@@ -63,4 +63,7 @@ export class ExampleEditorOptions {
         componentOptions: {options: ['None', {text: 'AngularJS', value: 'angular'}, {text: 'Backbone.js', value: 'backbone'}]}
     })
     framework = 'None';
+
+    @meta({name: 'Update Time', type: 'date'})
+    time = '2018-05-08';
 }
