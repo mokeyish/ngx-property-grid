@@ -23,7 +23,7 @@ export class CustomComponent implements OnInit, ICustomDynamicComponent<any> {
     @ViewChild('container', { read: ViewContainerRef }) entry;
     private component: ComponentRef<ICustomDynamicComponent<any>>;
 
-    @Input() componentType: Type<ValueAccess>;
+    @Input() componentType: Type<PropertyValueAccess>;
 
     @Input()
     componentOptions: any;
@@ -63,7 +63,7 @@ export class CustomComponent implements OnInit, ICustomDynamicComponent<any> {
         try {
             this.destroyComponent();
             // this.entry.clear();
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory<ValueAccess>(this.componentType);
+            const componentFactory = this.componentFactoryResolver.resolveComponentFactory<PropertyValueAccess>(this.componentType);
             const component = this.entry.createComponent(componentFactory, 0);
             this.initComponent(component);
             this.component = component;
@@ -73,7 +73,7 @@ export class CustomComponent implements OnInit, ICustomDynamicComponent<any> {
         }
     }
 
-    private initComponent(component: ComponentRef<ValueAccess>) {
+    private initComponent(component: ComponentRef<PropertyValueAccess>) {
         component.instance.value = this._value;
         if (component.instance.registerOnChange) {
             component.instance.registerOnChange(this._controlValueChangeFn);
@@ -94,7 +94,7 @@ export class CustomComponent implements OnInit, ICustomDynamicComponent<any> {
     }
 }
 
-interface ValueAccess extends ControlValueAccessor, ICustomDynamicComponent<any> {
+export interface PropertyValueAccess extends ControlValueAccessor, ICustomDynamicComponent<any> {
 }
 
 export interface ICustomDynamicComponent<TValue> {

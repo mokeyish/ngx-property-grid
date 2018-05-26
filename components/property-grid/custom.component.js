@@ -44,8 +44,7 @@ var CustomComponent = /** @class */ (function () {
         try {
             this.destroyComponent();
             // this.entry.clear();
-            var componentFactory = this.componentFactoryResolver
-                .resolveComponentFactory(this.componentType);
+            var componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.componentType);
             var component = this.entry.createComponent(componentFactory, 0);
             this.initComponent(component);
             this.component = component;

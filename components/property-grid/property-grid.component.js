@@ -34,8 +34,8 @@ var PropertyGridComponent = /** @class */ (function () {
         },
         set: function (v) {
             this._options = v;
-            if (v.__meta) {
-                this.meta = v.__meta;
+            if (v.__meta__) {
+                this.meta = v.__meta__;
             }
         },
         enumerable: true,
@@ -89,19 +89,19 @@ var PropertyGridComponent = /** @class */ (function () {
             }
             if (v.type === 'subItems') {
                 subItems.push(v);
+                return "continue";
             }
-            else {
-                var group = groups.find(function (o) { return o.name === v.group; });
-                if (!group) {
-                    group = new InternalGroup(v.group);
-                    groups.push(group);
-                }
-                group.items.push(v);
+            var group = groups.find(function (o) { return o.name === v.group; });
+            if (!group) {
+                group = new InternalGroup(v.group);
+                groups.push(group);
             }
+            group.items.push(v);
         };
         for (var i in meta) {
             _loop_1(i);
         }
+        groups.forEach(function (o) { return o.items.sort(function (a, b) { return a.order - b.order; }); });
         var rows = [];
         for (var _i = 0, groups_1 = groups; _i < groups_1.length; _i++) {
             var g = groups_1[_i];

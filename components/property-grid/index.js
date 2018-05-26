@@ -22,12 +22,13 @@ var property_item_template_directive_1 = require("./property-item-template.direc
 var property_grid_component_2 = require("./property-grid.component");
 exports.PropertyGridComponent = property_grid_component_2.PropertyGridComponent;
 exports.PropertyValue = property_grid_component_2.PropertyValue;
-var property_grid_item_meta_1 = require("./property-grid-item-meta");
-exports.meta = property_grid_item_meta_1.meta;
+var property_item_meta_1 = require("./property-item-meta");
+exports.meta = property_item_meta_1.meta;
 property_grid_control_provider_1.defaultProvider.register('checkbox', simple_checkbox_component_1.SimpleCheckboxComponent);
 property_grid_control_provider_1.defaultProvider.register('color', simple_color_picker_omponent_1.SimpleColorComponent);
 property_grid_control_provider_1.defaultProvider.register('label', simple_label_component_1.SimpleLabelComponent);
 property_grid_control_provider_1.defaultProvider.register('text', simple_text_component_1.SimpleTextComponent);
+property_grid_control_provider_1.defaultProvider.register('number', simple_text_component_1.SimpleTextComponent);
 property_grid_control_provider_1.defaultProvider.register('options', simple_select_component_1.SimpleSelectComponent);
 property_grid_control_provider_1.defaultProvider.register('date', simple_date_picker_component_1.SimpleDateComponent);
 var PropertyGridModule = /** @class */ (function () {
