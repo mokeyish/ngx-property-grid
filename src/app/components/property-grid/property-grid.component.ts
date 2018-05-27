@@ -1,4 +1,14 @@
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList, TemplateRef} from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChildren,
+    Input,
+    OnInit,
+    QueryList,
+    TemplateRef
+} from '@angular/core';
 import {InternalPropertyItemMeta} from './property-item-meta';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {PropertyItemTemplateDirective} from './property-item-template.directive';
@@ -127,7 +137,8 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
             })),
             transition('visible <=> hidden', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
         ])
-    ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PropertyGridComponent implements OnInit, AfterContentInit {
     private _options: any;
@@ -174,7 +185,7 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
     public rows: Array<InternalGroup | InternalPropertyItemMeta | any>;
     public subItems: InternalPropertyItemMeta[];
 
-    constructor() {
+    constructor(private cdr: ChangeDetectorRef) {
     }
 
     ngOnInit() {

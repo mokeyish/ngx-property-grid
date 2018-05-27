@@ -7,13 +7,13 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	      <link rel="stylesheet" href="./styles/style.css">
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
     </head>
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">ngx-property-grid documentation</a>
+            <a href="../" class="navbar-brand">ngx-property-grid documentation</a>
             <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
@@ -501,110 +501,162 @@
 </nav>
                </div>
                <!-- START CONTENT -->
-               <div class="content getting-started">
+               <div class="content interface">
                    <div class="content-data">
 
-<p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" class="img-responsive"></a>
-<a href="https://badge.fury.io/js/ngx-property-grid"><img src="https://badge.fury.io/js/ngx-property-grid.svg" alt="npm version" class="img-responsive"></a>
-<a href="https://travis-ci.org/mokeyish/ngx-property-grid"><img src="https://travis-ci.org/mokeyish/ngx-property-grid.svg?branch=master" alt="Build Status" class="img-responsive"></a></p>
-<h1 id="ngxpropertygrid">NgxPropertyGrid</h1>
-<p>A small and simple property grid in angular to view/edit POJOs, excellent if you have a &quot;settings&quot; object you want to give the user to edit (that&#39;s why I have created it). <a href="https://stackblitz.com/edit/angular-veuf4i">Play online</a>.</p>
-<h2 id="dependencies">Dependencies</h2>
-<ul>
-<li>angular</li>
-</ul>
-<h2 id="usage">Usage</h2>
-<ul>
-<li>The metadata options</li>
-</ul>
-<div><pre class="line-numbers"><code class="language-ts">export interface PropertyItemMeta {
-    name: string; // The display name of the property in the grid
-    description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text &quot;[?]&quot;)
-    order?: number; // The display order.
-    group?: string; //  The group this property belongs to
-    hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
-    initState?: string; // - hidden/visible.
-    componentType?: Type&lt;ControlValueAccessor | ICustomDynamicComponent&lt;any&gt;&gt;; // an custom component should be implement
-    // ControlValueAccessor or ICustomDynamicComponent&lt;any&gt;
-    componentOptions?: any;
-    colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
-    // (useful for textarea custom type)
-    type?: string; // boolean number options label color
-    valueConvert?: (value: any) =&gt; any; // convert the value, eg. parseInt
-}</code></pre></div><ul>
-<li>The Example Options</li>
-</ul>
-<div><pre class="line-numbers"><code class="language-ts">export class ExampleEditorOptions {
-    &#64;meta({name: &#39;Font&#39;, description: &#39;The font editor to use&#39;, componentType: SimpleTextEditorComponent, group: &#39;Editor&#39;, hidden: false})
-    font = &#39;Source Code Pro&#39;;
 
-    &#64;meta({name: &#39;Font size&#39;, group: &#39;Editor&#39;, type: &#39;number&#39;, valueConvert: parseInt})
-    fontSize = 14;
 
-    &#64;meta({name: &#39;Font color&#39;, group: &#39;Editor&#39;, type: &#39;color&#39;})
-    fontColor = &#39;#51f41c&#39;;
 
-    &#64;meta({name: &#39;jQuery&#39;, group: &#39;Plugins&#39;, type: &#39;checkbox&#39;})
-    jQuery = true;
 
-    &#64;meta({name: &#39;modernizr&#39;, description: &#39;Whether or not to include modernizr on the page&#39;, group: &#39;Plugins&#39;, type: &#39;checkbox&#39;})
-    modernizr = false;
 
-    &#64;meta({
-        name: &#39;Framework&#39;,
-        description: &#39;Whether to include any additional framework&#39;,
-        type: &#39;options&#39;,
-        options: [&#39;None&#39;, {text: &#39;AngularJS&#39;, value: &#39;angular&#39;}, {text: &#39;Backbone.js&#39;, value: &#39;backbone&#39;}]
-    })
-    framework = &#39;None&#39;;
-}</code></pre></div><ul>
-<li><p>The html part:</p>
-<ul>
-<li><p>Basic</p>
-<div><pre class="line-numbers"><code class="language-HTML">&lt;ngx-property-grid [width]=&quot;&#39;300px&#39;&quot; [options]=&quot;editor&quot;&gt;&lt;/ngx-property-grid&gt;</code></pre></div></li>
-<li><p>template</p>
-<div><pre class="line-numbers"><code class="language-HTML">&lt;ngx-property-grid [width]=&quot;&#39;300px&#39;&quot; [options]=&quot;editor&quot;&gt;
-    &lt;ng-template propertyType=&quot;text&quot; let-p&gt;
-        &lt;input type=&quot;text&quot; [value]=&quot;p.value&quot; (change)=&quot;p.value = $event.target.value&quot;&gt;
-    &lt;/ng-template&gt;
-    &lt;ng-template propertyType=&quot;color&quot; let-p&gt;
-        &lt;input type=&quot;color&quot; [value]=&quot;p.value&quot; (change)=&quot;p.value = $event.target.value&quot;&gt;
-    &lt;/ng-template&gt;
-&lt;/ngx-property-grid&gt;</code></pre></div></li>
-</ul>
-</li>
-<li><p>The result would be: <a href="https://stackblitz.com/edit/angular-veuf4i">See here</a></p>
-</li>
-</ul>
-<h2 id="the-metadata-object">The metadata object</h2>
-<p>As seen from the example above the metadata object <strong>can</strong> be used (it&#39;s optional) in order to describe the object properties.
-Each proprty in the metadata object could have the following:</p>
-<ul>
-<li>name - The display name of the property in the grid</li>
-<li>description - A description of the property, will be used as tooltip on an hint element (a span with text &quot;[?]&quot;)</li>
-<li>hidden - Whether this property should be hidden in the grid, default is false (can be omitted).</li>
-<li>group - The group this property belongs to</li>
-<li>type - The type of the property, supported are:<ul>
-<li>boolean or checkbox - A checkbox would be used</li>
-<li>number -  simple textbox</li>
-<li>color - simple textbox</li>
-<li>options - A dropdown list would be used in case the metadata contains the <code>options</code> array property</li>
-<li>label - A label will be used, useful for uneditable / read-only properties</li>
-</ul>
-</li>
-<li>componentType - An angular component</li>
-<li>colspan2 - true/false. If true then property input will span both columns and will have no name/label (useful for textarea custom type, see example/index.html)</li>
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>PropertyValueAccess</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
 </ul>
 
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/components/property-grid/custom.component.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
+            </p>
 
 
 
 
+    </div>
 
 
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    Component,
+    ComponentFactoryResolver,
+    ComponentRef,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+    Type,
+    ViewChild,
+    ViewContainerRef
+} from &#x27;@angular/core&#x27;;
+import {ControlValueAccessor} from &#x27;@angular/forms&#x27;;
+
+@Component({
+    selector: &#x27;custom-component&#x27;,
+    template: &#x27;&lt;ng-container #container&gt;&lt;/ng-container&gt;&#x27;,
+})
+export class CustomComponent implements OnInit, ICustomDynamicComponent&lt;any&gt; {
+    private readonly _controlValueChangeFn: (value: any) &#x3D;&gt; void;
+    private _value: any;
+
+    @ViewChild(&#x27;container&#x27;, { read: ViewContainerRef }) entry;
+    private component: ComponentRef&lt;ICustomDynamicComponent&lt;any&gt;&gt;;
+
+    @Input() componentType: Type&lt;PropertyValueAccess&gt;;
+
+    @Input()
+    componentOptions: any;
+
+    @Input()
+    set value(v: any) {
+        this._value &#x3D; v;
+        if (this.component) {
+            this.component.instance.value &#x3D;  v;
+        }
+    }
+    get value(): any {
+        return this._value;
+    }
+
+    @Output()
+    readonly valueChange: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
 
 
+    constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+        this._controlValueChangeFn &#x3D; (value: any) &#x3D;&gt; this.onValueChange(value);
+    }
 
+    ngOnInit() {
+        this.buildComponent();
+    }
+
+    private onValueChange(e: any): void {
+        this._value &#x3D; e;
+        this.valueChange.emit(e);
+    }
+
+    private buildComponent(): void {
+        if (!this.componentType) {
+            return;
+        }
+        try {
+            this.destroyComponent();
+            // this.entry.clear();
+            const componentFactory &#x3D; this.componentFactoryResolver.resolveComponentFactory&lt;PropertyValueAccess&gt;(this.componentType);
+            const component &#x3D; this.entry.createComponent(componentFactory, 0);
+            this.initComponent(component);
+            this.component &#x3D; component;
+        } catch (e) {
+            console.error(&#x27;load component error.&#x27;);
+            console.error(e);
+        }
+    }
+
+    private initComponent(component: ComponentRef&lt;PropertyValueAccess&gt;) {
+        component.instance.value &#x3D; this._value;
+        if (component.instance.registerOnChange) {
+            component.instance.registerOnChange(this._controlValueChangeFn);
+        }
+        if (component.instance.valueChange) {
+            component.instance.valueChange.subscribe(this._controlValueChangeFn);
+        }
+
+        if (this.componentOptions) {
+            Object.assign(component.instance, this.componentOptions);
+        }
+    }
+
+    private destroyComponent(): void {
+        if (this.component) {
+            this.component.destroy();
+        }
+    }
+}
+
+export interface PropertyValueAccess extends ControlValueAccessor, ICustomDynamicComponent&lt;any&gt; {
+}
+
+export interface ICustomDynamicComponent&lt;TValue&gt; {
+    value: TValue;
+    valueChange: EventEmitter&lt;TValue&gt;;
+}
+</code></pre>
+    </div>
+</div>
 
 
 
@@ -624,30 +676,30 @@ Each proprty in the metadata object could have the following:</p>
            </div>
        </div>
 
-       <script src="./js/libs/bootstrap-native.js"></script>
+       <script src="../js/libs/bootstrap-native.js"></script>
 
-       <script src="./js/libs/es6-shim.min.js"></script>
-       <script src="./js/libs/EventDispatcher.js"></script>
-       <script src="./js/libs/promise.min.js"></script>
-       <script src="./js/libs/zepto.min.js"></script>
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
 
-       <script src="./js/compodoc.js"></script>
+       <script src="../js/compodoc.js"></script>
 
         <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
-            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'PropertyValueAccess.html';
         </script>
 
-       <script src="./js/search/search.js"></script>
-       <script src="./js/search/lunr.min.js"></script>
-       <script src="./js/search/search-lunr.js"></script>
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
 
-       <script src="./js/tabs.js"></script>
-       <script src="./js/menu.js"></script>
-       <script src="./js/libs/prism.js"></script>
-       <script src="./js/sourceCode.js"></script>
-       <script src="./js/search/search_index.js"></script>
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
 
 
     </body>

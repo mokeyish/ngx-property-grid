@@ -7,13 +7,13 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	      <link rel="stylesheet" href="./styles/style.css">
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
     </head>
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">ngx-property-grid documentation</a>
+            <a href="../" class="navbar-brand">ngx-property-grid documentation</a>
             <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
@@ -501,109 +501,439 @@
 </nav>
                </div>
                <!-- START CONTENT -->
-               <div class="content getting-started">
+               <div class="content class">
                    <div class="content-data">
 
-<p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" class="img-responsive"></a>
-<a href="https://badge.fury.io/js/ngx-property-grid"><img src="https://badge.fury.io/js/ngx-property-grid.svg" alt="npm version" class="img-responsive"></a>
-<a href="https://travis-ci.org/mokeyish/ngx-property-grid"><img src="https://travis-ci.org/mokeyish/ngx-property-grid.svg?branch=master" alt="Build Status" class="img-responsive"></a></p>
-<h1 id="ngxpropertygrid">NgxPropertyGrid</h1>
-<p>A small and simple property grid in angular to view/edit POJOs, excellent if you have a &quot;settings&quot; object you want to give the user to edit (that&#39;s why I have created it). <a href="https://stackblitz.com/edit/angular-veuf4i">Play online</a>.</p>
-<h2 id="dependencies">Dependencies</h2>
-<ul>
-<li>angular</li>
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>ExampleEditorOptions</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
 </ul>
-<h2 id="usage">Usage</h2>
-<ul>
-<li>The metadata options</li>
-</ul>
-<div><pre class="line-numbers"><code class="language-ts">export interface PropertyItemMeta {
-    name: string; // The display name of the property in the grid
-    description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text &quot;[?]&quot;)
-    order?: number; // The display order.
-    group?: string; //  The group this property belongs to
-    hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
-    initState?: string; // - hidden/visible.
-    componentType?: Type&lt;ControlValueAccessor | ICustomDynamicComponent&lt;any&gt;&gt;; // an custom component should be implement
-    // ControlValueAccessor or ICustomDynamicComponent&lt;any&gt;
-    componentOptions?: any;
-    colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
-    // (useful for textarea custom type)
-    type?: string; // boolean number options label color
-    valueConvert?: (value: any) =&gt; any; // convert the value, eg. parseInt
-}</code></pre></div><ul>
-<li>The Example Options</li>
-</ul>
-<div><pre class="line-numbers"><code class="language-ts">export class ExampleEditorOptions {
-    &#64;meta({name: &#39;Font&#39;, description: &#39;The font editor to use&#39;, componentType: SimpleTextEditorComponent, group: &#39;Editor&#39;, hidden: false})
-    font = &#39;Source Code Pro&#39;;
 
-    &#64;meta({name: &#39;Font size&#39;, group: &#39;Editor&#39;, type: &#39;number&#39;, valueConvert: parseInt})
-    fontSize = 14;
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/showcase/app.component.ts</code>
+        </p>
 
-    &#64;meta({name: &#39;Font color&#39;, group: &#39;Editor&#39;, type: &#39;color&#39;})
-    fontColor = &#39;#51f41c&#39;;
 
-    &#64;meta({name: &#39;jQuery&#39;, group: &#39;Plugins&#39;, type: &#39;checkbox&#39;})
-    jQuery = true;
 
-    &#64;meta({name: &#39;modernizr&#39;, description: &#39;Whether or not to include modernizr on the page&#39;, group: &#39;Plugins&#39;, type: &#39;checkbox&#39;})
-    modernizr = false;
 
-    &#64;meta({
-        name: &#39;Framework&#39;,
-        description: &#39;Whether to include any additional framework&#39;,
-        type: &#39;options&#39;,
-        options: [&#39;None&#39;, {text: &#39;AngularJS&#39;, value: &#39;angular&#39;}, {text: &#39;Backbone.js&#39;, value: &#39;backbone&#39;}]
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#font">font</a>
+                            </li>
+                            <li>
+                                <a href="#fontColor">fontColor</a>
+                            </li>
+                            <li>
+                                <a href="#fontSize">fontSize</a>
+                            </li>
+                            <li>
+                                <a href="#framework">framework</a>
+                            </li>
+                            <li>
+                                <a href="#jQuery">jQuery</a>
+                            </li>
+                            <li>
+                                <a href="#modernizr">modernizr</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="font"></a>
+                        <span class="name">
+                            <b>
+                            font
+                            </b>
+                            <a href="#font"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>font:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;Source Code Pro&#x27;</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Decorators : </i><code>meta</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/showcase/app.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fontColor"></a>
+                        <span class="name">
+                            <b>
+                            fontColor
+                            </b>
+                            <a href="#fontColor"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>fontColor:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;#51f41c&#x27;</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Decorators : </i><code>meta</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/showcase/app.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fontSize"></a>
+                        <span class="name">
+                            <b>
+                            fontSize
+                            </b>
+                            <a href="#fontSize"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>fontSize:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>14</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Decorators : </i><code>meta</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/showcase/app.component.ts:40</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="framework"></a>
+                        <span class="name">
+                            <b>
+                            framework
+                            </b>
+                            <a href="#framework"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>framework:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;None&#x27;</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Decorators : </i><code>meta</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/showcase/app.component.ts:62</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="jQuery"></a>
+                        <span class="name">
+                            <b>
+                            jQuery
+                            </b>
+                            <a href="#jQuery"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>jQuery:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>true</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Decorators : </i><code>meta</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/showcase/app.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modernizr"></a>
+                        <span class="name">
+                            <b>
+                            modernizr
+                            </b>
+                            <a href="#modernizr"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>modernizr:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Decorators : </i><code>meta</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/showcase/app.component.ts:54</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, EventEmitter} from &#x27;@angular/core&#x27;;
+import {meta, ICustomDynamicComponent} from &#x27;../components/property-grid/index&#x27;;
+import {MatCheckbox, MatSlider, MatSlideToggle} from &#x27;@angular/material&#x27;;
+
+@Component({
+    selector: &#x27;app-root&#x27;,
+    templateUrl: &#x27;./app.component.html&#x27;,
+    styleUrls: [&#x27;./app.component.scss&#x27;]
+})
+export class AppComponent {
+    public student: ExampleStudentOptions &#x3D; new ExampleStudentOptions();
+
+    constructor() {
+    }
+
+    public get data(): string {
+        return JSON.stringify(this.student);
+    }
+
+    text: string;
+}
+
+@Component({
+    selector: &#x27;app-text-editor&#x27;,
+    template: &#x60;&lt;input type&#x3D;&quot;text&quot; [value]&#x3D;&quot;value&quot; (change)&#x3D;&quot;valueChange.emit($event.target.value)&quot;/&gt;&#x60;
+})
+export class SimpleTextEditorComponent implements ICustomDynamicComponent&lt;string&gt; {
+    value: string;
+    valueChange: EventEmitter&lt;string&gt; &#x3D; new EventEmitter&lt;string&gt;();
+}
+
+export class ExampleEditorOptions {
+    @meta({
+        name: &#x27;Font&#x27;, description: &#x27;The font editor to use&#x27;, colSpan2: false,
+        componentType: SimpleTextEditorComponent, group: &#x27;Editor&#x27;, hidden: false
     })
-    framework = &#39;None&#39;;
-}</code></pre></div><ul>
-<li><p>The html part:</p>
-<ul>
-<li><p>Basic</p>
-<div><pre class="line-numbers"><code class="language-HTML">&lt;ngx-property-grid [width]=&quot;&#39;300px&#39;&quot; [options]=&quot;editor&quot;&gt;&lt;/ngx-property-grid&gt;</code></pre></div></li>
-<li><p>template</p>
-<div><pre class="line-numbers"><code class="language-HTML">&lt;ngx-property-grid [width]=&quot;&#39;300px&#39;&quot; [options]=&quot;editor&quot;&gt;
-    &lt;ng-template propertyType=&quot;text&quot; let-p&gt;
-        &lt;input type=&quot;text&quot; [value]=&quot;p.value&quot; (change)=&quot;p.value = $event.target.value&quot;&gt;
-    &lt;/ng-template&gt;
-    &lt;ng-template propertyType=&quot;color&quot; let-p&gt;
-        &lt;input type=&quot;color&quot; [value]=&quot;p.value&quot; (change)=&quot;p.value = $event.target.value&quot;&gt;
-    &lt;/ng-template&gt;
-&lt;/ngx-property-grid&gt;</code></pre></div></li>
-</ul>
-</li>
-<li><p>The result would be: <a href="https://stackblitz.com/edit/angular-veuf4i">See here</a></p>
-</li>
-</ul>
-<h2 id="the-metadata-object">The metadata object</h2>
-<p>As seen from the example above the metadata object <strong>can</strong> be used (it&#39;s optional) in order to describe the object properties.
-Each proprty in the metadata object could have the following:</p>
-<ul>
-<li>name - The display name of the property in the grid</li>
-<li>description - A description of the property, will be used as tooltip on an hint element (a span with text &quot;[?]&quot;)</li>
-<li>hidden - Whether this property should be hidden in the grid, default is false (can be omitted).</li>
-<li>group - The group this property belongs to</li>
-<li>type - The type of the property, supported are:<ul>
-<li>boolean or checkbox - A checkbox would be used</li>
-<li>number -  simple textbox</li>
-<li>color - simple textbox</li>
-<li>options - A dropdown list would be used in case the metadata contains the <code>options</code> array property</li>
-<li>label - A label will be used, useful for uneditable / read-only properties</li>
-</ul>
-</li>
-<li>componentType - An angular component</li>
-<li>colspan2 - true/false. If true then property input will span both columns and will have no name/label (useful for textarea custom type, see example/index.html)</li>
-</ul>
+    font &#x3D; &#x27;Source Code Pro&#x27;;
 
+    @meta({name: &#x27;Font size&#x27;, group: &#x27;Editor&#x27;, valueConvert: parseInt, type: &#x27;fontSize&#x27;})
+    fontSize &#x3D; 14;
 
+    @meta({name: &#x27;Font color&#x27;, group: &#x27;Editor&#x27;, type: &#x27;color&#x27;})
+    fontColor &#x3D; &#x27;#51f41c&#x27;;
 
+    @meta({name: &#x27;jQuery&#x27;, group: &#x27;Plugins&#x27;, componentType: MatCheckbox})
+    jQuery &#x3D; true;
 
+    @meta({
+        name: &#x27;modernizr&#x27;,
+        description: &#x27;Whether or not to include modernizr on the page&#x27;,
+        group: &#x27;Plugins&#x27;,
+        componentType: MatSlideToggle
+    })
+    modernizr &#x3D; false;
 
+    @meta({
+        name: &#x27;Framework&#x27;,
+        description: &#x27;Whether to include any additional framework&#x27;,
+        type: &#x27;options&#x27;,
+        componentOptions: {options: [&#x27;None&#x27;, {text: &#x27;AngularJS&#x27;, value: &#x27;angular&#x27;}, {text: &#x27;Backbone.js&#x27;, value: &#x27;backbone&#x27;}]}
+    })
+    framework &#x3D; &#x27;None&#x27;;
 
+}
 
+export class ExampleStudentOptions {
 
+    @meta({name: &#x27;Birth&#x27;, group: &#x27;Basic Information&#x27;, type: &#x27;date&#x27;, order: 4})
+    time &#x3D; &#x27;2018-05-08&#x27;;
 
+    @meta({name: &#x27;Name&#x27;, group: &#x27;Basic Information&#x27;, type: &#x27;text&#x27;, order: 1})
+    name &#x3D; &#x27;Lily&#x27;;
+
+    @meta({name: &#x27;Age&#x27;, group: &#x27;Basic Information&#x27;, valueConvert: parseInt, type: &#x27;text&#x27;, order: 2})
+    age &#x3D; 19;
+
+    @meta({name: &#x27;Editor Preference&#x27;, type: &#x27;subItems&#x27;, initState: &#x27;visible&#x27;})
+    editor: ExampleEditorOptions &#x3D; new ExampleEditorOptions();
+}
+</code></pre>
+    </div>
+</div>
 
 
 
@@ -624,30 +954,30 @@ Each proprty in the metadata object could have the following:</p>
            </div>
        </div>
 
-       <script src="./js/libs/bootstrap-native.js"></script>
+       <script src="../js/libs/bootstrap-native.js"></script>
 
-       <script src="./js/libs/es6-shim.min.js"></script>
-       <script src="./js/libs/EventDispatcher.js"></script>
-       <script src="./js/libs/promise.min.js"></script>
-       <script src="./js/libs/zepto.min.js"></script>
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
 
-       <script src="./js/compodoc.js"></script>
+       <script src="../js/compodoc.js"></script>
 
         <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
-            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExampleEditorOptions.html';
         </script>
 
-       <script src="./js/search/search.js"></script>
-       <script src="./js/search/lunr.min.js"></script>
-       <script src="./js/search/search-lunr.js"></script>
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
 
-       <script src="./js/tabs.js"></script>
-       <script src="./js/menu.js"></script>
-       <script src="./js/libs/prism.js"></script>
-       <script src="./js/sourceCode.js"></script>
-       <script src="./js/search/search_index.js"></script>
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
 
 
     </body>
