@@ -2,8 +2,12 @@
 
 The Object:<code>{{data}}</code>
 <br>
-<ngx-property-grid [width]="'350px'" [options]="student">
+<ngx-property-grid [width]="'400px'" [options]="student">
     <ng-template propertyType="text" let-p>
        <input type="text" [value]="p.value" (change)="p.value = $event.target.value">
+    </ng-template>
+    <ng-template propertyType="fontSize" let-p>
+        <input matInput type="number" placeholder="Value" [(ngModel)]="p.value">
+        <!--<span>字体大小</span>-->
     </ng-template>
 </ngx-property-grid>

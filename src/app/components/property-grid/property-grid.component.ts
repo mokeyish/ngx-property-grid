@@ -6,40 +6,44 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
 @Component({
     selector: 'ngx-property-grid',
     template: `
-        <div class="property-grid" [ngStyle]="{width: width}">
-            <table class="property-grid-table" [ngStyle]="{width: width}">
-                <tbody>
-                <tr *ngFor="let row of rows" [ngClass]="row.type == 'group'? 'property-grid-group-row':'property-grid-row'">
+        <div class="property-grid" [style.width]="width">
+            <div class="card">
+                <table class="property-grid-table" [style.width]="width">
+                    <tbody>
+                    <tr *ngFor="let row of rows" [ngClass]="row.type == 'group'? 'property-grid-group-row':'property-grid-row'">
 
-                    <!--<td [attr.colspan]="row.colspan"></td>-->
-                    <td *ngIf="row.type == 'group'" colspan="2" class="property-grid-group">{{row.name}}</td>
-                    <td *ngIf="row.type != 'group' && row.colSpan2 != true" [width]="labelWidth" colspan="1" class="property-grid-label">
-                        {{row.name}}
-                        <span *ngIf="row.description" [title]="row.description">[?]</span>
-                    </td>
-                    <td *ngIf="row.type != 'group'" [attr.colspan]="row.colSpan2 == true ? 2 : 1" class="property-grid-control">
-                        <custom-component
-                            *ngIf="!getTemplate(row.type)"
-                            [componentType]="row.componentType"
-                            [componentOptions]="row.componentOptions"
-                            [value]="options[row.key]"
-                            (valueChange)="convertValue(row, $event)">
-                        </custom-component>
-                        <ng-container *ngTemplateOutlet="getTemplate(row.type); context: {$implicit: propertyValue(row)}">
-                        </ng-container>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                        <!--<td [attr.colspan]="row.colspan"></td>-->
+                        <td *ngIf="row.type == 'group'" colspan="2" class="property-grid-group">{{row.name}}</td>
+                        <td *ngIf="row.type != 'group' && row.colSpan2 != true" [width]="labelWidth" colspan="1"
+                            class="property-grid-label">
+                            {{row.name}}
+                            <span *ngIf="row.description" [title]="row.description">[?]</span>
+                        </td>
+                        <td *ngIf="row.type != 'group'" [attr.colspan]="row.colSpan2 == true ? 2 : 1" class="property-grid-control">
+                            <custom-component
+                                *ngIf="!getTemplate(row.type)"
+                                [componentType]="row.componentType"
+                                [componentOptions]="row.componentOptions"
+                                [value]="options[row.key]"
+                                (valueChange)="convertValue(row, $event)">
+                            </custom-component>
+                            <ng-container *ngTemplateOutlet="getTemplate(row.type); context: {$implicit: propertyValue(row)}">
+                            </ng-container>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <div *ngFor="let item of subItems" class="internal-property-grid">
-                <div (click)="pg.toggle()" class="property-grid-header"><b>{{item.name}}</b></div>
+            <div *ngFor="let item of subItems" class="internal-property-grid card">
+                <div (click)="pg.toggle()" class="property-grid-header" [style.width]="'100%'"><b>{{item.name}}</b></div>
                 <ngx-property-grid
                     [state]="item.initState"
                     [@internalPropertyGrid]="pg.state"
                     [options]="options[item.key]"
                     [width]="width"
                     [labelWidth]="labelWidth"
+                    [templateMap]="templateMap"
                     style="display: block;overflow: hidden"
                     #pg>
                 </ngx-property-grid>
@@ -53,15 +57,17 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
             }
 
             .property-grid-table {
-                border: solid 1px #ddd;
                 border-spacing: 0;
                 border-top: 1px solid #dbdbdb;
+                padding: 5px
             }
 
             .property-grid-group {
-                background-color: #368bffeb;
+                background-color: white;
                 font-weight: bold;
-                color: white;
+                color: #616161;
+                padding-top: 8px;
+                padding-bottom: 5px;
             }
 
             .property-grid-label, .property-grid-control {
@@ -71,9 +77,6 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
 
             .internal-property-grid {
                 margin-top: 12px;
-                -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-                box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-                border: solid 1px #ddd;
             }
 
             .internal-property-grid .property-grid {
@@ -94,6 +97,23 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
                 border-width: 0;
                 /*border-top: 1px solid #dbdbdb;*/
             }
+
+            .card {
+                background-color: #fff;
+                box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);
+                display: flex;
+                flex-flow: row wrap;
+                /*margin: 5px 20px;*/
+                padding: 0;
+            }
+            .internal-property-grid ngx-property-grid .card {
+                background-color: unset;
+                box-shadow: unset;
+                display: unset;
+                flex-flow: unset;
+                /*margin: 5px 20px;*/
+                padding: unset;
+            }
         `
     ],
     animations: [
@@ -112,7 +132,9 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
 export class PropertyGridComponent implements OnInit, AfterContentInit {
     private _options: any;
     private _meta: any;
-    private _templateMap: any;
+
+    @Input()
+    public templateMap: any;
 
     @Input()
     public state = 'visible';
@@ -161,16 +183,17 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
 
     ngAfterContentInit(): void {
         if (this.templates.length) {
-            this._templateMap = {};
+            this.templateMap = {};
         }
 
         this.templates.forEach((item) => {
-            this._templateMap[item.name] = item.template;
+            this.templateMap[item.name] = item.template;
         });
     }
+
     public getTemplate(type: string): TemplateRef<any> {
-        if (this._templateMap) {
-            return type ? this._templateMap[type] : this._templateMap['default'];
+        if (this.templateMap) {
+            return type ? this.templateMap[type] : this.templateMap['default'];
         } else {
             return null;
         }
@@ -235,9 +258,11 @@ export class PropertyValue {
     public get value(): any {
         return this.o[this.meta.key];
     }
+
     public set value(val: any) {
         this.o[this.meta.key] = this.meta.valueConvert ? this.meta.valueConvert(val) : val;
     }
+
     constructor(private o: any, public meta: InternalPropertyItemMeta) {
     }
 }

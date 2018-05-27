@@ -3,7 +3,7 @@ import { InternalPropertyItemMeta } from './property-item-meta';
 export declare class PropertyGridComponent implements OnInit, AfterContentInit {
     private _options;
     private _meta;
-    private _templateMap;
+    templateMap: any;
     state: string;
     width: string | number;
     labelWidth: string | number;

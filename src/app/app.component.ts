@@ -36,7 +36,7 @@ export class ExampleEditorOptions {
     })
     font = 'Source Code Pro';
 
-    @meta({name: 'Font size', group: 'Editor', valueConvert: parseInt, componentType: MatSlider})
+    @meta({name: 'Font size', group: 'Editor', valueConvert: parseInt, type: 'fontSize'})
     fontSize = 14;
 
     @meta({name: 'Font color', group: 'Editor', type: 'color'})
@@ -61,17 +61,19 @@ export class ExampleEditorOptions {
     })
     framework = 'None';
 
-    @meta({name: 'Update Time', type: 'date'})
-    time = '2018-05-08';
 }
 
 export class ExampleStudentOptions {
-    @meta({name: 'Name', group: 'Basic', type: 'text', order: 4})
+
+    @meta({name: 'Birth', group: 'Basic Information', type: 'date', order: 4})
+    time = '2018-05-08';
+
+    @meta({name: 'Name', group: 'Basic Information', type: 'text', order: 1})
     name = 'Lily';
 
-    @meta({name: 'Age', group: 'Basic', valueConvert: parseInt, type: 'text', order: 2})
+    @meta({name: 'Age', group: 'Basic Information', valueConvert: parseInt, type: 'text', order: 2})
     age = 19;
 
-    @meta({name: 'Editor', type: 'subItems', initState: 'visible'})
+    @meta({name: 'Editor Preference', type: 'subItems', initState: 'visible'})
     editor: ExampleEditorOptions = new ExampleEditorOptions();
 }
