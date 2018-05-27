@@ -20,7 +20,10 @@
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "doc:build": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d ./docs",
+        "doc:serve": "./node_modules/.bin/compodoc -s",
+        "doc:buildandserve": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d ./docs -s"
     },
     "license": "MIT",
     "repository": {
@@ -44,6 +47,7 @@
         "@angular/platform-browser": "^6.0.2",
         "@angular/platform-browser-dynamic": "^6.0.2",
         "@angular/router": "^6.0.2",
+        "@compodoc/compodoc": "^1.1.3",
         "@types/jasmine": "~2.8.6",
         "@types/jasminewd2": "~2.0.3",
         "@types/node": "~8.9.4",

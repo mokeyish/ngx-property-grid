@@ -1,5 +1,5 @@
 import {Component, EventEmitter} from '@angular/core';
-import {meta, ICustomDynamicComponent} from './components/property-grid';
+import {meta, ICustomDynamicComponent} from '../components/property-grid/index';
 import {MatCheckbox, MatSlider, MatSlideToggle} from '@angular/material';
 
 @Component({

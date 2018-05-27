@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import {AppComponent, SimpleTextEditorComponent} from './app.component';
-import {PropertyGridModule} from './components/property-grid';
+import {PropertyGridModule} from '../components/property-grid/index';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     MatCheckboxModule,
@@ -29,5 +29,5 @@ import {FormsModule} from '@angular/forms';
     providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule {
+export class ShowcaseModule {
 }
