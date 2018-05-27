@@ -1,7 +1,7 @@
 {
     "name": "ngx-property-grid",
     "description": "A small and simple property grid in angular to view/edit POJOs, excellent if you have a \"settings\" object you want to give the user to edit.",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "private": false,
     "authors": [
         "mokeyish"
