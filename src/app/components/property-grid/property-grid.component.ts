@@ -1,13 +1,10 @@
 import {
-    AfterContentInit,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
+    AfterContentInit, AfterViewInit, ChangeDetectorRef,
     Component,
-    ContentChildren,
+    ContentChildren, ElementRef,
     Input,
-    OnInit,
     QueryList,
-    TemplateRef
+    TemplateRef, ViewChildren
 } from '@angular/core';
 import {InternalPropertyItemMeta} from './property-item-meta';
 import {animate, state, style, transition, trigger} from '@angular/animations';
@@ -58,6 +55,35 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
                     #pg>
                 </ngx-property-grid>
             </div>
+        </div>
+        <div *ngIf="!isInternal">
+            <ng-template propertyType="checkbox" let-p>
+                <input type="checkbox" [checked]="p.value" (change)="p.value = $event.target.checked" />
+            </ng-template>
+
+            <ng-template propertyType="color" let-p>
+                <input type="color" [value]="p.value" (change)="p.value = $event.target.value"/>
+            </ng-template>
+
+            <ng-template propertyType="date" let-p>
+                <input type="date" [value]="p.value" (change)="p.value = $event.target.value"/>
+            </ng-template>
+
+            <ng-template propertyType="label" let-p>
+                <label>{{p.value}}</label>
+            </ng-template>
+
+            <ng-template propertyType="text" let-p>
+                <input type="text" [value]="p.value" (change)="p.value = $event.target.value"/>
+            </ng-template>
+
+            <ng-template propertyType="options" let-p>
+                <select (change)="p.value = $event.target.value">
+                    <option [value]="optionValue(option)" *ngFor="let option of p.meta.componentOptions.options">
+                        {{optionLabel(option)}}
+                    </option>
+                </select>
+            </ng-template>
         </div>
     `,
     styles: [
@@ -137,15 +163,15 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
             })),
             transition('visible <=> hidden', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
         ])
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    ]
 })
-export class PropertyGridComponent implements OnInit, AfterContentInit {
+export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     private _options: any;
     private _meta: any;
+    public readonly isInternal: boolean;
 
     @Input()
-    public templateMap: any;
+    public templateMap: any = {};
 
     @Input()
     public state = 'visible';
@@ -179,24 +205,28 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
         return this._options;
     }
 
+    @ViewChildren(PropertyItemTemplateDirective) defaultTemplates: QueryList<any>;
     @ContentChildren(PropertyItemTemplateDirective) templates: QueryList<any>;
-
 
     public rows: Array<InternalGroup | InternalPropertyItemMeta | any>;
     public subItems: InternalPropertyItemMeta[];
 
-    constructor(private cdr: ChangeDetectorRef) {
+    constructor(el: ElementRef<HTMLElement>, private cdr: ChangeDetectorRef) {
+        this.isInternal = el.nativeElement.parentElement.classList.contains('internal-property-grid');
     }
 
-    ngOnInit() {
-        console.log(this);
+    ngAfterViewInit(): void {
+        if (this.defaultTemplates) {
+            this.defaultTemplates.forEach((item) => {
+                if (!this.templateMap.hasOwnProperty(item.name)) {
+                    this.templateMap[item.name] = item.template;
+                }
+            });
+            this.cdr.detectChanges();
+        }
     }
 
     ngAfterContentInit(): void {
-        if (this.templates.length) {
-            this.templateMap = {};
-        }
-
         this.templates.forEach((item) => {
             this.templateMap[item.name] = item.template;
         });
@@ -262,6 +292,23 @@ export class PropertyGridComponent implements OnInit, AfterContentInit {
         }
         this.rows = rows;
         this.subItems = subItems;
+    }
+
+    optionLabel(v: any): string {
+        if (typeof v === 'string') {
+            return v;
+        }
+        if (v.text) {
+            return v.text;
+        }
+        if (v.label) {
+            return v.label;
+        }
+        return v;
+    }
+
+    optionValue(v: any): any {
+        return v && v.value ? v.value : v;
     }
 }
 

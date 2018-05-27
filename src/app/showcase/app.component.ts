@@ -14,7 +14,7 @@ export class AppComponent {
     }
 
     public get data(): string {
-        return JSON.stringify(this.student);
+        return JSON.parse(JSON.stringify(this.student));
     }
 
     text: string;
@@ -66,13 +66,19 @@ export class ExampleEditorOptions {
 export class ExampleStudentOptions {
 
     @meta({name: 'Birth', group: 'Basic Information', type: 'date', order: 4})
-    time = '2018-05-08';
+    birth = '2018-05-08';
 
     @meta({name: 'Name', group: 'Basic Information', type: 'text', order: 1})
     name = 'Lily';
 
     @meta({name: 'Age', group: 'Basic Information', valueConvert: parseInt, type: 'text', order: 2})
     age = 19;
+
+    @meta({name: 'Telephone', type: 'telephone', group: 'Basic Information', hidden: true})
+    telephone;
+
+    @meta({name: 'Gender', group: 'Basic Information', type: 'sex', order: 3})
+    gender = 'male';
 
     @meta({name: 'Editor Preference', type: 'subItems', initState: 'visible'})
     editor: ExampleEditorOptions = new ExampleEditorOptions();
