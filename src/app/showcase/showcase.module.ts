@@ -11,16 +11,19 @@ import {
     MatDatepickerModule,
     MatDatepicker,
     MatSlideToggleModule,
-    MatSlideToggle
+    MatSlideToggle, MatNativeDateModule, MatRadioModule, MatInputModule
 } from '@angular/material';
 import {MatCheckbox} from '@angular/material';
 import {FormsModule} from '@angular/forms';
+import {NgxJsonViewerModule} from 'ngx-json-viewer';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
         BrowserModule, FormsModule, NoopAnimationsModule, PropertyGridModule,
+        NgxJsonViewerModule,
         MatCheckboxModule, MatSliderModule, MatDatepickerModule, MatSlideToggleModule,
+        MatNativeDateModule, MatRadioModule, MatInputModule
     ],
     entryComponents: [SimpleTextEditorComponent, MatCheckbox, MatSlider, MatDatepicker, MatSlideToggle],
     declarations: [
