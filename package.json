@@ -22,7 +22,6 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "doc:build": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d ./docs",
-        "doc:serve": "./node_modules/.bin/compodoc -s",
         "doc:buildandserve": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d ./docs -s"
     },
     "license": "MIT",
