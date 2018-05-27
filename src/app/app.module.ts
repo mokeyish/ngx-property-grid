@@ -14,11 +14,12 @@ import {
     MatSlideToggle
 } from '@angular/material';
 import {MatCheckbox} from '@angular/material';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-        BrowserModule, NoopAnimationsModule, PropertyGridModule,
+        BrowserModule, FormsModule, NoopAnimationsModule, PropertyGridModule,
         MatCheckboxModule, MatSliderModule, MatDatepickerModule, MatSlideToggleModule,
     ],
     entryComponents: [SimpleTextEditorComponent, MatCheckbox, MatSlider, MatDatepicker, MatSlideToggle],

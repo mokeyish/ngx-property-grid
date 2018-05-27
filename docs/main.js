@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\nThe Object:<code>{{data}}</code>\n<br>\n<ngx-property-grid [width]=\"'350px'\" [options]=\"student\">\n    <ng-template propertyType=\"text\" let-p>\n       <input type=\"text\" [value]=\"p.value\" (change)=\"p.value = $event.target.value\">\n    </ng-template>\n</ngx-property-grid>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\nThe Object:<code>{{data}}</code>\n<br>\n<ngx-property-grid [width]=\"'400px'\" [options]=\"student\">\n    <ng-template propertyType=\"text\" let-p>\n       <input type=\"text\" [value]=\"p.value\" (change)=\"p.value = $event.target.value\">\n    </ng-template>\n    <ng-template propertyType=\"fontSize\" let-p>\n        <input matInput type=\"number\" placeholder=\"Value\" [(ngModel)]=\"p.value\">\n        <!--<span>字体大小</span>-->\n    </ng-template>\n</ngx-property-grid>\n"
 
 /***/ }),
 
@@ -116,7 +116,6 @@ var ExampleEditorOptions = /** @class */ (function () {
         this.jQuery = true;
         this.modernizr = false;
         this.framework = 'None';
-        this.time = '2018-05-08';
     }
     __decorate([
         Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({
@@ -126,7 +125,7 @@ var ExampleEditorOptions = /** @class */ (function () {
         __metadata("design:type", Object)
     ], ExampleEditorOptions.prototype, "font", void 0);
     __decorate([
-        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Font size', group: 'Editor', valueConvert: parseInt, componentType: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSlider"] }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Font size', group: 'Editor', valueConvert: parseInt, type: 'fontSize' }),
         __metadata("design:type", Object)
     ], ExampleEditorOptions.prototype, "fontSize", void 0);
     __decorate([
@@ -155,29 +154,30 @@ var ExampleEditorOptions = /** @class */ (function () {
         }),
         __metadata("design:type", Object)
     ], ExampleEditorOptions.prototype, "framework", void 0);
-    __decorate([
-        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Update Time', type: 'date' }),
-        __metadata("design:type", Object)
-    ], ExampleEditorOptions.prototype, "time", void 0);
     return ExampleEditorOptions;
 }());
 
 var ExampleStudentOptions = /** @class */ (function () {
     function ExampleStudentOptions() {
+        this.time = '2018-05-08';
         this.name = 'Lily';
         this.age = 19;
         this.editor = new ExampleEditorOptions();
     }
     __decorate([
-        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Name', group: 'Basic', type: 'text', order: 4 }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Birth', group: 'Basic Information', type: 'date', order: 4 }),
+        __metadata("design:type", Object)
+    ], ExampleStudentOptions.prototype, "time", void 0);
+    __decorate([
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Name', group: 'Basic Information', type: 'text', order: 1 }),
         __metadata("design:type", Object)
     ], ExampleStudentOptions.prototype, "name", void 0);
     __decorate([
-        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Age', group: 'Basic', valueConvert: parseInt, type: 'text', order: 2 }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Age', group: 'Basic Information', valueConvert: parseInt, type: 'text', order: 2 }),
         __metadata("design:type", Object)
     ], ExampleStudentOptions.prototype, "age", void 0);
     __decorate([
-        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Editor', type: 'subItems', initState: 'visible' }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Editor Preference', type: 'subItems', initState: 'visible' }),
         __metadata("design:type", ExampleEditorOptions)
     ], ExampleStudentOptions.prototype, "editor", void 0);
     return ExampleStudentOptions;
@@ -203,12 +203,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_property_grid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/property-grid */ "./src/app/components/property-grid/index.ts");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -223,7 +225,7 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]],
             imports: [
-                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["NoopAnimationsModule"], _components_property_grid__WEBPACK_IMPORTED_MODULE_3__["PropertyGridModule"],
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["NoopAnimationsModule"], _components_property_grid__WEBPACK_IMPORTED_MODULE_3__["PropertyGridModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCheckboxModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSliderModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDatepickerModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSlideToggleModule"],
             ],
             entryComponents: [_app_component__WEBPACK_IMPORTED_MODULE_2__["SimpleTextEditorComponent"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCheckbox"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSlider"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDatepicker"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSlideToggle"]],
@@ -778,15 +780,15 @@ var PropertyGridComponent = /** @class */ (function () {
     PropertyGridComponent.prototype.ngAfterContentInit = function () {
         var _this = this;
         if (this.templates.length) {
-            this._templateMap = {};
+            this.templateMap = {};
         }
         this.templates.forEach(function (item) {
-            _this._templateMap[item.name] = item.template;
+            _this.templateMap[item.name] = item.template;
         });
     };
     PropertyGridComponent.prototype.getTemplate = function (type) {
-        if (this._templateMap) {
-            return type ? this._templateMap[type] : this._templateMap['default'];
+        if (this.templateMap) {
+            return type ? this.templateMap[type] : this.templateMap['default'];
         }
         else {
             return null;
@@ -847,6 +849,10 @@ var PropertyGridComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
+    ], PropertyGridComponent.prototype, "templateMap", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
     ], PropertyGridComponent.prototype, "state", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -873,9 +879,9 @@ var PropertyGridComponent = /** @class */ (function () {
     PropertyGridComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ngx-property-grid',
-            template: "\n        <div class=\"property-grid\" [ngStyle]=\"{width: width}\">\n            <table class=\"property-grid-table\" [ngStyle]=\"{width: width}\">\n                <tbody>\n                <tr *ngFor=\"let row of rows\" [ngClass]=\"row.type == 'group'? 'property-grid-group-row':'property-grid-row'\">\n\n                    <!--<td [attr.colspan]=\"row.colspan\"></td>-->\n                    <td *ngIf=\"row.type == 'group'\" colspan=\"2\" class=\"property-grid-group\">{{row.name}}</td>\n                    <td *ngIf=\"row.type != 'group' && row.colSpan2 != true\" [width]=\"labelWidth\" colspan=\"1\" class=\"property-grid-label\">\n                        {{row.name}}\n                        <span *ngIf=\"row.description\" [title]=\"row.description\">[?]</span>\n                    </td>\n                    <td *ngIf=\"row.type != 'group'\" [attr.colspan]=\"row.colSpan2 == true ? 2 : 1\" class=\"property-grid-control\">\n                        <custom-component\n                            *ngIf=\"!getTemplate(row.type)\"\n                            [componentType]=\"row.componentType\"\n                            [componentOptions]=\"row.componentOptions\"\n                            [value]=\"options[row.key]\"\n                            (valueChange)=\"convertValue(row, $event)\">\n                        </custom-component>\n                        <ng-container *ngTemplateOutlet=\"getTemplate(row.type); context: {$implicit: propertyValue(row)}\">\n                        </ng-container>\n                    </td>\n                </tr>\n                </tbody>\n            </table>\n\n            <div *ngFor=\"let item of subItems\" class=\"internal-property-grid\">\n                <div (click)=\"pg.toggle()\" class=\"property-grid-header\"><b>{{item.name}}</b></div>\n                <ngx-property-grid\n                    [state]=\"item.initState\"\n                    [@internalPropertyGrid]=\"pg.state\"\n                    [options]=\"options[item.key]\"\n                    [width]=\"width\"\n                    [labelWidth]=\"labelWidth\"\n                    style=\"display: block;overflow: hidden\"\n                    #pg>\n                </ngx-property-grid>\n            </div>\n        </div>\n    ",
+            template: "\n        <div class=\"property-grid\" [style.width]=\"width\">\n            <div class=\"card\">\n                <table class=\"property-grid-table\" [style.width]=\"width\">\n                    <tbody>\n                    <tr *ngFor=\"let row of rows\" [ngClass]=\"row.type == 'group'? 'property-grid-group-row':'property-grid-row'\">\n\n                        <!--<td [attr.colspan]=\"row.colspan\"></td>-->\n                        <td *ngIf=\"row.type == 'group'\" colspan=\"2\" class=\"property-grid-group\">{{row.name}}</td>\n                        <td *ngIf=\"row.type != 'group' && row.colSpan2 != true\" [width]=\"labelWidth\" colspan=\"1\"\n                            class=\"property-grid-label\">\n                            {{row.name}}\n                            <span *ngIf=\"row.description\" [title]=\"row.description\">[?]</span>\n                        </td>\n                        <td *ngIf=\"row.type != 'group'\" [attr.colspan]=\"row.colSpan2 == true ? 2 : 1\" class=\"property-grid-control\">\n                            <custom-component\n                                *ngIf=\"!getTemplate(row.type)\"\n                                [componentType]=\"row.componentType\"\n                                [componentOptions]=\"row.componentOptions\"\n                                [value]=\"options[row.key]\"\n                                (valueChange)=\"convertValue(row, $event)\">\n                            </custom-component>\n                            <ng-container *ngTemplateOutlet=\"getTemplate(row.type); context: {$implicit: propertyValue(row)}\">\n                            </ng-container>\n                        </td>\n                    </tr>\n                    </tbody>\n                </table>\n            </div>\n\n            <div *ngFor=\"let item of subItems\" class=\"internal-property-grid card\">\n                <div (click)=\"pg.toggle()\" class=\"property-grid-header\" [style.width]=\"'100%'\"><b>{{item.name}}</b></div>\n                <ngx-property-grid\n                    [state]=\"item.initState\"\n                    [@internalPropertyGrid]=\"pg.state\"\n                    [options]=\"options[item.key]\"\n                    [width]=\"width\"\n                    [labelWidth]=\"labelWidth\"\n                    [templateMap]=\"templateMap\"\n                    style=\"display: block;overflow: hidden\"\n                    #pg>\n                </ngx-property-grid>\n            </div>\n        </div>\n    ",
             styles: [
-                "\n            .property-grid {\n                /*border: solid 1px #95B8E7;*/\n            }\n\n            .property-grid-table {\n                border: solid 1px #ddd;\n                border-spacing: 0;\n                border-top: 1px solid #dbdbdb;\n            }\n\n            .property-grid-group {\n                background-color: #368bffeb;\n                font-weight: bold;\n                color: white;\n            }\n\n            .property-grid-label, .property-grid-control {\n                border: dotted 1px #ccc;\n                padding: 2px 5px;\n            }\n\n            .internal-property-grid {\n                margin-top: 12px;\n                -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n                box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n                border: solid 1px #ddd;\n            }\n\n            .internal-property-grid .property-grid {\n                border-width: 0;\n            }\n\n            .internal-property-grid .property-grid-header {\n                margin-bottom: 5px;\n                background-color: #f5f5f5;\n                padding-bottom: 5px;\n                padding-top: 5px;\n                padding-left: 5px;\n                box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n                -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n            }\n\n            .internal-property-grid .property-grid-table {\n                border-width: 0;\n                /*border-top: 1px solid #dbdbdb;*/\n            }\n        "
+                "\n            .property-grid {\n                /*border: solid 1px #95B8E7;*/\n            }\n\n            .property-grid-table {\n                border-spacing: 0;\n                border-top: 1px solid #dbdbdb;\n                padding: 5px\n            }\n\n            .property-grid-group {\n                background-color: white;\n                font-weight: bold;\n                color: #616161;\n                padding-top: 8px;\n                padding-bottom: 5px;\n            }\n\n            .property-grid-label, .property-grid-control {\n                border: dotted 1px #ccc;\n                padding: 2px 5px;\n            }\n\n            .internal-property-grid {\n                margin-top: 12px;\n            }\n\n            .internal-property-grid .property-grid {\n                border-width: 0;\n            }\n\n            .internal-property-grid .property-grid-header {\n                margin-bottom: 5px;\n                background-color: #f5f5f5;\n                padding-bottom: 5px;\n                padding-top: 5px;\n                padding-left: 5px;\n                box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n                -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n            }\n\n            .internal-property-grid .property-grid-table {\n                border-width: 0;\n                /*border-top: 1px solid #dbdbdb;*/\n            }\n\n            .card {\n                background-color: #fff;\n                box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);\n                display: flex;\n                flex-flow: row wrap;\n                /*margin: 5px 20px;*/\n                padding: 0;\n            }\n            .internal-property-grid ngx-property-grid .card {\n                background-color: unset;\n                box-shadow: unset;\n                display: unset;\n                flex-flow: unset;\n                /*margin: 5px 20px;*/\n                padding: unset;\n            }\n        "
             ],
             animations: [
                 Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('internalPropertyGrid', [
