@@ -83,7 +83,10 @@ A small and simple property grid in angular to view/edit POJOs, excellent if you
     }
     ```
 
-* The result will be  at: [See here](https://stackblitz.com/edit/angular-veuf4i)
+* The result would be ([live demo](https://ngx-property-grid.yish.vip/demo)):
+  ![jqPropertyGrid](https://github.com/mokeyish/ngx-property-grid/raw/master/example.png)
+
+
 
 ## The metadata object
 
