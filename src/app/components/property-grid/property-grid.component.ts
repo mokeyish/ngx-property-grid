@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {InternalPropertyItemMeta} from './property-item-meta';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {PropertyItemTemplateDirective} from './property-item-template.directive';
+import {NgxTemplate} from 'ngx-template';
 
 @Component({
     selector: 'ngx-property-grid',
@@ -57,27 +57,27 @@ import {PropertyItemTemplateDirective} from './property-item-template.directive'
             </div>
         </div>
         <div *ngIf="!isInternal">
-            <ng-template propertyType="checkbox" let-p>
+            <ng-template ngxTemplate="checkbox" let-p>
                 <input type="checkbox" [checked]="p.value" (change)="p.value = $event.target.checked" />
             </ng-template>
 
-            <ng-template propertyType="color" let-p>
+            <ng-template ngxTemplate="color" let-p>
                 <input type="color" [value]="p.value" (change)="p.value = $event.target.value"/>
             </ng-template>
 
-            <ng-template propertyType="date" let-p>
+            <ng-template ngxTemplate="date" let-p>
                 <input type="date" [value]="p.value" (change)="p.value = $event.target.value"/>
             </ng-template>
 
-            <ng-template propertyType="label" let-p>
+            <ng-template ngxTemplate="label" let-p>
                 <label>{{p.value}}</label>
             </ng-template>
 
-            <ng-template propertyType="text" let-p>
+            <ng-template ngxTemplate="text" let-p>
                 <input type="text" [value]="p.value" (change)="p.value = $event.target.value"/>
             </ng-template>
 
-            <ng-template propertyType="options" let-p>
+            <ng-template ngxTemplate="options" let-p>
                 <select (change)="p.value = $event.target.value">
                     <option [value]="optionValue(option)" *ngFor="let option of p.meta.componentOptions.options">
                         {{optionLabel(option)}}
@@ -205,8 +205,8 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
         return this._options;
     }
 
-    @ViewChildren(PropertyItemTemplateDirective) defaultTemplates: QueryList<any>;
-    @ContentChildren(PropertyItemTemplateDirective) templates: QueryList<any>;
+    @ViewChildren(NgxTemplate) defaultTemplates: QueryList<NgxTemplate>;
+    @ContentChildren(NgxTemplate) templates: QueryList<NgxTemplate>;
 
     public rows: Array<InternalGroup | InternalPropertyItemMeta | any>;
     public subItems: InternalPropertyItemMeta[];
@@ -222,6 +222,7 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
                     this.templateMap[item.name] = item.template;
                 }
             });
+
             this.cdr.detectChanges();
         }
     }

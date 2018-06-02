@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import {AppComponent, SimpleTextEditorComponent} from './app.component';
-import {PropertyGridModule} from '../components/property-grid/index';
+import {PropertyGridModule} from '../components/property-grid';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     MatCheckboxModule,
@@ -16,11 +16,12 @@ import {
 import {MatCheckbox} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {NgxJsonViewerModule} from 'ngx-json-viewer';
+import {NgxTemplateModule} from 'ngx-template';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-        BrowserModule, FormsModule, NoopAnimationsModule, PropertyGridModule,
+        BrowserModule, FormsModule, NoopAnimationsModule, PropertyGridModule, NgxTemplateModule,
         NgxJsonViewerModule,
         MatCheckboxModule, MatSliderModule, MatDatepickerModule, MatSlideToggleModule,
         MatNativeDateModule, MatRadioModule, MatInputModule
