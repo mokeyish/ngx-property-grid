@@ -11,13 +11,14 @@
         "property grid",
         "ngx"
     ],
-    "main": "components/index.js",
-    "module": "components/index.js",
-    "typings": "components/index.d.ts",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "typings": "dist/index.d.ts",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build",
+        "build-dist": "tsc -p tsconfig-release.json",
+        "build":"ng build",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
@@ -29,7 +30,9 @@
         "type": "git",
         "url": "git+https://github.com/mokeyish/ngx-property-grid.git"
     },
-    "dependencies": {},
+    "dependencies": {
+        "ngx-template": "^1.0.4"
+    },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.6.3",
         "@angular/animations": "^6.0.2",

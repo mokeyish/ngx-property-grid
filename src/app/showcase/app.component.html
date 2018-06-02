@@ -3,21 +3,21 @@
     <div style="display: flex; flex-direction: row">
 
         <ngx-property-grid [width]="'400px'" [options]="student">
-            <ng-template propertyType="text" let-p>
+            <ng-template ngxTemplate="text" let-p>
                 <input type="text" [value]="p.value" (change)="p.value = $event.target.value">
             </ng-template>
-            <ng-template propertyType="fontSize" let-p>
+            <ng-template ngxTemplate="fontSize" [type]="'node'" let-p>
                 <input matInput type="number" placeholder="Value" [(ngModel)]="p.value">
                 <!--<span>字体大小</span>-->
             </ng-template>
 
-            <ng-template propertyType="date" let-p>
+            <ng-template ngxTemplate="date" let-p>
                 <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="p.value">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </ng-template>
 
-            <ng-template propertyType="sex" let-p>
+            <ng-template ngxTemplate="sex" let-p>
                 <mat-radio-group  [(ngModel)]="p.value">
                     <mat-radio-button value="male">male</mat-radio-button>
                     <mat-radio-button value="female">female</mat-radio-button>

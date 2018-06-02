@@ -1,88 +1,89 @@
+# NgxPropertyGrid
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/ngx-property-grid.svg)](https://badge.fury.io/js/ngx-property-grid)
 [![Build Status](https://travis-ci.org/mokeyish/ngx-property-grid.svg?branch=master)](https://travis-ci.org/mokeyish/ngx-property-grid)
-# NgxPropertyGrid
 
 A small and simple property grid in angular to view/edit POJOs, excellent if you have a "settings" object you want to give the user to edit (that's why I have created it). [Play online](https://stackblitz.com/edit/angular-veuf4i).
 
 ## Dependencies
 
-* angular
+* angular2+
+* [ngx-template](https://www.npmjs.com/package/ngx-template)
 
 ## Usage
 
-* The metadata options
+1. Import
+    ```TypeScript
+    import {PropertyGridModule} from '../components/property-grid';
 
-```ts
-export interface PropertyItemMeta {
-    name: string; // The display name of the property in the grid
-    description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text "[?]")
-    order?: number; // The display order.
-    group?: string; //  The group this property belongs to
-    hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
-    initState?: string; // - hidden/visible.
-    componentType?: Type<ControlValueAccessor | ICustomDynamicComponent<any>>; // an custom component should be implement
-    // ControlValueAccessor or ICustomDynamicComponent<any>
-    componentOptions?: any;
-    colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
-    // (useful for textarea custom type)
-    type?: string; // boolean number options label color
-    valueConvert?: (value: any) => any; // convert the value, eg. parseInt
-}
-```
+    import {NgxTemplateModule} from 'ngx-template';
+    ```
+2. Getting Started
+    * Html
+        * Basic
+            ```HTML
+            <ngx-property-grid [width]="'300px'" [options]="editor"></ngx-property-grid>
+            ```
+        * Template
+            ```Html
+            <ngx-property-grid [width]="'300px'" [options]="editor">
+                <ng-template propertyType="text" let-p>
+                    <input type="text" [value]="p.value" (change)="p.value = $event.target.value">
+                </ng-template>
+                <ng-template propertyType="color" let-p>
+                    <input type="color" [value]="p.value" (change)="p.value = $event.target.value">
+                </ng-template>
+            </ngx-property-grid>
+            ```
+    * Object options
+        ```ts
+        export class ExampleEditorOptions {
+            @meta({name: 'Font', description: 'The font editor to use', componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false})
+            font = 'Source Code Pro';
 
-* The Example Options
+            @meta({name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt})
+            fontSize = 14;
 
-```ts
-export class ExampleEditorOptions {
-    @meta({name: 'Font', description: 'The font editor to use', componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false})
-    font = 'Source Code Pro';
+            @meta({name: 'Font color', group: 'Editor', type: 'color'})
+            fontColor = '#51f41c';
 
-    @meta({name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt})
-    fontSize = 14;
+            @meta({name: 'jQuery', group: 'Plugins', type: 'checkbox'})
+            jQuery = true;
 
-    @meta({name: 'Font color', group: 'Editor', type: 'color'})
-    fontColor = '#51f41c';
+            @meta({name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', type: 'checkbox'})
+            modernizr = false;
 
-    @meta({name: 'jQuery', group: 'Plugins', type: 'checkbox'})
-    jQuery = true;
+            @meta({
+                name: 'Framework',
+                description: 'Whether to include any additional framework',
+                type: 'options',
+                options: ['None', {text: 'AngularJS', value: 'angular'}, {text: 'Backbone.js', value: 'backbone'}]
+            })
+            framework = 'None';
+        }
+        ```
+3. The metadata options declare
 
-    @meta({name: 'modernizr', description: 'Whether or not to include modernizr on the page', group: 'Plugins', type: 'checkbox'})
-    modernizr = false;
-
-    @meta({
-        name: 'Framework',
-        description: 'Whether to include any additional framework',
-        type: 'options',
-        options: ['None', {text: 'AngularJS', value: 'angular'}, {text: 'Backbone.js', value: 'backbone'}]
-    })
-    framework = 'None';
-}
-```
-
-* The html part:
-
-  * Basic
-
-    ```HTML
-    <ngx-property-grid [width]="'300px'" [options]="editor"></ngx-property-grid>
+    ```TypeScript
+    export interface PropertyItemMeta {
+        name: string; // The display name of the property in the grid
+        description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text "[?]")
+        order?: number; // The display order.
+        group?: string; //  The group this property belongs to
+        hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
+        initState?: string; // - hidden/visible.
+        componentType?: Type<ControlValueAccessor | ICustomDynamicComponent<any>>; // an custom component should be implement
+        // ControlValueAccessor or ICustomDynamicComponent<any>
+        componentOptions?: any;
+        colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
+        // (useful for textarea custom type)
+        type?: string; // boolean number options label color
+        valueConvert?: (value: any) => any; // convert the value, eg. parseInt
+    }
     ```
 
-  * template
-
-    ```HTML
-    <ngx-property-grid [width]="'300px'" [options]="editor">
-        <ng-template propertyType="text" let-p>
-            <input type="text" [value]="p.value" (change)="p.value = $event.target.value">
-        </ng-template>
-        <ng-template propertyType="color" let-p>
-            <input type="color" [value]="p.value" (change)="p.value = $event.target.value">
-        </ng-template>
-    </ngx-property-grid>
-    ```
-
-* The result would be: [See here](https://stackblitz.com/edit/angular-veuf4i)
+* The result will be  at: [See here](https://stackblitz.com/edit/angular-veuf4i)
 
 ## The metadata object
 
