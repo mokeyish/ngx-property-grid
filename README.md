@@ -15,7 +15,7 @@ A small and simple property grid in angular to view/edit POJOs, excellent if you
 
 1. Import
     ```TypeScript
-    import {PropertyGridModule} from '../components/property-grid';
+    import {PropertyGridModule} from 'ngx-property-grid';
 
     import {NgxTemplateModule} from 'ngx-template';
     ```

@@ -1,5 +1,5 @@
 import {Component, EventEmitter} from '@angular/core';
-import {meta, ICustomDynamicComponent} from '../components/property-grid/index';
+import {meta, ICustomDynamicComponent} from '../components/property-grid';
 import {MatCheckbox, MatSlider, MatSlideToggle} from '@angular/material';
 
 @Component({
@@ -44,6 +44,9 @@ export class ExampleEditorOptions {
 
     @meta({name: 'jQuery', group: 'Plugins', componentType: MatCheckbox})
     jQuery = true;
+
+    @meta({name: 'Card Style', group: 'Style', componentType: MatCheckbox})
+    cardStyle = true;
 
     @meta({
         name: 'modernizr',
