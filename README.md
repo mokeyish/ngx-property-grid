@@ -65,23 +65,23 @@ A small and simple property grid in angular to view/edit POJOs, excellent if you
         ```
 3. The metadata options declare
 
-    ```TypeScript
-    export interface PropertyItemMeta {
-        name: string; // The display name of the property in the grid
-        description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text "[?]")
-        order?: number; // The display order.
-        group?: string; //  The group this property belongs to
-        hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
-        initState?: string; // - hidden/visible.
-        componentType?: Type<ControlValueAccessor | ICustomDynamicComponent<any>>; // an custom component should be implement
-        // ControlValueAccessor or ICustomDynamicComponent<any>
-        componentOptions?: any;
-        colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
-        // (useful for textarea custom type)
-        type?: string; // boolean number options label color
-        valueConvert?: (value: any) => any; // convert the value, eg. parseInt
-    }
-    ```
+```ts
+ export interface PropertyItemMeta {
+    name: string; // The display name of the property in the grid
+    description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text "[?]")
+    order?: number; // The display order.
+    group?: string; //  The group this property belongs to
+    hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
+    initState?: string; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
+    type?: 'color' | 'date' | 'checkbox' | 'text' | 'options' | string | Type<ControlValueAccessor | ICustomDynamicComponent<any>>;
+    // options: boolean number options label color,
+    // or an custom component should be implement ControlValueAccessor or ICustomDynamicComponent<any>
+    options?: any; // options for type
+    colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
+    // (useful for textarea custom type)
+    valueConvert?: (value: any) => any; // convert the value, eg. parseInt
+}
+```
 
 * The result would be ([live demo](https://ngx-property-grid.yish.vip/demo)):
   ![jqPropertyGrid](https://github.com/mokeyish/ngx-property-grid/raw/master/example.png)
@@ -101,5 +101,4 @@ Each proprty in the metadata object could have the following:
   * color - simple textbox
   * options - A dropdown list would be used in case the metadata contains the `options` array property
   * label - A label will be used, useful for uneditable / read-only properties
-* componentType - An angular component
 * colspan2 - true/false. If true then property input will span both columns and will have no name/label (useful for textarea custom type, see example/index.html)

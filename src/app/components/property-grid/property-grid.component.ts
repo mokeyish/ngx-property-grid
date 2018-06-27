@@ -29,8 +29,8 @@ import {PropertyItemMeta} from './property-item-meta';
                         <td *ngIf="row.type != 'group'" [attr.colspan]="row.colSpan2 == true ? 2 : 1" class="property-grid-control">
                             <custom-component
                                 *ngIf="!getTemplate(row.type)"
-                                [componentType]="row.componentType"
-                                [componentOptions]="row.componentOptions"
+                                [componentType]="row.type"
+                                [componentOptions]="row.options"
                                 [value]="options[row.key]"
                                 (valueChange)="convertValue(row, $event)">
                             </custom-component>
@@ -82,7 +82,7 @@ import {PropertyItemMeta} from './property-item-meta';
 
             <ng-template ngxTemplate="options" let-p>
                 <select (change)="p.value = $event.target.value" >
-                    <option [value]="optionValue(option)" *ngFor="let option of p.meta.componentOptions.options">
+                    <option [value]="optionValue(option)" *ngFor="let option of p.meta.options">
                         {{optionLabel(option)}}
                     </option>
                 </select>
@@ -237,7 +237,6 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
                     this.templateMap[item.name] = item.template;
                 }
             });
-
             this.cdr.detectChanges();
         }
     }
