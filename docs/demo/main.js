@@ -282,7 +282,9 @@ var PropertyGridComponent = /** @class */ (function () {
         this.templateMap = {};
         this.state = 'visible';
         this.labelWidth = '120px';
-        this.isInternal = el.nativeElement.parentElement.classList.contains('internal-property-grid');
+        this.cardStyle = true;
+        this.isInternal = el.nativeElement.parentElement && el.nativeElement.parentElement.classList &&
+            el.nativeElement.parentElement.classList.contains('internal-property-grid');
     }
     Object.defineProperty(PropertyGridComponent.prototype, "meta", {
         get: function () {
@@ -418,6 +420,10 @@ var PropertyGridComponent = /** @class */ (function () {
     ], PropertyGridComponent.prototype, "labelWidth", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], PropertyGridComponent.prototype, "cardStyle", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object),
         __metadata("design:paramtypes", [Object])
     ], PropertyGridComponent.prototype, "meta", null);
@@ -437,9 +443,9 @@ var PropertyGridComponent = /** @class */ (function () {
     PropertyGridComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ngx-property-grid',
-            template: "\n        <div class=\"property-grid\" [style.width]=\"width\">\n            <div class=\"card\">\n                <table class=\"property-grid-table\" [style.width]=\"width\">\n                    <tbody>\n                    <tr *ngFor=\"let row of rows\" [ngClass]=\"row.type == 'group'? 'property-grid-group-row':'property-grid-row'\">\n\n                        <!--<td [attr.colspan]=\"row.colspan\"></td>-->\n                        <td *ngIf=\"row.type == 'group'\" colspan=\"2\" class=\"property-grid-group\">{{row.name}}</td>\n                        <td *ngIf=\"row.type != 'group' && row.colSpan2 != true\" [width]=\"labelWidth\" colspan=\"1\"\n                            class=\"property-grid-label\">\n                            {{row.name}}\n                            <span *ngIf=\"row.description\" [title]=\"row.description\">[?]</span>\n                        </td>\n                        <td *ngIf=\"row.type != 'group'\" [attr.colspan]=\"row.colSpan2 == true ? 2 : 1\" class=\"property-grid-control\">\n                            <custom-component\n                                *ngIf=\"!getTemplate(row.type)\"\n                                [componentType]=\"row.componentType\"\n                                [componentOptions]=\"row.componentOptions\"\n                                [value]=\"options[row.key]\"\n                                (valueChange)=\"convertValue(row, $event)\">\n                            </custom-component>\n                            <ng-container *ngTemplateOutlet=\"getTemplate(row.type); context: {$implicit: propertyValue(row)}\">\n                            </ng-container>\n                        </td>\n                    </tr>\n                    </tbody>\n                </table>\n            </div>\n\n            <div *ngFor=\"let item of subItems\" class=\"internal-property-grid card\">\n                <div (click)=\"pg.toggle()\" class=\"property-grid-header\" [style.width]=\"'100%'\"><b>{{item.name}}</b></div>\n                <ngx-property-grid\n                    [state]=\"item.initState\"\n                    [@internalPropertyGrid]=\"pg.state\"\n                    [options]=\"options[item.key]\"\n                    [width]=\"width\"\n                    [labelWidth]=\"labelWidth\"\n                    [templateMap]=\"templateMap\"\n                    style=\"display: block;overflow: hidden\"\n                    #pg>\n                </ngx-property-grid>\n            </div>\n        </div>\n        <div *ngIf=\"!isInternal\">\n            <ng-template ngxTemplate=\"checkbox\" let-p>\n                <input type=\"checkbox\" [checked]=\"p.value\" (change)=\"p.value = $event.target.checked\" />\n            </ng-template>\n\n            <ng-template ngxTemplate=\"color\" let-p>\n                <input type=\"color\" [value]=\"p.value\" (change)=\"p.value = $event.target.value\"/>\n            </ng-template>\n\n            <ng-template ngxTemplate=\"date\" let-p>\n                <input type=\"date\" [value]=\"p.value\" (change)=\"p.value = $event.target.value\"/>\n            </ng-template>\n\n            <ng-template ngxTemplate=\"label\" let-p>\n                <label>{{p.value}}</label>\n            </ng-template>\n\n            <ng-template ngxTemplate=\"text\" let-p>\n                <input type=\"text\" [value]=\"p.value\" (change)=\"p.value = $event.target.value\"/>\n            </ng-template>\n\n            <ng-template ngxTemplate=\"options\" let-p>\n                <select (change)=\"p.value = $event.target.value\">\n                    <option [value]=\"optionValue(option)\" *ngFor=\"let option of p.meta.componentOptions.options\">\n                        {{optionLabel(option)}}\n                    </option>\n                </select>\n            </ng-template>\n        </div>\n    ",
+            template: "\n        <div class=\"property-grid\" [ngClass]=\"!isInternal && !cardStyle ? 'property-grid-border': null\" [style.width]=\"width\">\n            <div [ngClass]=\"cardStyle ? 'card' : null\">\n                <table class=\"property-grid-table\" [style.width]=\"width\">\n                    <tbody>\n                    <tr *ngFor=\"let row of rows\" [ngClass]=\"row.type == 'group'? 'property-grid-group-row':'property-grid-row'\">\n\n                        <!--<td [attr.colspan]=\"row.colspan\"></td>-->\n                        <td *ngIf=\"row.type == 'group'\" colspan=\"2\" class=\"property-grid-group\">{{row.name}}</td>\n                        <td *ngIf=\"row.type != 'group' && row.colSpan2 != true\" [width]=\"labelWidth\" colspan=\"1\"\n                            class=\"property-grid-label\">\n                            {{row.name}}\n                            <span *ngIf=\"row.description\" [title]=\"row.description\">[?]</span>\n                        </td>\n                        <td *ngIf=\"row.type != 'group'\" [attr.colspan]=\"row.colSpan2 == true ? 2 : 1\" class=\"property-grid-control\">\n                            <custom-component\n                                *ngIf=\"!getTemplate(row.type)\"\n                                [componentType]=\"row.type\"\n                                [componentOptions]=\"row.options\"\n                                [value]=\"options[row.key]\"\n                                (valueChange)=\"convertValue(row, $event)\">\n                            </custom-component>\n                            <ng-container *ngTemplateOutlet=\"getTemplate(row.type); context: {$implicit: propertyValue(row)}\">\n                            </ng-container>\n                        </td>\n                    </tr>\n                    </tbody>\n                </table>\n            </div>\n\n            <div *ngFor=\"let item of subItems\" class=\"internal-property-grid\" [ngClass]=\"cardStyle ? 'card' : null\">\n                <div (click)=\"pg.toggle()\" class=\"property-grid-header\"\n                     [ngClass]=\"cardStyle ? null : 'property-grid-header-margin'\">\n                    <b>{{item.name}}</b>\n                </div>\n                <ngx-property-grid\n                    [state]=\"item.initState\"\n                    [@internalPropertyGrid]=\"pg.state\"\n                    [options]=\"options[item.key]\"\n                    [width]=\"width\"\n                    [labelWidth]=\"labelWidth\"\n                    [templateMap]=\"templateMap\"\n                    style=\"display: block;overflow: hidden\"\n                    #pg>\n                </ngx-property-grid>\n            </div>\n        </div>\n        <div *ngIf=\"!isInternal\">\n            <ng-template ngxTemplate=\"checkbox\" let-p>\n                <input type=\"checkbox\" [checked]=\"p.value\" (change)=\"p.value = $event.target.checked\" />\n            </ng-template>\n\n            <ng-template ngxTemplate=\"color\" let-p>\n                <input type=\"color\" [value]=\"p.value\" (change)=\"p.value = $event.target.value\"/>\n            </ng-template>\n\n            <ng-template ngxTemplate=\"date\" let-p>\n                <input type=\"date\" [value]=\"p.value\" (change)=\"p.value = $event.target.value\"/>\n            </ng-template>\n\n            <ng-template ngxTemplate=\"label\" let-p>\n                <label>{{p.value}}</label>\n            </ng-template>\n\n            <ng-template ngxTemplate=\"text\" let-p>\n                <input type=\"text\" [value]=\"p.value\" (change)=\"p.value = $event.target.value\"/>\n            </ng-template>\n\n            <ng-template ngxTemplate=\"options\" let-p>\n                <select (change)=\"p.value = $event.target.value\" >\n                    <option [value]=\"optionValue(option)\" *ngFor=\"let option of p.meta.options\">\n                        {{optionLabel(option)}}\n                    </option>\n                </select>\n            </ng-template>\n        </div>\n    ",
             styles: [
-                "\n            .property-grid {\n                /*border: solid 1px #95B8E7;*/\n            }\n\n            .property-grid-table {\n                border-spacing: 0;\n                border-top: 1px solid #dbdbdb;\n                padding: 5px\n            }\n\n            .property-grid-group {\n                background-color: white;\n                font-weight: bold;\n                color: #616161;\n                padding-top: 8px;\n                padding-bottom: 5px;\n            }\n\n            .property-grid-label, .property-grid-control {\n                border: dotted 1px #ccc;\n                padding: 2px 5px;\n            }\n\n            .internal-property-grid {\n                margin-top: 12px;\n            }\n\n            .internal-property-grid .property-grid {\n                border-width: 0;\n            }\n\n            .internal-property-grid .property-grid-header {\n                margin-bottom: 5px;\n                background-color: #f5f5f5;\n                padding-bottom: 5px;\n                padding-top: 5px;\n                padding-left: 5px;\n                box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n                -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n            }\n\n            .internal-property-grid .property-grid-table {\n                border-width: 0;\n                /*border-top: 1px solid #dbdbdb;*/\n            }\n\n            .card {\n                background-color: #fff;\n                box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);\n                display: flex;\n                flex-flow: row wrap;\n                /*margin: 5px 20px;*/\n                padding: 0;\n            }\n            .internal-property-grid ngx-property-grid .card {\n                background-color: unset;\n                box-shadow: unset;\n                display: unset;\n                flex-flow: unset;\n                /*margin: 5px 20px;*/\n                padding: unset;\n            }\n        "
+                "\n            .property-grid {\n                /*border: solid 1px #95B8E7;*/\n            }\n            .property-grid-border {\n                border: 1px solid #d6d6d678\n            }\n\n            .property-grid-table {\n                border-spacing: 0;\n                padding: 5px\n            }\n\n            .property-grid-group {\n                background-color: white;\n                font-weight: bold;\n                color: #616161;\n                padding-top: 8px;\n                padding-bottom: 5px;\n            }\n\n            .property-grid-label, .property-grid-control {\n                border: dotted 1px #ccc;\n                padding: 2px 5px;\n            }\n\n            .internal-property-grid {\n                margin-top: 12px;\n            }\n\n            .internal-property-grid .property-grid {\n                border-width: 0;\n            }\n\n            .internal-property-grid .property-grid-header {\n                margin-bottom: 5px;\n                background-color: #f5f5f5;\n                padding-bottom: 5px;\n                padding-top: 5px;\n                padding-left: 5px;\n                box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n                -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n                width: 100%;\n            }\n            .internal-property-grid .property-grid-header-margin {\n                margin-left: 5px;\n                margin-right: 5px;\n                width: unset;\n            }\n\n            .internal-property-grid .property-grid-table {\n                border-width: 0;\n                /*border-top: 1px solid #dbdbdb;*/\n            }\n\n            .card {\n                background-color: #fff;\n                box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);\n                display: flex;\n                flex-flow: row wrap;\n                /*margin: 5px 20px;*/\n                padding: 0;\n            }\n            .internal-property-grid ngx-property-grid .card {\n                background-color: unset;\n                box-shadow: unset;\n                display: unset;\n                flex-flow: unset;\n                /*margin: 5px 20px;*/\n                padding: unset;\n            }\n        "
             ],
             animations: [
                 Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('internalPropertyGrid', [
@@ -499,36 +505,45 @@ var InternalGroup = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "meta", function() { return meta; });
-/* harmony import */ var _property_grid_control_provider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./property-grid-control-provider */ "./src/app/components/property-grid/property-grid-control-provider.ts");
-
-var meta = function (m) {
+var meta = function (itemMeta) {
     return function (target, key) {
-        var xMeta = m;
-        if (!target.__meta__) {
-            target.__meta__ = {};
+        // region [adjust]
+        itemMeta.key = key;
+        if (typeof itemMeta.type === 'string') {
         }
-        if (!xMeta.componentType) {
-            if (!xMeta.type) {
-                xMeta.componentType = _property_grid_control_provider__WEBPACK_IMPORTED_MODULE_0__["defaultProvider"].getComponentType('text');
-            }
-            else if (xMeta.type === 'boolean') {
-                xMeta.componentType = _property_grid_control_provider__WEBPACK_IMPORTED_MODULE_0__["defaultProvider"].getComponentType('checkbox');
-            }
-            else {
-                xMeta.componentType = _property_grid_control_provider__WEBPACK_IMPORTED_MODULE_0__["defaultProvider"].getComponentType(m.type);
-            }
-            if (xMeta.type === 'number' && !xMeta.valueConvert) {
-                xMeta.valueConvert = parseInt;
-            }
+        else {
         }
-        if (!xMeta.initState) {
-            xMeta.initState = 'hidden';
+        if (!itemMeta.type) {
+            itemMeta.type = 'text';
         }
-        if (!xMeta.order) {
-            xMeta.order = 0;
+        if (itemMeta.type === 'number' && !itemMeta.valueConvert) {
+            itemMeta.valueConvert = parseInt;
         }
-        xMeta.key = key;
-        target.__meta__[key] = xMeta;
+        if (!itemMeta.initState) {
+            itemMeta.initState = 'hidden';
+        }
+        if (!itemMeta.order) {
+            itemMeta.order = Number.MAX_VALUE;
+        }
+        // endregion
+        var __meta__ = target.__meta__;
+        if (!__meta__) {
+            __meta__ = {};
+            target.__meta__ = __meta__;
+        }
+        else if (target.__proto__.__meta__ === __meta__) {
+            var subMeta_1 = Object.create(Object.getPrototypeOf(__meta__));
+            Object.getOwnPropertyNames(__meta__).forEach(function (name) {
+                Object.defineProperty(subMeta_1, name, Object.getOwnPropertyDescriptor(__meta__, name));
+            });
+            __meta__ = subMeta_1;
+            target.__meta__ = __meta__;
+        }
+        Object.defineProperty(__meta__, key, {
+            enumerable: true,
+            get: function () { return itemMeta; },
+            set: function (v) { return itemMeta = v; }
+        });
     };
 };
 
@@ -542,7 +557,7 @@ var meta = function (m) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h1 style=\"text-align: center\">Property Grid Example</h1>\n    <div style=\"display: flex; flex-direction: row\">\n\n        <ngx-property-grid [width]=\"'400px'\" [options]=\"student\">\n            <ng-template ngxTemplate=\"text\" let-p>\n                <input type=\"text\" [value]=\"p.value\" (change)=\"p.value = $event.target.value\">\n            </ng-template>\n            <ng-template ngxTemplate=\"fontSize\" [type]=\"'node'\" let-p>\n                <input matInput type=\"number\" placeholder=\"Value\" [(ngModel)]=\"p.value\">\n                <!--<span>字体大小</span>-->\n            </ng-template>\n\n            <ng-template ngxTemplate=\"date\" let-p>\n                <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date\" [(ngModel)]=\"p.value\">\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                <mat-datepicker #picker></mat-datepicker>\n            </ng-template>\n\n            <ng-template ngxTemplate=\"sex\" let-p>\n                <mat-radio-group  [(ngModel)]=\"p.value\">\n                    <mat-radio-button value=\"male\">male</mat-radio-button>\n                    <mat-radio-button value=\"female\">female</mat-radio-button>\n                </mat-radio-group>\n            </ng-template>\n        </ngx-property-grid>\n\n        <div style=\"margin-left: 50px; flex: 1\">\n            <div> <h3>The Object：</h3> </div>\n\n            <ngx-json-viewer [json]=\"data\"></ngx-json-viewer>\n        </div>\n    </div>\n\n</div>\n"
+module.exports = "<div>\n    <h1 style=\"text-align: center\">Property Grid Example</h1>\n    <div style=\"display: flex; flex-direction: row\">\n\n        <ngx-property-grid [width]=\"'400px'\" [options]=\"student\" [cardStyle]=\"student.editor.cardStyle\">\n            <ng-template ngxTemplate=\"text\" let-p>\n                <input type=\"text\" [value]=\"p.value\" (change)=\"p.value = $event.target.value\">\n            </ng-template>\n            <ng-template ngxTemplate=\"fontSize\" let-pp>\n                <input matInput type=\"number\" placeholder=\"Value\" [(ngModel)]=\"pp.value\">\n                <!--<span>字体大小</span>-->\n            </ng-template>\n\n            <ng-template ngxTemplate=\"date\" let-p>\n                <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date\" [(ngModel)]=\"p.value\">\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                <mat-datepicker #picker></mat-datepicker>\n            </ng-template>\n\n            <ng-template ngxTemplate=\"sex\" let-p>\n                <mat-radio-group  [(ngModel)]=\"p.value\">\n                    <mat-radio-button value=\"male\">male</mat-radio-button>\n                    <mat-radio-button value=\"female\">female</mat-radio-button>\n                </mat-radio-group>\n            </ng-template>\n        </ngx-property-grid>\n\n        <div style=\"margin-left: 50px; flex: 1\">\n            <div> <h3>The Object：</h3> </div>\n\n            <ngx-json-viewer [json]=\"data\"></ngx-json-viewer>\n        </div>\n    </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -571,7 +586,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExampleEditorOptions", function() { return ExampleEditorOptions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExampleStudentOptions", function() { return ExampleStudentOptions; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/property-grid/index */ "./src/app/components/property-grid/index.ts");
+/* harmony import */ var _components_property_grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/property-grid */ "./src/app/components/property-grid/index.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -626,43 +641,48 @@ var ExampleEditorOptions = /** @class */ (function () {
         this.fontSize = 14;
         this.fontColor = '#51f41c';
         this.jQuery = true;
+        this.cardStyle = true;
         this.modernizr = false;
         this.framework = 'None';
     }
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({
             name: 'Font', description: 'The font editor to use', colSpan2: false,
-            componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false
+            type: SimpleTextEditorComponent, group: 'Editor', hidden: false
         }),
         __metadata("design:type", Object)
     ], ExampleEditorOptions.prototype, "font", void 0);
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Font size', group: 'Editor', valueConvert: parseInt, type: 'fontSize' }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Font size', group: 'Editor', valueConvert: parseInt, type: 'fontSize' }),
         __metadata("design:type", Object)
     ], ExampleEditorOptions.prototype, "fontSize", void 0);
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Font color', group: 'Editor', type: 'color' }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Font color', group: 'Editor', type: 'color' }),
         __metadata("design:type", Object)
     ], ExampleEditorOptions.prototype, "fontColor", void 0);
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'jQuery', group: 'Plugins', componentType: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCheckbox"] }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'jQuery', group: 'Plugins', type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCheckbox"] }),
         __metadata("design:type", Object)
     ], ExampleEditorOptions.prototype, "jQuery", void 0);
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Card Style', group: 'Style', type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCheckbox"] }),
+        __metadata("design:type", Object)
+    ], ExampleEditorOptions.prototype, "cardStyle", void 0);
+    __decorate([
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({
             name: 'modernizr',
             description: 'Whether or not to include modernizr on the page',
             group: 'Plugins',
-            componentType: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSlideToggle"]
+            type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSlideToggle"]
         }),
         __metadata("design:type", Object)
     ], ExampleEditorOptions.prototype, "modernizr", void 0);
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({
             name: 'Framework',
             description: 'Whether to include any additional framework',
             type: 'options',
-            componentOptions: { options: ['None', { text: 'AngularJS', value: 'angular' }, { text: 'Backbone.js', value: 'backbone' }] }
+            options: ['None', { text: 'AngularJS', value: 'angular' }, { text: 'Backbone.js', value: 'backbone' }]
         }),
         __metadata("design:type", Object)
     ], ExampleEditorOptions.prototype, "framework", void 0);
@@ -678,27 +698,27 @@ var ExampleStudentOptions = /** @class */ (function () {
         this.editor = new ExampleEditorOptions();
     }
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Birth', group: 'Basic Information', type: 'date', order: 4 }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Birth', group: 'Basic Information', type: 'date', order: 4 }),
         __metadata("design:type", Object)
     ], ExampleStudentOptions.prototype, "birth", void 0);
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Name', group: 'Basic Information', type: 'text', order: 1 }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Name', group: 'Basic Information', type: 'text', order: 1 }),
         __metadata("design:type", Object)
     ], ExampleStudentOptions.prototype, "name", void 0);
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Age', group: 'Basic Information', valueConvert: parseInt, type: 'text', order: 2 }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Age', group: 'Basic Information', valueConvert: parseInt, type: 'text', order: 2 }),
         __metadata("design:type", Object)
     ], ExampleStudentOptions.prototype, "age", void 0);
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Telephone', type: 'telephone', group: 'Basic Information', hidden: true }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Telephone', type: 'telephone', group: 'Basic Information', hidden: true }),
         __metadata("design:type", Object)
     ], ExampleStudentOptions.prototype, "telephone", void 0);
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Gender', group: 'Basic Information', type: 'sex', order: 3 }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Gender', group: 'Basic Information', type: 'sex', order: 3 }),
         __metadata("design:type", Object)
     ], ExampleStudentOptions.prototype, "gender", void 0);
     __decorate([
-        Object(_components_property_grid_index__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Editor Preference', type: 'subItems', initState: 'visible' }),
+        Object(_components_property_grid__WEBPACK_IMPORTED_MODULE_1__["meta"])({ name: 'Editor Preference', type: 'subItems', initState: 'visible' }),
         __metadata("design:type", ExampleEditorOptions)
     ], ExampleStudentOptions.prototype, "editor", void 0);
     return ExampleStudentOptions;

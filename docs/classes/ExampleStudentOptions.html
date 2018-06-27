@@ -184,9 +184,6 @@
                         <a href="interfaces/ICustomDynamicComponent.html" data-type="entity-link">ICustomDynamicComponent</a>
                     </li>
                     <li class="link">
-                        <a href="interfaces/InternalPropertyItemMeta.html" data-type="entity-link">InternalPropertyItemMeta</a>
-                    </li>
-                    <li class="link">
                         <a href="interfaces/PropertyItemMeta.html" data-type="entity-link">PropertyItemMeta</a>
                     </li>
                     <li class="link">
@@ -399,9 +396,6 @@
                         <a href="interfaces/ICustomDynamicComponent.html" data-type="entity-link">ICustomDynamicComponent</a>
                     </li>
                     <li class="link">
-                        <a href="interfaces/InternalPropertyItemMeta.html" data-type="entity-link">InternalPropertyItemMeta</a>
-                    </li>
-                    <li class="link">
                         <a href="interfaces/PropertyItemMeta.html" data-type="entity-link">PropertyItemMeta</a>
                     </li>
                     <li class="link">
@@ -569,7 +563,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/showcase/app.component.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/showcase/app.component.ts:78</a></div>
                             </td>
                         </tr>
 
@@ -613,7 +607,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/showcase/app.component.ts:69</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/showcase/app.component.ts:72</a></div>
                             </td>
                         </tr>
 
@@ -657,7 +651,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/showcase/app.component.ts:84</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/showcase/app.component.ts:87</a></div>
                             </td>
                         </tr>
 
@@ -701,7 +695,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/showcase/app.component.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/showcase/app.component.ts:84</a></div>
                             </td>
                         </tr>
 
@@ -745,7 +739,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/showcase/app.component.ts:72</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/showcase/app.component.ts:75</a></div>
                             </td>
                         </tr>
 
@@ -778,7 +772,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/showcase/app.component.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/showcase/app.component.ts:81</a></div>
                             </td>
                         </tr>
 
@@ -798,8 +792,8 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, EventEmitter} from &#x27;@angular/core&#x27;;
-import {meta, ICustomDynamicComponent} from &#x27;../components/property-grid/index&#x27;;
-import {MatCheckbox, MatSlider, MatSlideToggle} from &#x27;@angular/material&#x27;;
+import {meta, ICustomDynamicComponent} from &#x27;../components/property-grid&#x27;;
+import {MatCheckbox, MatSlideToggle} from &#x27;@angular/material&#x27;;
 
 @Component({
     selector: &#x27;app-root&#x27;,
@@ -831,7 +825,7 @@ export class SimpleTextEditorComponent implements ICustomDynamicComponent&lt;str
 export class ExampleEditorOptions {
     @meta({
         name: &#x27;Font&#x27;, description: &#x27;The font editor to use&#x27;, colSpan2: false,
-        componentType: SimpleTextEditorComponent, group: &#x27;Editor&#x27;, hidden: false
+        type: SimpleTextEditorComponent, group: &#x27;Editor&#x27;, hidden: false
     })
     font &#x3D; &#x27;Source Code Pro&#x27;;
 
@@ -841,14 +835,17 @@ export class ExampleEditorOptions {
     @meta({name: &#x27;Font color&#x27;, group: &#x27;Editor&#x27;, type: &#x27;color&#x27;})
     fontColor &#x3D; &#x27;#51f41c&#x27;;
 
-    @meta({name: &#x27;jQuery&#x27;, group: &#x27;Plugins&#x27;, componentType: MatCheckbox})
+    @meta({name: &#x27;jQuery&#x27;, group: &#x27;Plugins&#x27;, type: MatCheckbox})
     jQuery &#x3D; true;
+
+    @meta({name: &#x27;Card Style&#x27;, group: &#x27;Style&#x27;, type: MatCheckbox})
+    cardStyle &#x3D; true;
 
     @meta({
         name: &#x27;modernizr&#x27;,
         description: &#x27;Whether or not to include modernizr on the page&#x27;,
         group: &#x27;Plugins&#x27;,
-        componentType: MatSlideToggle
+        type: MatSlideToggle
     })
     modernizr &#x3D; false;
 
@@ -856,7 +853,7 @@ export class ExampleEditorOptions {
         name: &#x27;Framework&#x27;,
         description: &#x27;Whether to include any additional framework&#x27;,
         type: &#x27;options&#x27;,
-        componentOptions: {options: [&#x27;None&#x27;, {text: &#x27;AngularJS&#x27;, value: &#x27;angular&#x27;}, {text: &#x27;Backbone.js&#x27;, value: &#x27;backbone&#x27;}]}
+        options: [&#x27;None&#x27;, {text: &#x27;AngularJS&#x27;, value: &#x27;angular&#x27;}, {text: &#x27;Backbone.js&#x27;, value: &#x27;backbone&#x27;}]
     })
     framework &#x3D; &#x27;None&#x27;;
 

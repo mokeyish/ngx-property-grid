@@ -36,10 +36,10 @@
             <a data-type="chapter-link" href="index.html"><span class="fa fa-home"></span>Getting started</a>
             <ul class="links">
                     <li class="link">
-                        <a
-
-                             href="overview.html"
-                             href="overview.html"
+                        <a 
+                            
+                             href="overview.html" 
+                             href="overview.html" 
                             data-type="chapter-link">
                             <span class="fa fa-fw fa-th"></span>Overview
                         </a>
@@ -184,9 +184,6 @@
                         <a href="interfaces/ICustomDynamicComponent.html" data-type="entity-link">ICustomDynamicComponent</a>
                     </li>
                     <li class="link">
-                        <a href="interfaces/InternalPropertyItemMeta.html" data-type="entity-link">InternalPropertyItemMeta</a>
-                    </li>
-                    <li class="link">
                         <a href="interfaces/PropertyItemMeta.html" data-type="entity-link">PropertyItemMeta</a>
                     </li>
                     <li class="link">
@@ -251,10 +248,10 @@
             <a data-type="chapter-link" href="index.html"><span class="fa fa-home"></span>Getting started</a>
             <ul class="links">
                     <li class="link">
-                        <a
-
-                             href="overview.html"
-                             href="overview.html"
+                        <a 
+                            
+                             href="overview.html" 
+                             href="overview.html" 
                             data-type="chapter-link">
                             <span class="fa fa-fw fa-th"></span>Overview
                         </a>
@@ -399,9 +396,6 @@
                         <a href="interfaces/ICustomDynamicComponent.html" data-type="entity-link">ICustomDynamicComponent</a>
                     </li>
                     <li class="link">
-                        <a href="interfaces/InternalPropertyItemMeta.html" data-type="entity-link">InternalPropertyItemMeta</a>
-                    </li>
-                    <li class="link">
                         <a href="interfaces/PropertyItemMeta.html" data-type="entity-link">PropertyItemMeta</a>
                     </li>
                     <li class="link">
@@ -461,7 +455,7 @@
 <h2 id="usage">Usage</h2>
 <ol>
 <li><p>Import</p>
-<div><pre class="line-numbers"><code class="language-TypeScript"> import {PropertyGridModule} from &#39;../components/property-grid&#39;;
+<div><pre class="line-numbers"><code class="language-TypeScript"> import {PropertyGridModule} from &#39;ngx-property-grid&#39;;
 
  import {NgxTemplateModule} from &#39;ngx-template&#39;;</code></pre></div></li>
 <li><p>Getting Started</p>
@@ -505,26 +499,26 @@
   }</code></pre></div></li>
 </ul>
 </li>
-<li><p>The metadata options declare</p>
-<div><pre class="line-numbers"><code class="language-TypeScript"> export interface PropertyItemMeta {
-     name: string; // The display name of the property in the grid
-     description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text &quot;[?]&quot;)
-     order?: number; // The display order.
-     group?: string; //  The group this property belongs to
-     hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
-     initState?: string; // - hidden/visible.
-     componentType?: Type&lt;ControlValueAccessor | ICustomDynamicComponent&lt;any&gt;&gt;; // an custom component should be implement
-     // ControlValueAccessor or ICustomDynamicComponent&lt;any&gt;
-     componentOptions?: any;
-     colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
-     // (useful for textarea custom type)
-     type?: string; // boolean number options label color
-     valueConvert?: (value: any) =&gt; any; // convert the value, eg. parseInt
- }</code></pre></div></li>
-<li><p>The result would be (<a href="https://ngx-property-grid.yish.vip/demo">live demo</a>):
-<img src="https://github.com/mokeyish/ngx-property-grid/raw/master/example.png" alt="jqPropertyGrid" class="img-responsive"></p>
-</li>
+<li>The metadata options declare</li>
 </ol>
+<div><pre class="line-numbers"><code class="language-ts"> export interface PropertyItemMeta {
+    name: string; // The display name of the property in the grid
+    description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text &quot;[?]&quot;)
+    order?: number; // The display order.
+    group?: string; //  The group this property belongs to
+    hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
+    initState?: string; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
+    type?: &#39;color&#39; | &#39;date&#39; | &#39;checkbox&#39; | &#39;text&#39; | &#39;options&#39; | string | Type&lt;ControlValueAccessor | ICustomDynamicComponent&lt;any&gt;&gt;;
+    // options: boolean number options label color,
+    // or an custom component should be implement ControlValueAccessor or ICustomDynamicComponent&lt;any&gt;
+    options?: any; // options for type
+    colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
+    // (useful for textarea custom type)
+    valueConvert?: (value: any) =&gt; any; // convert the value, eg. parseInt
+}</code></pre></div><ul>
+<li>The result would be (<a href="https://ngx-property-grid.yish.vip/demo">live demo</a>):
+<img src="https://github.com/mokeyish/ngx-property-grid/raw/master/example.png" alt="jqPropertyGrid" class="img-responsive"></li>
+</ul>
 <h2 id="the-metadata-object">The metadata object</h2>
 <p>As seen from the example above the metadata object <strong>can</strong> be used (it&#39;s optional) in order to describe the object properties.
 Each proprty in the metadata object could have the following:</p>
@@ -541,7 +535,6 @@ Each proprty in the metadata object could have the following:</p>
 <li>label - A label will be used, useful for uneditable / read-only properties</li>
 </ul>
 </li>
-<li>componentType - An angular component</li>
 <li>colspan2 - true/false. If true then property input will span both columns and will have no name/label (useful for textarea custom type, see example/index.html)</li>
 </ul>
 

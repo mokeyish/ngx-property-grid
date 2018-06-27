@@ -1,6 +1,6 @@
 import {Component, EventEmitter} from '@angular/core';
-import {meta, ICustomDynamicComponent} from '../components/property-grid/index';
-import {MatCheckbox, MatSlider, MatSlideToggle} from '@angular/material';
+import {meta, ICustomDynamicComponent} from '../components/property-grid';
+import {MatCheckbox, MatSlideToggle} from '@angular/material';
 
 @Component({
     selector: 'app-root',
@@ -32,7 +32,7 @@ export class SimpleTextEditorComponent implements ICustomDynamicComponent<string
 export class ExampleEditorOptions {
     @meta({
         name: 'Font', description: 'The font editor to use', colSpan2: false,
-        componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false
+        type: SimpleTextEditorComponent, group: 'Editor', hidden: false
     })
     font = 'Source Code Pro';
 
@@ -42,14 +42,17 @@ export class ExampleEditorOptions {
     @meta({name: 'Font color', group: 'Editor', type: 'color'})
     fontColor = '#51f41c';
 
-    @meta({name: 'jQuery', group: 'Plugins', componentType: MatCheckbox})
+    @meta({name: 'jQuery', group: 'Plugins', type: MatCheckbox})
     jQuery = true;
+
+    @meta({name: 'Card Style', group: 'Style', type: MatCheckbox})
+    cardStyle = true;
 
     @meta({
         name: 'modernizr',
         description: 'Whether or not to include modernizr on the page',
         group: 'Plugins',
-        componentType: MatSlideToggle
+        type: MatSlideToggle
     })
     modernizr = false;
 
@@ -57,7 +60,7 @@ export class ExampleEditorOptions {
         name: 'Framework',
         description: 'Whether to include any additional framework',
         type: 'options',
-        componentOptions: {options: ['None', {text: 'AngularJS', value: 'angular'}, {text: 'Backbone.js', value: 'backbone'}]}
+        options: ['None', {text: 'AngularJS', value: 'angular'}, {text: 'Backbone.js', value: 'backbone'}]
     })
     framework = 'None';
 

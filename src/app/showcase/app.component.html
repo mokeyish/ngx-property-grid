@@ -2,12 +2,12 @@
     <h1 style="text-align: center">Property Grid Example</h1>
     <div style="display: flex; flex-direction: row">
 
-        <ngx-property-grid [width]="'400px'" [options]="student">
+        <ngx-property-grid [width]="'400px'" [options]="student" [cardStyle]="student.editor.cardStyle">
             <ng-template ngxTemplate="text" let-p>
                 <input type="text" [value]="p.value" (change)="p.value = $event.target.value">
             </ng-template>
-            <ng-template ngxTemplate="fontSize" [type]="'node'" let-p>
-                <input matInput type="number" placeholder="Value" [(ngModel)]="p.value">
+            <ng-template ngxTemplate="fontSize" let-pp>
+                <input matInput type="number" placeholder="Value" [(ngModel)]="pp.value">
                 <!--<span>字体大小</span>-->
             </ng-template>
 

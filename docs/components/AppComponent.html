@@ -184,9 +184,6 @@
                         <a href="interfaces/ICustomDynamicComponent.html" data-type="entity-link">ICustomDynamicComponent</a>
                     </li>
                     <li class="link">
-                        <a href="interfaces/InternalPropertyItemMeta.html" data-type="entity-link">InternalPropertyItemMeta</a>
-                    </li>
-                    <li class="link">
                         <a href="interfaces/PropertyItemMeta.html" data-type="entity-link">PropertyItemMeta</a>
                     </li>
                     <li class="link">
@@ -397,9 +394,6 @@
 >
                     <li class="link">
                         <a href="interfaces/ICustomDynamicComponent.html" data-type="entity-link">ICustomDynamicComponent</a>
-                    </li>
-                    <li class="link">
-                        <a href="interfaces/InternalPropertyItemMeta.html" data-type="entity-link">InternalPropertyItemMeta</a>
                     </li>
                     <li class="link">
                         <a href="interfaces/PropertyItemMeta.html" data-type="entity-link">PropertyItemMeta</a>
@@ -689,8 +683,8 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, EventEmitter} from &#x27;@angular/core&#x27;;
-import {meta, ICustomDynamicComponent} from &#x27;../components/property-grid/index&#x27;;
-import {MatCheckbox, MatSlider, MatSlideToggle} from &#x27;@angular/material&#x27;;
+import {meta, ICustomDynamicComponent} from &#x27;../components/property-grid&#x27;;
+import {MatCheckbox, MatSlideToggle} from &#x27;@angular/material&#x27;;
 
 @Component({
     selector: &#x27;app-root&#x27;,
@@ -722,7 +716,7 @@ export class SimpleTextEditorComponent implements ICustomDynamicComponent&lt;str
 export class ExampleEditorOptions {
     @meta({
         name: &#x27;Font&#x27;, description: &#x27;The font editor to use&#x27;, colSpan2: false,
-        componentType: SimpleTextEditorComponent, group: &#x27;Editor&#x27;, hidden: false
+        type: SimpleTextEditorComponent, group: &#x27;Editor&#x27;, hidden: false
     })
     font &#x3D; &#x27;Source Code Pro&#x27;;
 
@@ -732,14 +726,17 @@ export class ExampleEditorOptions {
     @meta({name: &#x27;Font color&#x27;, group: &#x27;Editor&#x27;, type: &#x27;color&#x27;})
     fontColor &#x3D; &#x27;#51f41c&#x27;;
 
-    @meta({name: &#x27;jQuery&#x27;, group: &#x27;Plugins&#x27;, componentType: MatCheckbox})
+    @meta({name: &#x27;jQuery&#x27;, group: &#x27;Plugins&#x27;, type: MatCheckbox})
     jQuery &#x3D; true;
+
+    @meta({name: &#x27;Card Style&#x27;, group: &#x27;Style&#x27;, type: MatCheckbox})
+    cardStyle &#x3D; true;
 
     @meta({
         name: &#x27;modernizr&#x27;,
         description: &#x27;Whether or not to include modernizr on the page&#x27;,
         group: &#x27;Plugins&#x27;,
-        componentType: MatSlideToggle
+        type: MatSlideToggle
     })
     modernizr &#x3D; false;
 
@@ -747,7 +744,7 @@ export class ExampleEditorOptions {
         name: &#x27;Framework&#x27;,
         description: &#x27;Whether to include any additional framework&#x27;,
         type: &#x27;options&#x27;,
-        componentOptions: {options: [&#x27;None&#x27;, {text: &#x27;AngularJS&#x27;, value: &#x27;angular&#x27;}, {text: &#x27;Backbone.js&#x27;, value: &#x27;backbone&#x27;}]}
+        options: [&#x27;None&#x27;, {text: &#x27;AngularJS&#x27;, value: &#x27;angular&#x27;}, {text: &#x27;Backbone.js&#x27;, value: &#x27;backbone&#x27;}]
     })
     framework &#x3D; &#x27;None&#x27;;
 
@@ -781,12 +778,12 @@ export class ExampleStudentOptions {
     &lt;h1 style&#x3D;&quot;text-align: center&quot;&gt;Property Grid Example&lt;/h1&gt;
     &lt;div style&#x3D;&quot;display: flex; flex-direction: row&quot;&gt;
 
-        &lt;ngx-property-grid [width]&#x3D;&quot;&#x27;400px&#x27;&quot; [options]&#x3D;&quot;student&quot;&gt;
+        &lt;ngx-property-grid [width]&#x3D;&quot;&#x27;400px&#x27;&quot; [options]&#x3D;&quot;student&quot; [cardStyle]&#x3D;&quot;student.editor.cardStyle&quot;&gt;
             &lt;ng-template ngxTemplate&#x3D;&quot;text&quot; let-p&gt;
                 &lt;input type&#x3D;&quot;text&quot; [value]&#x3D;&quot;p.value&quot; (change)&#x3D;&quot;p.value &#x3D; $event.target.value&quot;&gt;
             &lt;/ng-template&gt;
-            &lt;ng-template ngxTemplate&#x3D;&quot;fontSize&quot; [type]&#x3D;&quot;&#x27;node&#x27;&quot; let-p&gt;
-                &lt;input matInput type&#x3D;&quot;number&quot; placeholder&#x3D;&quot;Value&quot; [(ngModel)]&#x3D;&quot;p.value&quot;&gt;
+            &lt;ng-template ngxTemplate&#x3D;&quot;fontSize&quot; let-pp&gt;
+                &lt;input matInput type&#x3D;&quot;number&quot; placeholder&#x3D;&quot;Value&quot; [(ngModel)]&#x3D;&quot;pp.value&quot;&gt;
                 &lt;!--&lt;span&gt;字体大小&lt;/span&gt;--&gt;
             &lt;/ng-template&gt;
 
@@ -840,7 +837,7 @@ export class ExampleStudentOptions {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div>    <h1 style="text-align: center">Property Grid Example</h1>    <div style="display: flex; flex-direction: row">        <ngx-property-grid [width]="\'400px\'" [options]="student">            <ng-template ngxTemplate="text" let-p>                <input type="text" [value]="p.value" (change)="p.value = $event.target.value">            </ng-template>            <ng-template ngxTemplate="fontSize" [type]="\'node\'" let-p>                <input matInput type="number" placeholder="Value" [(ngModel)]="p.value">                <!--<span>字体大小</span>-->            </ng-template>            <ng-template ngxTemplate="date" let-p>                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="p.value">                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>                <mat-datepicker #picker></mat-datepicker>            </ng-template>            <ng-template ngxTemplate="sex" let-p>                <mat-radio-group  [(ngModel)]="p.value">                    <mat-radio-button value="male">male</mat-radio-button>                    <mat-radio-button value="female">female</mat-radio-button>                </mat-radio-group>            </ng-template>        </ngx-property-grid>        <div style="margin-left: 50px; flex: 1">            <div> <h3>The Object：</h3> </div>            <ngx-json-viewer [json]="data"></ngx-json-viewer>        </div>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div>    <h1 style="text-align: center">Property Grid Example</h1>    <div style="display: flex; flex-direction: row">        <ngx-property-grid [width]="\'400px\'" [options]="student" [cardStyle]="student.editor.cardStyle">            <ng-template ngxTemplate="text" let-p>                <input type="text" [value]="p.value" (change)="p.value = $event.target.value">            </ng-template>            <ng-template ngxTemplate="fontSize" let-pp>                <input matInput type="number" placeholder="Value" [(ngModel)]="pp.value">                <!--<span>字体大小</span>-->            </ng-template>            <ng-template ngxTemplate="date" let-p>                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="p.value">                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>                <mat-datepicker #picker></mat-datepicker>            </ng-template>            <ng-template ngxTemplate="sex" let-p>                <mat-radio-group  [(ngModel)]="p.value">                    <mat-radio-button value="male">male</mat-radio-button>                    <mat-radio-button value="female">female</mat-radio-button>                </mat-radio-group>            </ng-template>        </ngx-property-grid>        <div style="margin-left: 50px; flex: 1">            <div> <h3>The Object：</h3> </div>            <ngx-json-viewer [json]="data"></ngx-json-viewer>        </div>    </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CustomComponent', 'selector': 'custom-component'},{'name': 'PropertyGridComponent', 'selector': 'ngx-property-grid'},{'name': 'SimpleTextEditorComponent', 'selector': 'app-text-editor'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};
