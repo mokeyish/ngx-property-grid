@@ -39,7 +39,7 @@ A small and simple property grid in angular to view/edit POJOs, excellent if you
     * Object options
         ```ts
         export class ExampleEditorOptions {
-            @meta({name: 'Font', description: 'The font editor to use', componentType: SimpleTextEditorComponent, group: 'Editor', hidden: false})
+            @meta({name: 'Font', description: 'The font editor to use', type: SimpleTextEditorComponent, group: 'Editor', hidden: false})
             font = 'Source Code Pro';
 
             @meta({name: 'Font size', group: 'Editor', type: 'number', valueConvert: parseInt})
