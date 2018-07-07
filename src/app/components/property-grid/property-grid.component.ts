@@ -258,7 +258,6 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     @ViewChildren(NgxTemplate) defaultTemplates: QueryList<NgxTemplate>;
     @ContentChildren(NgxTemplate) templates: QueryList<NgxTemplate>;
 
-    public rows: Array<InternalGroup | PropertyItemMeta | any>;
     public groups: InternalGroup[];
     public subItems: PropertyItemMeta[];
 
@@ -317,7 +316,6 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     private initMeta(): void {
         const meta: object = this.meta;
         if (!meta) {
-            this.rows = [];
             this.subItems = [];
             return;
         }
@@ -345,15 +343,8 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
             group.items.push(v);
         }
         groups.forEach(o => o.items.sort((a, b) => a.order - b.order));
-        const rows: Array<InternalGroup | PropertyItemMeta> = [];
-        for (const g of groups) {
-            if (g.name) {
-                rows.push(g);
-            }
-            g.items.forEach(o => rows.push(o));
-        }
-        this.rows = rows;
-        this.groups = groups;
+
+        this.groups = groups.filter(o => o.items.length > 0);
         this.subItems = subItems;
     }
 
