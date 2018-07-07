@@ -74,10 +74,10 @@ export class ExampleStudentOptions {
     @meta({name: 'Name', group: 'Basic Information', type: 'text', order: 1})
     name = 'Lily';
 
-    @meta({name: 'Age', group: 'Basic Information', valueConvert: parseInt, type: 'text', order: 2})
+    @meta({name: 'Age', group: 'Basic Information1', valueConvert: parseInt, type: 'text', order: 2})
     age = 19;
 
-    @meta({name: 'Telephone', type: 'telephone', group: 'Basic Information', hidden: true})
+    @meta({name: 'Telephone', type: 'telephone', group: 'Basic Information1', hidden: true})
     telephone;
 
     @meta({name: 'Gender', group: 'Basic Information', type: 'sex', order: 3})

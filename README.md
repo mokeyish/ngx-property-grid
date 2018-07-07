@@ -101,4 +101,4 @@ Each proprty in the metadata object could have the following:
   * color - simple textbox
   * options - A dropdown list would be used in case the metadata contains the `options` array property
   * label - A label will be used, useful for uneditable / read-only properties
-* colspan2 - true/false. If true then property input will span both columns and will have no name/label (useful for textarea custom type, see example/index.html)
+* colspan2 - true/false. If true then property input will span both columns and will have no name/label (useful for textarea custom type)

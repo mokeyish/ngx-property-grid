@@ -17,7 +17,7 @@ export {meta, PropertyItemMeta} from './property-item-meta';
     entryComponents: defaultProvider.components,
     declarations: [
         PropertyGridComponent,
-        CustomComponent,
+        CustomComponent
     ],
     providers: [{provide: PropertyGridControlProvider, useValue: defaultProvider}],
     exports: [
