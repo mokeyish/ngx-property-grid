@@ -17,27 +17,24 @@ import {PropertyItemMeta} from './property-item-meta';
             <div [ngClass]="cardStyle ? 'card' : null">
                 <table class="property-grid-table" [style.width]="width">
                     <tbody>
-                    <tr *ngFor="let row of rows" [ngClass]="row.type == 'group'? 'property-grid-group-row':'property-grid-row'">
+                    <ng-container *ngFor="let group of groups">
+                        <tr *ngIf="group.name">
+                            <td colspan="2" class="property-grid-group" (click)="groupCollapse && group.toggle()">{{group.name}}</td>
+                        </tr>
 
-                        <!--<td [attr.colspan]="row.colspan"></td>-->
-                        <td *ngIf="row.type == 'group'" colspan="2" class="property-grid-group">{{row.name}}</td>
-                        <td *ngIf="row.type != 'group' && row.colSpan2 != true" [width]="labelWidth" colspan="1"
-                            class="property-grid-label">
-                            {{row.name}}
-                            <span *ngIf="row.description" [title]="row.description">[?]</span>
-                        </td>
-                        <td *ngIf="row.type != 'group'" [attr.colspan]="row.colSpan2 == true ? 2 : 1" class="property-grid-control">
-                            <custom-component
-                                *ngIf="!getTemplate(row.type)"
-                                [componentType]="row.type"
-                                [componentOptions]="row.options"
-                                [value]="options[row.key]"
-                                (valueChange)="convertValue(row, $event)">
-                            </custom-component>
-                            <ng-container *ngTemplateOutlet="getTemplate(row.type); context: {$implicit: propertyValue(row)}">
-                            </ng-container>
-                        </td>
-                    </tr>
+                        <ng-container *ngFor="let item of group.items">
+                            <tr *ngIf="group.state">
+                                <td class="property-grid-label" [attr.colspan]="item.colSpan2 == true ? 2 : 1">
+                                    {{item.name}}
+                                    <span *ngIf="item.description" [title]="item.description">[?]</span>
+                                </td>
+                                <ng-container *ngTemplateOutlet="controlTemplate; context: {$implicit: item}"></ng-container>
+                            </tr>
+                            <tr *ngIf="group.state && item.colSpan2">
+                                <ng-container *ngTemplateOutlet="controlTemplate; context: {$implicit: item}"></ng-container>
+                            </tr>
+                        </ng-container>
+                    </ng-container>
                     </tbody>
                 </table>
             </div>
@@ -49,7 +46,7 @@ import {PropertyItemMeta} from './property-item-meta';
                 </div>
                 <ngx-property-grid
                     [state]="item.initState"
-                    [@internalPropertyGrid]="pg.state"
+                    [@collapseAnimation]="pg.state"
                     [options]="options[item.key]"
                     [width]="width"
                     [labelWidth]="labelWidth"
@@ -59,9 +56,27 @@ import {PropertyItemMeta} from './property-item-meta';
                 </ngx-property-grid>
             </div>
         </div>
-        <div *ngIf="!isInternal">
+
+
+        <ng-template #controlTemplate let-item>
+            <td [attr.colspan]="item.colSpan2 == true ? 2 : 1" class="property-grid-control">
+                <ng-container *ngTemplateOutlet="templateLoaded && getTemplate(item.type); context: {$implicit: propertyValue(item)}">
+                </ng-container>
+
+                <custom-component *ngIf="templateLoaded && !getTemplate(item.type)"
+                                  [componentType]="item.type"
+                                  [componentOptions]="item.options"
+                                  [value]="options[item.key]"
+                                  (valueChange)="convertValue(item, $event)">
+                </custom-component>
+            </td>
+        </ng-template>
+
+
+        <ng-container *ngIf="!isInternal">
+
             <ng-template ngxTemplate="checkbox" let-p>
-                <input type="checkbox" [checked]="p.value" (change)="p.value = $event.target.checked" />
+                <input type="checkbox" [checked]="p.value" (change)="p.value = $event.target.checked"/>
             </ng-template>
 
             <ng-template ngxTemplate="color" let-p>
@@ -81,19 +96,20 @@ import {PropertyItemMeta} from './property-item-meta';
             </ng-template>
 
             <ng-template ngxTemplate="options" let-p>
-                <select (change)="p.value = $event.target.value" >
+                <select (change)="p.value = $event.target.value">
                     <option [value]="optionValue(option)" *ngFor="let option of p.meta.options">
                         {{optionLabel(option)}}
                     </option>
                 </select>
             </ng-template>
-        </div>
+        </ng-container>
     `,
     styles: [
             `
             .property-grid {
                 /*border: solid 1px #95B8E7;*/
             }
+
             .property-grid-border {
                 border: 1px solid #d6d6d678
             }
@@ -134,6 +150,7 @@ import {PropertyItemMeta} from './property-item-meta';
                 -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
                 width: 100%;
             }
+
             .internal-property-grid .property-grid-header-margin {
                 margin-left: 5px;
                 margin-right: 5px;
@@ -153,6 +170,7 @@ import {PropertyItemMeta} from './property-item-meta';
                 /*margin: 5px 20px;*/
                 padding: 0;
             }
+
             .internal-property-grid ngx-property-grid .card {
                 background-color: unset;
                 box-shadow: unset;
@@ -164,28 +182,43 @@ import {PropertyItemMeta} from './property-item-meta';
         `
     ],
     animations: [
-        trigger('internalPropertyGrid', [
+        trigger('collapseAnimation', [
             state('hidden', style({
                 height: '0',
-                // overflow: 'hidden'
+                // overflow: 'hidden',
             })),
             state('visible', style({
                 height: '*'
             })),
             transition('visible <=> hidden', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
+        ]),
+        trigger('flyInOut', [
+            state('in', style({transform: 'translateX(0)'})),
+            transition('void => *', [
+                style({transform: 'translateX(-100%)'}),
+                animate(100)
+            ]),
+            transition('* => void', [
+                animate(100, style({transform: 'translateX(100%)'}))
+            ])
         ])
     ]
 })
 export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     private _options: any;
     private _meta: any;
-    public readonly isInternal: boolean;
+    private _templateLoaded = false;
+    public get templateLoaded(): boolean {
+        return this._templateLoaded;
+    }
+
+    public readonly isInternal: boolean = false;
 
     @Input()
-    public templateMap: any = {};
+    public templateMap: { [key: string]: TemplateRef<any> };
 
     @Input()
-    public state = 'visible';
+    public state: 'hidden' | 'visible' = 'visible';
 
     @Input()
     width: string | number;
@@ -196,6 +229,9 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
 
     @Input()
     cardStyle = true;
+
+    @Input()
+    groupCollapse = false;
 
     @Input()
     public set meta(v: any) {
@@ -223,6 +259,7 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     @ContentChildren(NgxTemplate) templates: QueryList<NgxTemplate>;
 
     public rows: Array<InternalGroup | PropertyItemMeta | any>;
+    public groups: InternalGroup[];
     public subItems: PropertyItemMeta[];
 
     constructor(el: ElementRef<HTMLElement>, private cdr: ChangeDetectorRef) {
@@ -231,27 +268,37 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        if (this.defaultTemplates) {
-            this.defaultTemplates.forEach((item) => {
-                if (!this.templateMap.hasOwnProperty(item.name)) {
-                    this.templateMap[item.name] = item.template;
-                }
-            });
-            this.cdr.detectChanges();
+        if (this.isInternal) {
+            this._templateLoaded = true;
+        } else {
+            if (this.defaultTemplates) {
+                this.defaultTemplates.forEach((item) => {
+                    if (!this.templateMap.hasOwnProperty(item.name)) {
+                        this.templateMap[item.name] = item.template;
+                    }
+                });
+                this._templateLoaded = true;
+                this.cdr.detectChanges();
+            }
         }
     }
 
     ngAfterContentInit(): void {
-        this.templates.forEach((item) => {
-            this.templateMap[item.name] = item.template;
-        });
+        if (!this.isInternal) {
+            if (!this.templateMap) {
+                this.templateMap = {};
+            }
+            this.templates.forEach((item) => {
+                this.templateMap[item.name] = item.template;
+            });
+        }
     }
 
-    public getTemplate(type: string): TemplateRef<any> {
-        if (this.templateMap) {
+    public getTemplate(type: string | any): TemplateRef<any> {
+        if (typeof type === 'string' && this.templateMap) {
             return type ? this.templateMap[type] : this.templateMap['default'];
         } else {
-            return null;
+            return undefined;
         }
     }
 
@@ -306,6 +353,7 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
             g.items.forEach(o => rows.push(o));
         }
         this.rows = rows;
+        this.groups = groups;
         this.subItems = subItems;
     }
 
@@ -343,6 +391,12 @@ export class PropertyValue {
 export class InternalGroup {
     public readonly items: PropertyItemMeta[] = [];
     public type = 'group';
+
+    public state = true;
+
+    public toggle(): void {
+        this.state = !this.state;
+    }
 
     constructor(public name: string) {
     }
