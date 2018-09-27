@@ -24,5 +24,6 @@ export {meta, PropertyItemMeta} from './property-item-meta';
         PropertyGridComponent
     ]
 })
+@NgModule()
 export class PropertyGridModule {
 }
