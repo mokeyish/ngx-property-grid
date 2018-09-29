@@ -71,7 +71,7 @@ export class ExampleStudentOptions {
     @meta({name: 'Birth', group: 'Basic Information', type: 'date', order: 4})
     birth = '2018-05-08';
 
-    @meta({name: 'Name', group: 'Basic Information', type: 'text', order: 1})
+    @meta({name: 'Name', group: 'Basic Information', type: 'text', order: 1, link: 'http://www.baidu.com'})
     name = 'Lily';
 
     @meta({name: 'Age', group: 'Basic Information1', valueConvert: parseInt, type: 'text', order: 2})
