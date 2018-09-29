@@ -24,11 +24,18 @@ import {PropertyItemMeta} from './property-item-meta';
 
                         <ng-container *ngFor="let item of group.items">
                             <tr *ngIf="group.state">
-                                <td class="property-grid-label" [attr.colspan]="item.colSpan2 == true ? 2 : 1">
+                                <td [attr.colspan]="item.colSpan2 == true ? 2 : 1"
+                                    class="property-grid-label"
+                                    [style.cursor]="item.link ? 'pointer' : null"
+                                    (click)="openLink(item.link)">
                                     {{item.name}}
-                                    <span *ngIf="item.description" [title]="item.description">[?]</span>
+                                    <span *ngIf="showHelp && item.showHelp && item.description" [title]="item.description">[?]</span>
                                 </td>
-                                <ng-container *ngTemplateOutlet="controlTemplate; context: {$implicit: item}"></ng-container>
+                                <ng-container *ngIf="!item.colSpan2">
+                                    <ng-container
+                                        *ngTemplateOutlet="controlTemplate; context: {$implicit: item}">
+                                    </ng-container>
+                                </ng-container>
                             </tr>
                             <tr *ngIf="group.state && item.colSpan2">
                                 <ng-container *ngTemplateOutlet="controlTemplate; context: {$implicit: item}"></ng-container>
@@ -45,6 +52,7 @@ import {PropertyItemMeta} from './property-item-meta';
                     <b>{{item.name}}</b>
                 </div>
                 <ngx-property-grid
+                    [showHelp]="showHelp"
                     [state]="item.initState"
                     [@collapseAnimation]="pg.state"
                     [options]="options[item.key]"
@@ -234,6 +242,9 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     groupCollapse = false;
 
     @Input()
+    showHelp = true;
+
+    @Input()
     public set meta(v: any) {
         this._meta = v;
         this.initMeta();
@@ -290,6 +301,12 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
             this.templates.forEach((item) => {
                 this.templateMap[item.name] = item.template;
             });
+        }
+    }
+
+    public openLink(link: string) {
+        if (link) {
+            window.open(link,  '_blank');
         }
     }
 

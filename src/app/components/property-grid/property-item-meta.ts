@@ -15,8 +15,10 @@ export interface PropertyItemMeta {
     // or an custom component should be implement ControlValueAccessor or ICustomDynamicComponent<any>
     options?: any; // options for type
     colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
-    // (useful for textarea custom type)
+    // (useful for textArea custom type)
     valueConvert?: (value: any) => any; // convert the value, eg. parseInt
+    showHelp?: boolean; // default True.
+    link?: string; // help link
 }
 
 
@@ -43,6 +45,9 @@ export const meta = (itemMeta: PropertyItemMeta) =>
         }
         if (!itemMeta.order) {
             itemMeta.order = Number.MAX_VALUE;
+        }
+        if (itemMeta.showHelp === undefined) {
+            itemMeta.showHelp = true;
         }
         // endregion
 

@@ -2,7 +2,7 @@
     <h1 style="text-align: center">Property Grid Example</h1>
     <div style="display: flex; flex-direction: row">
 
-        <ngx-property-grid [width]="'400px'" [options]="student" [groupCollapse]="true" [cardStyle]="student.editor.cardStyle">
+        <ngx-property-grid [width]="'400px'" [options]="student" [showHelp]="true" [groupCollapse]="true" [cardStyle]="student.editor.cardStyle">
             <ng-template ngxTemplate="text" let-p>
                 <input type="text" [value]="p.value" (change)="p.value = $event.target.value">
             </ng-template>
