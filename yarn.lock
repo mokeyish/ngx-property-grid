@@ -4375,9 +4375,9 @@ ngx-json-viewer@^2.2.0:
   version "2.2.0"
   resolved "http://registry.npm.taobao.org/ngx-json-viewer/download/ngx-json-viewer-2.2.0.tgz#18a6c82cfe98b53bbe1eb1afb6aa87d183f5c19c"
 
-ngx-template@^1.0.4:
-  version "1.0.4"
-  resolved "http://registry.npm.taobao.org/ngx-template/download/ngx-template-1.0.4.tgz#8b58f68efea94c44c1b239d83bcbcf36f0a7742e"
+ngx-template@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/ngx-template/-/ngx-template-1.0.5.tgz#2fae809a1a6a7e98c806a31c260d6a99846b110f"
 
 no-case@^2.2.0:
   version "2.3.2"
