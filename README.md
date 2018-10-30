@@ -19,6 +19,7 @@ A small and simple property grid in angular to view/edit POJOs, excellent if you
 
     import {NgxTemplateModule} from 'ngx-template';
     ```
+    If you need animation,you should import `BrowserAnimationsModule` in your `app.module.ts`.
 2. Getting Started
     * Html
         * Basic
