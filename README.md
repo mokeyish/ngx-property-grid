@@ -92,7 +92,7 @@ A small and simple property grid in angular to view/edit POJOs, excellent if you
 As seen from the example above the metadata object **can** be used (it's optional) in order to describe the object properties.
 Each proprty in the metadata object could have the following:
 
-* name - The display name of the property in the grid
+* name - The display name of the property in the grid 
 * description - A description of the property, will be used as tooltip on an hint element (a span with text "[?]")
 * hidden - Whether this property should be hidden in the grid, default is false (can be omitted).
 * group - The group this property belongs to
