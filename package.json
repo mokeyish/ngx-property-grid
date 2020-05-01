@@ -29,7 +29,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "publish-npm": "npm run build-lib && npm publish dist/ngx-property-grid",
-    "doc:build": "./node_modules/.bin/compodoc -p projects/ngx-property-grid/tsconfig.lib.json -d ./docs",
+    "doc:build": "./node_modules/.bin/compodoc -p projects/ngx-property-grid/tsconfig.lib.json -d ./docs && ng build --aot --output-path docs/demo --base-href /demo/",
     "doc:buildandserve": "./node_modules/.bin/compodoc -p projects/ngx-property-grid/tsconfig.lib.json -d ./docs -s"
   },
   "peerDependencies": {
