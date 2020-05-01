@@ -2,27 +2,25 @@ import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import {AppComponent, SimpleTextEditorComponent} from './app.component';
-import {PropertyGridModule} from '../components/property-grid';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {
-    MatCheckboxModule,
-    MatSlider,
-    MatSliderModule,
-    MatDatepickerModule,
-    MatDatepicker,
-    MatSlideToggleModule,
-    MatSlideToggle, MatNativeDateModule, MatRadioModule, MatInputModule
-} from '@angular/material';
-import {MatCheckbox} from '@angular/material';
+
 import {FormsModule} from '@angular/forms';
-import {NgxJsonViewerModule} from 'ngx-json-viewer';
 import {NgxTemplateModule} from 'ngx-template';
+import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
+import {MatSlider, MatSliderModule} from "@angular/material/slider";
+import {MatDatepicker, MatDatepickerModule} from "@angular/material/datepicker";
+import {MatSlideToggle, MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatInputModule} from "@angular/material/input";
+import {NgxJsonViewModule} from "ng-json-view";
+import {PropertyGridModule} from "ngx-property-grid";
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
         BrowserModule, FormsModule, NoopAnimationsModule, PropertyGridModule, NgxTemplateModule,
-        NgxJsonViewerModule, BrowserAnimationsModule,
+        NgxJsonViewModule, BrowserAnimationsModule,
         MatCheckboxModule, MatSliderModule, MatDatepickerModule, MatSlideToggleModule,
         MatNativeDateModule, MatRadioModule, MatInputModule
     ],

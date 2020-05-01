@@ -1,11 +1,11 @@
 import {Component, EventEmitter} from '@angular/core';
-import {meta, ICustomDynamicComponent} from '../components/property-grid';
-import {MatCheckbox, MatSlideToggle} from '@angular/material';
+import {MatCheckbox} from "@angular/material/checkbox";
+import {MatSlideToggle} from "@angular/material/slide-toggle";
+import {ICustomDynamicComponent, meta} from "ngx-property-grid";
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
     public student: ExampleStudentOptions = new ExampleStudentOptions();
