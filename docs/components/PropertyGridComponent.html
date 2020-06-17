@@ -229,16 +229,17 @@
 
 &lt;ng-template #controlTemplate let-item&gt;
   &lt;td [attr.colspan]&#x3D;&quot;item.colSpan2 &#x3D;&#x3D; true ? 2 : 1&quot; class&#x3D;&quot;property-grid-control&quot;&gt;
-    &lt;ng-container *ngTemplateOutlet&#x3D;&quot;templateLoaded &amp;&amp; getTemplate(item.type); context: {$implicit: propertyValue(item)}&quot;&gt;
-    &lt;/ng-container&gt;
-    &lt;ng-container
-      *ngIf&#x3D;&quot;templateLoaded &amp;&amp; !getTemplate(item.type)&quot;
-      loadComponent
-      [componentType]&#x3D;&quot;item.type&quot;
-      [componentOptions]&#x3D;&quot;item.options&quot;
-      [value]&#x3D;&quot;options[item.key]&quot;
-      (valueChange)&#x3D;&quot;convertValue(item, $event)&quot;&gt;
-    &lt;/ng-container&gt;
+    &lt;div *ngIf&#x3D;&quot;templateLoaded &amp;&amp; getTemplate(item.type); then thenBlock; else elseBlock&quot;&gt;this is ignored&lt;/div&gt;
+    &lt;ng-template #thenBlock&gt;
+      &lt;ng-container *ngTemplateOutlet&#x3D;&quot;templateLoaded &amp;&amp; getTemplate(item.type); context: {$implicit: propertyValue(item)}&quot;&gt;
+      &lt;/ng-container&gt;
+    &lt;/ng-template&gt;
+    &lt;ng-template #elseBlock&gt;
+      &lt;ng-container
+        [dynamicComponentLoad]&#x3D;&quot;item&quot;
+        [options]&#x3D;&quot;options&quot;&gt;
+      &lt;/ng-container&gt;
+    &lt;/ng-template&gt;
   &lt;/td&gt;
 &lt;/ng-template&gt;
 
@@ -343,10 +344,6 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#convertValue">convertValue</a>
-                            </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#getTemplate">getTemplate</a>
@@ -460,7 +457,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="274" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:274</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="276" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:276</a></div>
                             </td>
                         </tr>
 
@@ -527,7 +524,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:240</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="242" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:242</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -547,7 +544,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="243" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:243</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="245" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:245</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -573,7 +570,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="237" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:237</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="239" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:239</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -594,7 +591,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="249" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:249</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="251" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:251</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -615,7 +612,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="259" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:259</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:261</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -635,7 +632,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="246" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:246</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:248</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -661,7 +658,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="230" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:230</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="232" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:232</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -682,7 +679,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="227" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:227</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:229</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -703,7 +700,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="233" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:233</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:235</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -717,90 +714,6 @@
     <h3 id="methods">
         Methods
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="convertValue"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            convertValue
-                        </b>
-                        <a href="#convertValue"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>convertValue(meta: <a href="../interfaces/PropertyItemMeta.html">PropertyItemMeta</a>, val: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="330"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:330</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>meta</td>
-                                    <td>
-                                                <code><a href="../interfaces/PropertyItemMeta.html" target="_self" >PropertyItemMeta</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>val</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -825,8 +738,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="314"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:314</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="316"
+                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:316</a></div>
                 </td>
             </tr>
 
@@ -897,8 +810,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="334"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:334</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="332"
+                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:332</a></div>
                 </td>
             </tr>
 
@@ -936,8 +849,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="297"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:297</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="299"
+                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:299</a></div>
                 </td>
             </tr>
 
@@ -975,8 +888,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="281"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:281</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="283"
+                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:283</a></div>
                 </td>
             </tr>
 
@@ -1016,8 +929,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="308"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:308</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="310"
+                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:310</a></div>
                 </td>
             </tr>
 
@@ -1086,8 +999,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="369"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:369</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="367"
+                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:367</a></div>
                 </td>
             </tr>
 
@@ -1156,8 +1069,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="382"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:382</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="380"
+                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:380</a></div>
                 </td>
             </tr>
 
@@ -1228,8 +1141,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="322"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:322</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="324"
+                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:324</a></div>
                 </td>
             </tr>
 
@@ -1300,8 +1213,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="326"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:326</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="328"
+                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:328</a></div>
                 </td>
             </tr>
 
@@ -1344,7 +1257,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="218" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:218</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:220</a></div>
                             </td>
                         </tr>
 
@@ -1372,7 +1285,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:217</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="219" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:219</a></div>
                             </td>
                         </tr>
 
@@ -1399,7 +1312,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="219" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:219</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="221" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:221</a></div>
                             </td>
                         </tr>
 
@@ -1435,7 +1348,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:270</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="272" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:272</a></div>
                             </td>
                         </tr>
 
@@ -1463,7 +1376,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="273" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:273</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="275" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:275</a></div>
                             </td>
                         </tr>
 
@@ -1497,7 +1410,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:224</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="226" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:226</a></div>
                             </td>
                         </tr>
 
@@ -1525,7 +1438,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="274" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:274</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="276" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:276</a></div>
                             </td>
                         </tr>
 
@@ -1561,7 +1474,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:271</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="273" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:273</a></div>
                             </td>
                         </tr>
 
@@ -1590,7 +1503,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:220</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:222</a></div>
                                 </td>
                             </tr>
 
@@ -1612,7 +1525,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="254" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:254</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="256" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:256</a></div>
                                 </td>
                             </tr>
 
@@ -1623,7 +1536,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="249" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:249</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="251" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:251</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1681,7 +1594,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:266</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="268" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:268</a></div>
                                 </td>
                             </tr>
 
@@ -1692,7 +1605,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="259" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:259</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:261</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1750,6 +1663,7 @@
 import {animate, state, style, transition, trigger} from &#x27;@angular/animations&#x27;;
 import {NgxTemplate} from &#x27;ngx-template&#x27;;
 import {PropertyItemMeta} from &#x27;./property-item-meta&#x27;;
+import {PropertyValue} from &#x27;./property-value&#x27;;
 
 @Component({
   selector: &#x27;ngx-property-grid&#x27;,
@@ -1809,16 +1723,17 @@ import {PropertyItemMeta} from &#x27;./property-item-meta&#x27;;
 
     &lt;ng-template #controlTemplate let-item&gt;
       &lt;td [attr.colspan]&#x3D;&quot;item.colSpan2 &#x3D;&#x3D; true ? 2 : 1&quot; class&#x3D;&quot;property-grid-control&quot;&gt;
-        &lt;ng-container *ngTemplateOutlet&#x3D;&quot;templateLoaded &amp;&amp; getTemplate(item.type); context: {$implicit: propertyValue(item)}&quot;&gt;
-        &lt;/ng-container&gt;
-        &lt;ng-container
-          *ngIf&#x3D;&quot;templateLoaded &amp;&amp; !getTemplate(item.type)&quot;
-          loadComponent
-          [componentType]&#x3D;&quot;item.type&quot;
-          [componentOptions]&#x3D;&quot;item.options&quot;
-          [value]&#x3D;&quot;options[item.key]&quot;
-          (valueChange)&#x3D;&quot;convertValue(item, $event)&quot;&gt;
-        &lt;/ng-container&gt;
+        &lt;div *ngIf&#x3D;&quot;templateLoaded &amp;&amp; getTemplate(item.type); then thenBlock; else elseBlock&quot;&gt;this is ignored&lt;/div&gt;
+        &lt;ng-template #thenBlock&gt;
+          &lt;ng-container *ngTemplateOutlet&#x3D;&quot;templateLoaded &amp;&amp; getTemplate(item.type); context: {$implicit: propertyValue(item)}&quot;&gt;
+          &lt;/ng-container&gt;
+        &lt;/ng-template&gt;
+        &lt;ng-template #elseBlock&gt;
+          &lt;ng-container
+            [dynamicComponentLoad]&#x3D;&quot;item&quot;
+            [options]&#x3D;&quot;options&quot;&gt;
+          &lt;/ng-container&gt;
+        &lt;/ng-template&gt;
       &lt;/td&gt;
     &lt;/ng-template&gt;
 
@@ -2068,10 +1983,6 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     this.state &#x3D; this.state &#x3D;&#x3D;&#x3D; &#x27;visible&#x27; ? &#x27;hidden&#x27; : &#x27;visible&#x27;;
   }
 
-  public convertValue(meta: PropertyItemMeta, val: any): void {
-    this.options[meta.key] &#x3D; meta.valueConvert ? meta.valueConvert(val) : val;
-  }
-
   private initMeta(): void {
     const meta: object &#x3D; this.meta;
     if (!meta) {
@@ -2122,19 +2033,6 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
 
   optionValue(v: any): any {
     return v &amp;&amp; v.value ? v.value : v;
-  }
-}
-
-export class PropertyValue {
-  public get value(): any {
-    return this.o[this.meta.key];
-  }
-
-  public set value(val: any) {
-    this.o[this.meta.key] &#x3D; this.meta.valueConvert ? this.meta.valueConvert(val) : val;
-  }
-
-  constructor(private o: any, public meta: PropertyItemMeta) {
   }
 }
 
@@ -2259,9 +2157,9 @@ export class InternalGroup {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="property-grid" [ngClass]="!isInternal && !cardStyle ? \'property-grid-border\': null" [style.width]="width">  <div [ngClass]="cardStyle ? \'card\' : null">    <table class="property-grid-table" [style.width]="width">      <tbody>      <ng-container *ngFor="let group of groups">        <tr *ngIf="group.name">          <td colspan="2" class="property-grid-group" (click)="groupCollapse && group.toggle()">{{group.name}}</td>        </tr>        <ng-container *ngFor="let item of group.items">          <tr *ngIf="group.state">            <td [attr.colspan]="item.colSpan2 == true ? 2 : 1"                class="property-grid-label"                [style.cursor]="item.link ? \'pointer\' : null"                (click)="openLink(item.link)">              {{item.name}}              <span *ngIf="showHelp && item.showHelp && item.description" [title]="item.description">[?]</span>            </td>            <ng-container *ngIf="!item.colSpan2">              <ng-container                *ngTemplateOutlet="controlTemplate; context: {$implicit: item}">              </ng-container>            </ng-container>          </tr>          <tr *ngIf="group.state && item.colSpan2">            <ng-container *ngTemplateOutlet="controlTemplate; context: {$implicit: item}"></ng-container>          </tr>        </ng-container>      </ng-container>      </tbody>    </table>  </div>  <div *ngFor="let item of subItems" class="internal-property-grid" [ngClass]="cardStyle ? \'card\' : null">    <div (click)="pg.toggle()" class="property-grid-header"         [ngClass]="cardStyle ? null : \'property-grid-header-margin\'">      <b>{{item.name}}</b>    </div>    <ngx-property-grid      [showHelp]="showHelp"      [state]="item.initState"      [@collapseAnimation]="pg.state"      [options]="options[item.key]"      [width]="width"      [labelWidth]="labelWidth"      [templateMap]="templateMap"      style="display: block;overflow: hidden"      #pg>    </ngx-property-grid>  </div></div><ng-template #controlTemplate let-item>  <td [attr.colspan]="item.colSpan2 == true ? 2 : 1" class="property-grid-control">    <ng-container *ngTemplateOutlet="templateLoaded && getTemplate(item.type); context: {$implicit: propertyValue(item)}">    </ng-container>    <ng-container      *ngIf="templateLoaded && !getTemplate(item.type)"      loadComponent      [componentType]="item.type"      [componentOptions]="item.options"      [value]="options[item.key]"      (valueChange)="convertValue(item, $event)">    </ng-container>  </td></ng-template><ng-container *ngIf="!isInternal">  <ng-template ngxTemplate="checkbox" let-p>    <input type="checkbox" [(ngModel)]="p.value"/>  </ng-template>  <ng-template ngxTemplate="color" let-p>    <input type="color" [(ngModel)]="p.value"/>  </ng-template>  <ng-template ngxTemplate="date" let-p>    <input type="date" [(ngModel)]="p.value"/>  </ng-template>  <ng-template ngxTemplate="label" let-p>    <label>{{p.value}}</label>  </ng-template>  <ng-template ngxTemplate="text" let-p>    <input type="text" [(ngModel)]="p.value"/>  </ng-template>  <ng-template ngxTemplate="options" let-p>    <select [(ngModel)]="p.value">      <option [value]="optionValue(option)" *ngFor="let option of p.meta.options">        {{optionLabel(option)}}      </option>    </select>  </ng-template></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="property-grid" [ngClass]="!isInternal && !cardStyle ? \'property-grid-border\': null" [style.width]="width">  <div [ngClass]="cardStyle ? \'card\' : null">    <table class="property-grid-table" [style.width]="width">      <tbody>      <ng-container *ngFor="let group of groups">        <tr *ngIf="group.name">          <td colspan="2" class="property-grid-group" (click)="groupCollapse && group.toggle()">{{group.name}}</td>        </tr>        <ng-container *ngFor="let item of group.items">          <tr *ngIf="group.state">            <td [attr.colspan]="item.colSpan2 == true ? 2 : 1"                class="property-grid-label"                [style.cursor]="item.link ? \'pointer\' : null"                (click)="openLink(item.link)">              {{item.name}}              <span *ngIf="showHelp && item.showHelp && item.description" [title]="item.description">[?]</span>            </td>            <ng-container *ngIf="!item.colSpan2">              <ng-container                *ngTemplateOutlet="controlTemplate; context: {$implicit: item}">              </ng-container>            </ng-container>          </tr>          <tr *ngIf="group.state && item.colSpan2">            <ng-container *ngTemplateOutlet="controlTemplate; context: {$implicit: item}"></ng-container>          </tr>        </ng-container>      </ng-container>      </tbody>    </table>  </div>  <div *ngFor="let item of subItems" class="internal-property-grid" [ngClass]="cardStyle ? \'card\' : null">    <div (click)="pg.toggle()" class="property-grid-header"         [ngClass]="cardStyle ? null : \'property-grid-header-margin\'">      <b>{{item.name}}</b>    </div>    <ngx-property-grid      [showHelp]="showHelp"      [state]="item.initState"      [@collapseAnimation]="pg.state"      [options]="options[item.key]"      [width]="width"      [labelWidth]="labelWidth"      [templateMap]="templateMap"      style="display: block;overflow: hidden"      #pg>    </ngx-property-grid>  </div></div><ng-template #controlTemplate let-item>  <td [attr.colspan]="item.colSpan2 == true ? 2 : 1" class="property-grid-control">    <div *ngIf="templateLoaded && getTemplate(item.type); then thenBlock; else elseBlock">this is ignored</div>    <ng-template #thenBlock>      <ng-container *ngTemplateOutlet="templateLoaded && getTemplate(item.type); context: {$implicit: propertyValue(item)}">      </ng-container>    </ng-template>    <ng-template #elseBlock>      <ng-container        [dynamicComponentLoad]="item"        [options]="options">      </ng-container>    </ng-template>  </td></ng-template><ng-container *ngIf="!isInternal">  <ng-template ngxTemplate="checkbox" let-p>    <input type="checkbox" [(ngModel)]="p.value"/>  </ng-template>  <ng-template ngxTemplate="color" let-p>    <input type="color" [(ngModel)]="p.value"/>  </ng-template>  <ng-template ngxTemplate="date" let-p>    <input type="date" [(ngModel)]="p.value"/>  </ng-template>  <ng-template ngxTemplate="label" let-p>    <label>{{p.value}}</label>  </ng-template>  <ng-template ngxTemplate="text" let-p>    <input type="text" [(ngModel)]="p.value"/>  </ng-template>  <ng-template ngxTemplate="options" let-p>    <select [(ngModel)]="p.value">      <option [value]="optionValue(option)" *ngFor="let option of p.meta.options">        {{optionLabel(option)}}      </option>    </select>  </ng-template></ng-container></div>'
     var COMPONENTS = [{'name': 'PropertyGridComponent', 'selector': 'ngx-property-grid'}];
-    var DIRECTIVES = [{'name': 'LoadComponentDirective', 'selector': '[loadComponent]'}];
+    var DIRECTIVES = [{'name': 'DynamicComponentLoadDirective', 'selector': '[dynamicComponentLoad]'}];
     var ACTUAL_COMPONENT = {'name': 'PropertyGridComponent'};
 </script>
 <script src="../js/tree.js"></script>

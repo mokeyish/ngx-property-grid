@@ -9,6 +9,7 @@ import {
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {NgxTemplate} from 'ngx-template';
 import {PropertyItemMeta} from './property-item-meta';
+import {PropertyValue} from './property-value';
 
 @Component({
   selector: 'ngx-property-grid',
@@ -68,16 +69,17 @@ import {PropertyItemMeta} from './property-item-meta';
 
     <ng-template #controlTemplate let-item>
       <td [attr.colspan]="item.colSpan2 == true ? 2 : 1" class="property-grid-control">
-        <ng-container *ngTemplateOutlet="templateLoaded && getTemplate(item.type); context: {$implicit: propertyValue(item)}">
-        </ng-container>
-        <ng-container
-          *ngIf="templateLoaded && !getTemplate(item.type)"
-          loadComponent
-          [componentType]="item.type"
-          [componentOptions]="item.options"
-          [value]="options[item.key]"
-          (valueChange)="convertValue(item, $event)">
-        </ng-container>
+        <div *ngIf="templateLoaded && getTemplate(item.type); then thenBlock; else elseBlock">this is ignored</div>
+        <ng-template #thenBlock>
+          <ng-container *ngTemplateOutlet="templateLoaded && getTemplate(item.type); context: {$implicit: propertyValue(item)}">
+          </ng-container>
+        </ng-template>
+        <ng-template #elseBlock>
+          <ng-container
+            [dynamicComponentLoad]="item"
+            [options]="options">
+          </ng-container>
+        </ng-template>
       </td>
     </ng-template>
 
@@ -327,10 +329,6 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     this.state = this.state === 'visible' ? 'hidden' : 'visible';
   }
 
-  public convertValue(meta: PropertyItemMeta, val: any): void {
-    this.options[meta.key] = meta.valueConvert ? meta.valueConvert(val) : val;
-  }
-
   private initMeta(): void {
     const meta: object = this.meta;
     if (!meta) {
@@ -381,19 +379,6 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
 
   optionValue(v: any): any {
     return v && v.value ? v.value : v;
-  }
-}
-
-export class PropertyValue {
-  public get value(): any {
-    return this.o[this.meta.key];
-  }
-
-  public set value(val: any) {
-    this.o[this.meta.key] = this.meta.valueConvert ? this.meta.valueConvert(val) : val;
-  }
-
-  constructor(private o: any, public meta: PropertyItemMeta) {
   }
 }
 

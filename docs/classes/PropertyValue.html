@@ -60,7 +60,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ngx-property-grid/src/lib/property-grid.component.ts</code>
+            <code>projects/ngx-property-grid/src/lib/property-value.ts</code>
         </p>
 
 
@@ -121,7 +121,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="394" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:394</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ngx-property-grid/src/lib/property-value.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -197,7 +197,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="396" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:396</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/ngx-property-grid/src/lib/property-value.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -232,7 +232,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="388" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:388</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">projects/ngx-property-grid/src/lib/property-value.ts:4</a></div>
                                 </td>
                             </tr>
 
@@ -243,7 +243,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="392" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:392</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">projects/ngx-property-grid/src/lib/property-value.ts:8</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -290,391 +290,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  AfterContentInit, AfterViewInit, ChangeDetectorRef,
-  Component,
-  ContentChildren, ElementRef,
-  Input,
-  QueryList,
-  TemplateRef, ViewChildren
-} from &#x27;@angular/core&#x27;;
-import {animate, state, style, transition, trigger} from &#x27;@angular/animations&#x27;;
-import {NgxTemplate} from &#x27;ngx-template&#x27;;
-import {PropertyItemMeta} from &#x27;./property-item-meta&#x27;;
-
-@Component({
-  selector: &#x27;ngx-property-grid&#x27;,
-  template: &#x60;
-    &lt;div class&#x3D;&quot;property-grid&quot; [ngClass]&#x3D;&quot;!isInternal &amp;&amp; !cardStyle ? &#x27;property-grid-border&#x27;: null&quot; [style.width]&#x3D;&quot;width&quot;&gt;
-      &lt;div [ngClass]&#x3D;&quot;cardStyle ? &#x27;card&#x27; : null&quot;&gt;
-        &lt;table class&#x3D;&quot;property-grid-table&quot; [style.width]&#x3D;&quot;width&quot;&gt;
-          &lt;tbody&gt;
-          &lt;ng-container *ngFor&#x3D;&quot;let group of groups&quot;&gt;
-            &lt;tr *ngIf&#x3D;&quot;group.name&quot;&gt;
-              &lt;td colspan&#x3D;&quot;2&quot; class&#x3D;&quot;property-grid-group&quot; (click)&#x3D;&quot;groupCollapse &amp;&amp; group.toggle()&quot;&gt;{{group.name}}&lt;/td&gt;
-            &lt;/tr&gt;
-
-            &lt;ng-container *ngFor&#x3D;&quot;let item of group.items&quot;&gt;
-              &lt;tr *ngIf&#x3D;&quot;group.state&quot;&gt;
-                &lt;td [attr.colspan]&#x3D;&quot;item.colSpan2 &#x3D;&#x3D; true ? 2 : 1&quot;
-                    class&#x3D;&quot;property-grid-label&quot;
-                    [style.cursor]&#x3D;&quot;item.link ? &#x27;pointer&#x27; : null&quot;
-                    (click)&#x3D;&quot;openLink(item.link)&quot;&gt;
-                  {{item.name}}
-                  &lt;span *ngIf&#x3D;&quot;showHelp &amp;&amp; item.showHelp &amp;&amp; item.description&quot; [title]&#x3D;&quot;item.description&quot;&gt;[?]&lt;/span&gt;
-                &lt;/td&gt;
-                &lt;ng-container *ngIf&#x3D;&quot;!item.colSpan2&quot;&gt;
-                  &lt;ng-container
-                    *ngTemplateOutlet&#x3D;&quot;controlTemplate; context: {$implicit: item}&quot;&gt;
-                  &lt;/ng-container&gt;
-                &lt;/ng-container&gt;
-              &lt;/tr&gt;
-              &lt;tr *ngIf&#x3D;&quot;group.state &amp;&amp; item.colSpan2&quot;&gt;
-                &lt;ng-container *ngTemplateOutlet&#x3D;&quot;controlTemplate; context: {$implicit: item}&quot;&gt;&lt;/ng-container&gt;
-              &lt;/tr&gt;
-            &lt;/ng-container&gt;
-          &lt;/ng-container&gt;
-          &lt;/tbody&gt;
-        &lt;/table&gt;
-      &lt;/div&gt;
-
-      &lt;div *ngFor&#x3D;&quot;let item of subItems&quot; class&#x3D;&quot;internal-property-grid&quot; [ngClass]&#x3D;&quot;cardStyle ? &#x27;card&#x27; : null&quot;&gt;
-        &lt;div (click)&#x3D;&quot;pg.toggle()&quot; class&#x3D;&quot;property-grid-header&quot;
-             [ngClass]&#x3D;&quot;cardStyle ? null : &#x27;property-grid-header-margin&#x27;&quot;&gt;
-          &lt;b&gt;{{item.name}}&lt;/b&gt;
-        &lt;/div&gt;
-        &lt;ngx-property-grid
-          [showHelp]&#x3D;&quot;showHelp&quot;
-          [state]&#x3D;&quot;item.initState&quot;
-          [@collapseAnimation]&#x3D;&quot;pg.state&quot;
-          [options]&#x3D;&quot;options[item.key]&quot;
-          [width]&#x3D;&quot;width&quot;
-          [labelWidth]&#x3D;&quot;labelWidth&quot;
-          [templateMap]&#x3D;&quot;templateMap&quot;
-          style&#x3D;&quot;display: block;overflow: hidden&quot;
-          #pg&gt;
-        &lt;/ngx-property-grid&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-
-
-    &lt;ng-template #controlTemplate let-item&gt;
-      &lt;td [attr.colspan]&#x3D;&quot;item.colSpan2 &#x3D;&#x3D; true ? 2 : 1&quot; class&#x3D;&quot;property-grid-control&quot;&gt;
-        &lt;ng-container *ngTemplateOutlet&#x3D;&quot;templateLoaded &amp;&amp; getTemplate(item.type); context: {$implicit: propertyValue(item)}&quot;&gt;
-        &lt;/ng-container&gt;
-        &lt;ng-container
-          *ngIf&#x3D;&quot;templateLoaded &amp;&amp; !getTemplate(item.type)&quot;
-          loadComponent
-          [componentType]&#x3D;&quot;item.type&quot;
-          [componentOptions]&#x3D;&quot;item.options&quot;
-          [value]&#x3D;&quot;options[item.key]&quot;
-          (valueChange)&#x3D;&quot;convertValue(item, $event)&quot;&gt;
-        &lt;/ng-container&gt;
-      &lt;/td&gt;
-    &lt;/ng-template&gt;
-
-
-    &lt;ng-container *ngIf&#x3D;&quot;!isInternal&quot;&gt;
-
-      &lt;ng-template ngxTemplate&#x3D;&quot;checkbox&quot; let-p&gt;
-        &lt;input type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;p.value&quot;/&gt;
-      &lt;/ng-template&gt;
-
-      &lt;ng-template ngxTemplate&#x3D;&quot;color&quot; let-p&gt;
-        &lt;input type&#x3D;&quot;color&quot; [(ngModel)]&#x3D;&quot;p.value&quot;/&gt;
-      &lt;/ng-template&gt;
-
-      &lt;ng-template ngxTemplate&#x3D;&quot;date&quot; let-p&gt;
-        &lt;input type&#x3D;&quot;date&quot; [(ngModel)]&#x3D;&quot;p.value&quot;/&gt;
-      &lt;/ng-template&gt;
-
-      &lt;ng-template ngxTemplate&#x3D;&quot;label&quot; let-p&gt;
-        &lt;label&gt;{{p.value}}&lt;/label&gt;
-      &lt;/ng-template&gt;
-
-      &lt;ng-template ngxTemplate&#x3D;&quot;text&quot; let-p&gt;
-        &lt;input type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;p.value&quot;/&gt;
-      &lt;/ng-template&gt;
-
-      &lt;ng-template ngxTemplate&#x3D;&quot;options&quot; let-p&gt;
-        &lt;select [(ngModel)]&#x3D;&quot;p.value&quot;&gt;
-          &lt;option [value]&#x3D;&quot;optionValue(option)&quot; *ngFor&#x3D;&quot;let option of p.meta.options&quot;&gt;
-            {{optionLabel(option)}}
-          &lt;/option&gt;
-        &lt;/select&gt;
-      &lt;/ng-template&gt;
-    &lt;/ng-container&gt;
-  &#x60;,
-  styles: [
-      &#x60;
-      .property-grid {
-        /*border: solid 1px #95B8E7;*/
-      }
-
-      .property-grid-border {
-        border: 1px solid #d6d6d678
-      }
-
-      .property-grid-table {
-        border-spacing: 0;
-        padding: 5px
-      }
-
-      .property-grid-group {
-        background-color: white;
-        font-weight: bold;
-        color: #616161;
-        padding-top: 8px;
-        padding-bottom: 5px;
-      }
-
-      .property-grid-label, .property-grid-control {
-        border: dotted 1px #ccc;
-        padding: 2px 5px;
-      }
-
-      .internal-property-grid {
-        margin-top: 12px;
-      }
-
-      .internal-property-grid .property-grid {
-        border-width: 0;
-      }
-
-      .internal-property-grid .property-grid-header {
-        margin-bottom: 5px;
-        background-color: #f5f5f5;
-        padding-bottom: 5px;
-        padding-top: 5px;
-        padding-left: 5px;
-        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-        -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-        width: 100%;
-      }
-
-      .internal-property-grid .property-grid-header-margin {
-        margin-left: 5px;
-        margin-right: 5px;
-        width: unset;
-      }
-
-      .internal-property-grid .property-grid-table {
-        border-width: 0;
-        /*border-top: 1px solid #dbdbdb;*/
-      }
-
-      .card {
-        background-color: #fff;
-        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);
-        display: flex;
-        flex-flow: row wrap;
-        /*margin: 5px 20px;*/
-        padding: 0;
-      }
-
-      .internal-property-grid ngx-property-grid .card {
-        background-color: unset;
-        box-shadow: unset;
-        display: unset;
-        flex-flow: unset;
-        /*margin: 5px 20px;*/
-        padding: unset;
-      }
-    &#x60;
-  ],
-  animations: [
-    trigger(&#x27;collapseAnimation&#x27;, [
-      state(&#x27;hidden&#x27;, style({
-        height: &#x27;0&#x27;,
-        // overflow: &#x27;hidden&#x27;,
-      })),
-      state(&#x27;visible&#x27;, style({
-        height: &#x27;*&#x27;
-      })),
-      transition(&#x27;visible &lt;&#x3D;&gt; hidden&#x27;, animate(&#x27;400ms cubic-bezier(0.86, 0, 0.07, 1)&#x27;))
-    ]),
-    trigger(&#x27;flyInOut&#x27;, [
-      state(&#x27;in&#x27;, style({transform: &#x27;translateX(0)&#x27;})),
-      transition(&#x27;void &#x3D;&gt; *&#x27;, [
-        style({transform: &#x27;translateX(-100%)&#x27;}),
-        animate(100)
-      ]),
-      transition(&#x27;* &#x3D;&gt; void&#x27;, [
-        animate(100, style({transform: &#x27;translateX(100%)&#x27;}))
-      ])
-    ])
-  ]
-})
-export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
-  private _options: any;
-  private _meta: any;
-  private _templateLoaded &#x3D; false;
-  public get templateLoaded(): boolean {
-    return this._templateLoaded;
-  }
-
-  public readonly isInternal: boolean &#x3D; false;
-
-  @Input()
-  public templateMap: { [key: string]: TemplateRef&lt;any&gt; };
-
-  @Input()
-  public state: &#x27;hidden&#x27; | &#x27;visible&#x27; &#x3D; &#x27;visible&#x27;;
-
-  @Input()
-  width: string | number;
-
-
-  @Input()
-  labelWidth: string | number &#x3D; &#x27;120px&#x27;;
-
-  @Input()
-  cardStyle &#x3D; true;
-
-  @Input()
-  groupCollapse &#x3D; false;
-
-  @Input()
-  showHelp &#x3D; true;
-
-  @Input()
-  public set meta(v: any) {
-    this._meta &#x3D; v;
-    this.initMeta();
-  }
-
-  public get meta(): any {
-    return this._meta;
-  }
-
-  @Input()
-  public set options(v: any) {
-    this._options &#x3D; v;
-    if (v.__meta__) {
-      this.meta &#x3D; v.__meta__;
-    }
-  }
-
-  public get options(): any {
-    return this._options;
-  }
-
-  @ViewChildren(NgxTemplate) defaultTemplates: QueryList&lt;NgxTemplate&gt;;
-  @ContentChildren(NgxTemplate) templates: QueryList&lt;NgxTemplate&gt;;
-
-  public groups: InternalGroup[];
-  public subItems: PropertyItemMeta[];
-
-  constructor(el: ElementRef&lt;HTMLElement&gt;, private cdr: ChangeDetectorRef) {
-    this.isInternal &#x3D; el.nativeElement.parentElement &amp;&amp; el.nativeElement.parentElement.classList &amp;&amp;
-      el.nativeElement.parentElement.classList.contains(&#x27;internal-property-grid&#x27;);
-  }
-
-  ngAfterViewInit(): void {
-    if (this.isInternal) {
-      this._templateLoaded &#x3D; true;
-    } else {
-      if (this.defaultTemplates) {
-        this.defaultTemplates.forEach((item) &#x3D;&gt; {
-          if (!this.templateMap.hasOwnProperty(item.name)) {
-            this.templateMap[item.name] &#x3D; item.template;
-          }
-        });
-        this._templateLoaded &#x3D; true;
-        this.cdr.detectChanges();
-      }
-    }
-  }
-
-  ngAfterContentInit(): void {
-    if (!this.isInternal) {
-      if (!this.templateMap) {
-        this.templateMap &#x3D; {};
-      }
-      this.templates.forEach((item) &#x3D;&gt; {
-        this.templateMap[item.name] &#x3D; item.template;
-      });
-    }
-  }
-
-  public openLink(link: string) {
-    if (link) {
-      window.open(link, &#x27;_blank&#x27;);
-    }
-  }
-
-  public getTemplate(type: string | any): TemplateRef&lt;any&gt; {
-    if (typeof type &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; this.templateMap) {
-      return type ? this.templateMap[type] : this.templateMap.default;
-    } else {
-      return undefined;
-    }
-  }
-
-  public propertyValue(meta: PropertyItemMeta): PropertyValue {
-    return new PropertyValue(this.options, meta);
-  }
-
-  public toggle(): void {
-    this.state &#x3D; this.state &#x3D;&#x3D;&#x3D; &#x27;visible&#x27; ? &#x27;hidden&#x27; : &#x27;visible&#x27;;
-  }
-
-  public convertValue(meta: PropertyItemMeta, val: any): void {
-    this.options[meta.key] &#x3D; meta.valueConvert ? meta.valueConvert(val) : val;
-  }
-
-  private initMeta(): void {
-    const meta: object &#x3D; this.meta;
-    if (!meta) {
-      this.subItems &#x3D; [];
-      return;
-    }
-
-    const groups: InternalGroup[] &#x3D; [new InternalGroup(undefined)];
-    const subItems: PropertyItemMeta[] &#x3D; [];
-    for (const i in meta) {
-      if (!meta.hasOwnProperty(i)) {
-        continue;
-      }
-      const v: PropertyItemMeta &#x3D; meta[i];
-      if (v.hidden) {
-        continue;
-      }
-      if (v.type &#x3D;&#x3D;&#x3D; &#x27;subItems&#x27;) {
-        subItems.push(v);
-        continue;
-      }
-
-      let group &#x3D; groups.find(o &#x3D;&gt; o.name &#x3D;&#x3D;&#x3D; v.group);
-      if (!group) {
-        group &#x3D; new InternalGroup(v.group);
-        groups.push(group);
-      }
-      group.items.push(v);
-    }
-    groups.forEach(o &#x3D;&gt; o.items.sort((a, b) &#x3D;&gt; a.order - b.order));
-
-    this.groups &#x3D; groups.filter(o &#x3D;&gt; o.items.length &gt; 0);
-    this.subItems &#x3D; subItems;
-  }
-
-  optionLabel(v: any): string {
-    if (typeof v &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-      return v;
-    }
-    if (v.text) {
-      return v.text;
-    }
-    if (v.label) {
-      return v.label;
-    }
-    return v;
-  }
-
-  optionValue(v: any): any {
-    return v &amp;&amp; v.value ? v.value : v;
-  }
-}
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {PropertyItemMeta} from &#x27;./property-item-meta&#x27;;
 
 export class PropertyValue {
   public get value(): any {
@@ -684,22 +300,7 @@ export class PropertyValue {
   public set value(val: any) {
     this.o[this.meta.key] &#x3D; this.meta.valueConvert ? this.meta.valueConvert(val) : val;
   }
-
   constructor(private o: any, public meta: PropertyItemMeta) {
-  }
-}
-
-export class InternalGroup {
-  public readonly items: PropertyItemMeta[] &#x3D; [];
-  public type &#x3D; &#x27;group&#x27;;
-
-  public state &#x3D; true;
-
-  public toggle(): void {
-    this.state &#x3D; !this.state;
-  }
-
-  constructor(public name: string) {
   }
 }
 </code></pre>

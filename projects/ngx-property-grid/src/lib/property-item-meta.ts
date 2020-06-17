@@ -1,8 +1,6 @@
 import {Type} from '@angular/core';
-import {ICustomDynamicComponent} from './load-component.directive';
 import {ControlValueAccessor} from '@angular/forms';
-
-export { ICustomDynamicComponent };
+import {IDynamicComponent} from './dynamic-component';
 
 export interface PropertyItemMeta {
     readonly key?: PropertyKey; // auto generate.
@@ -12,7 +10,7 @@ export interface PropertyItemMeta {
     group?: string; //  The group this property belongs to
     hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
     initState?: 'hidden' | 'visible'; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
-    type?: 'color' | 'date' | 'checkbox' | 'text' | 'options' | string | Type<ControlValueAccessor | ICustomDynamicComponent<any>>;
+    type?: 'color' | 'date' | 'checkbox' | 'text' | 'options' | string | Type<ControlValueAccessor | IDynamicComponent<any>>;
     // options: boolean number options label color,
     // or an custom component should be implement ControlValueAccessor or ICustomDynamicComponent<any>
     options?: any; // options for type

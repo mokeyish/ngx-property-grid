@@ -1,7 +1,7 @@
 import {Component, EventEmitter} from '@angular/core';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
-import {ICustomDynamicComponent, meta} from 'ngx-property-grid';
+import {IDynamicComponent, meta} from 'ngx-property-grid';
 
 @Component({
     selector: 'app-root',
@@ -24,7 +24,7 @@ export class AppComponent {
     selector: 'app-text-editor',
     template: `<input type="text" [value]="value" (change)="valueChange.emit($event.target.value)"/>`
 })
-export class SimpleTextEditorComponent implements ICustomDynamicComponent<string> {
+export class SimpleTextEditorComponent implements IDynamicComponent<string> {
     value: string;
     valueChange: EventEmitter<string> = new EventEmitter<string>();
 }

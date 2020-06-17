@@ -60,13 +60,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PropertyGridModule.html" data-type="entity-link">PropertyGridModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' : 'data-target="#xs-components-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' }>
+                                            'data-target="#components-links-module-PropertyGridModule-17c125d83527587ce9a6eb40fb838287"' : 'data-target="#xs-components-links-module-PropertyGridModule-17c125d83527587ce9a6eb40fb838287"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' :
-                                            'id="xs-components-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PropertyGridModule-17c125d83527587ce9a6eb40fb838287"' :
+                                            'id="xs-components-links-module-PropertyGridModule-17c125d83527587ce9a6eb40fb838287"' }>
                                             <li class="link">
                                                 <a href="components/PropertyGridComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">PropertyGridComponent</a>
@@ -75,16 +75,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' : 'data-target="#xs-directives-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' }>
+                                        'data-target="#directives-links-module-PropertyGridModule-17c125d83527587ce9a6eb40fb838287"' : 'data-target="#xs-directives-links-module-PropertyGridModule-17c125d83527587ce9a6eb40fb838287"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' :
-                                        'id="xs-directives-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-PropertyGridModule-17c125d83527587ce9a6eb40fb838287"' :
+                                        'id="xs-directives-links-module-PropertyGridModule-17c125d83527587ce9a6eb40fb838287"' }>
                                         <li class="link">
-                                            <a href="directives/LoadComponentDirective.html"
-                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules">LoadComponentDirective</a>
+                                            <a href="directives/DynamicComponentLoadDirective.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules">DynamicComponentLoadDirective</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -116,7 +116,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
-                                <a href="interfaces/ICustomDynamicComponent.html" data-type="entity-link">ICustomDynamicComponent</a>
+                                <a href="interfaces/IDynamicComponent.html" data-type="entity-link">IDynamicComponent</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/PropertyItemMeta.html" data-type="entity-link">PropertyItemMeta</a>

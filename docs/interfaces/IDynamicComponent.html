@@ -43,7 +43,7 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>PropertyValueAccess</li>
+  <li>IDynamicComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,112 +61,110 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ngx-property-grid/src/lib/dynamic-component-load.directive.ts</code>
+            <code>projects/ngx-property-grid/src/lib/dynamic-component.ts</code>
         </p>
 
 
-            <p class="comment">
-                <h3>Extends</h3>
-            </p>
-            <p class="comment">
-                        <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
-            </p>
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#value">value</a>
+                                </li>
+                                <li>
+                                        <a href="#valueChange">valueChange</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="value"></a>
+                                        <span class="name"><b>value</b><a href="#value"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>value:     <code>TValue</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>TValue</code>
+
+                                        </td>
+                                    </tr>
 
 
 
 
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="valueChange"></a>
+                                        <span class="name"><b>valueChange</b><a href="#valueChange"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>valueChange:     <code>EventEmitter&lt;TValue&gt;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>EventEmitter&lt;TValue&gt;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  ComponentFactoryResolver,
-  ComponentRef, Directive,
-  Input, OnChanges, OnDestroy,
-  OnInit, SimpleChanges,
-  Type,
-  ViewContainerRef
-} from &#x27;@angular/core&#x27;;
-import {ControlValueAccessor} from &#x27;@angular/forms&#x27;;
-import {PropertyItemMeta} from &#x27;./property-item-meta&#x27;;
-import {PropertyValue} from &#x27;./property-value&#x27;;
-import {IDynamicComponent} from &#x27;./dynamic-component&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {EventEmitter} from &#x27;@angular/core&#x27;;
 
-@Directive({
-  selector: &#x27;[dynamicComponentLoad]&#x27;,
-})
-export class DynamicComponentLoadDirective implements OnInit, OnDestroy, OnChanges {
-  private readonly _controlValueChangeFn: (value: any) &#x3D;&gt; void;
-  private component: ComponentRef&lt;IDynamicComponent&lt;any&gt;&gt;;
-  private propertyValue: PropertyValue;
-  private get componentType(): Type&lt;PropertyValueAccess&gt; {
-    return this.meta.type as Type&lt;PropertyValueAccess&gt;;
-  }
 
-  @Input(&#x27;dynamicComponentLoad&#x27;) private meta: PropertyItemMeta;
-  @Input()
-  public options: any;
-
-  constructor(private entry: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {
-    this._controlValueChangeFn &#x3D; (value: any) &#x3D;&gt; this.propertyValue.value &#x3D; value;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.options) {
-      this.propertyValue &#x3D; new PropertyValue(changes.options.currentValue, this.meta);
-    }
-  }
-
-  ngOnInit() {
-    this.buildComponent();
-  }
-
-  ngOnDestroy(): void {
-    this.destroyComponent();
-  }
-
-  private buildComponent(): void {
-    if (!this.componentType) {
-      return;
-    }
-    try {
-      this.destroyComponent();
-      // this.entry.clear();
-      const componentFactory &#x3D; this.componentFactoryResolver.resolveComponentFactory&lt;PropertyValueAccess&gt;(this.componentType);
-      const component &#x3D; this.entry.createComponent(componentFactory, 0);
-      this.initComponent(component);
-      this.component &#x3D; component;
-    } catch (e) {
-      console.error(&#x27;load component error.&#x27;);
-      console.error(e);
-    }
-  }
-
-  private initComponent(component: ComponentRef&lt;PropertyValueAccess&gt;) {
-    component.instance.value &#x3D; this.propertyValue.value;
-    if (component.instance.registerOnChange) {
-      component.instance.registerOnChange(this._controlValueChangeFn);
-    }
-    if (component.instance.valueChange) {
-      component.instance.valueChange.subscribe(this._controlValueChangeFn);
-    }
-
-    if (this.meta.options) {
-      Object.assign(component.instance, this.meta.options);
-    }
-  }
-
-  private destroyComponent(): void {
-    if (this.component) {
-      this.component.destroy();
-    }
-  }
+export interface IDynamicComponent&lt;TValue&gt; {
+  value: TValue;
+  valueChange: EventEmitter&lt;TValue&gt;;
 }
-
-interface PropertyValueAccess extends ControlValueAccessor, IDynamicComponent&lt;any&gt; {
-}
-
-
 </code></pre>
     </div>
 </div>
@@ -194,7 +192,7 @@ interface PropertyValueAccess extends ControlValueAccessor, IDynamicComponent&lt
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'PropertyValueAccess.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'IDynamicComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
