@@ -528,47 +528,61 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }
 
-    function PropertyGridComponent_ng_template_6_div_1_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "this is ignored");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      }
-    }
-
-    function PropertyGridComponent_ng_template_6_ng_template_2_ng_container_0_Template(rf, ctx) {
+    function PropertyGridComponent_ng_template_6_ng_container_1_ng_container_1_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](0);
       }
     }
 
-    function PropertyGridComponent_ng_template_6_ng_template_2_Template(rf, ctx) {
+    function PropertyGridComponent_ng_template_6_ng_container_1_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, PropertyGridComponent_ng_template_6_ng_template_2_ng_container_0_Template, 1, 0, "ng-container", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_template_6_ng_container_1_ng_container_1_Template, 1, 0, "ng-container", 11);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
       }
 
       if (rf & 2) {
         var item_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngTemplateOutlet", ctx_r34.templateLoaded && ctx_r34.getTemplate(item_r31.type))("ngTemplateOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, ctx_r34.propertyValue(item_r31)));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngTemplateOutlet", ctx_r32.getTemplate(item_r31.type))("ngTemplateOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, ctx_r32.propertyValue(item_r31)));
       }
     }
 
-    function PropertyGridComponent_ng_template_6_ng_template_4_Template(rf, ctx) {
+    function PropertyGridComponent_ng_template_6_ng_container_2_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](0, 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](0, 19);
       }
 
       if (rf & 2) {
         var item_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dynamicComponentLoad", item_r31)("options", ctx_r36.options);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dynamicComponentLoad", item_r31)("options", ctx_r33.options);
+      }
+    }
+
+    function PropertyGridComponent_ng_template_6_span_3_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var item_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", item_r31.type, " template Not Found ");
       }
     }
 
@@ -576,11 +590,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td", 16);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_template_6_div_1_Template, 2, 0, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_template_6_ng_container_1_Template, 2, 4, "ng-container", 17);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PropertyGridComponent_ng_template_6_ng_template_2_Template, 1, 4, "ng-template", null, 18, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PropertyGridComponent_ng_template_6_ng_container_2_Template, 1, 2, "ng-container", 18);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, PropertyGridComponent_ng_template_6_ng_template_4_Template, 1, 2, "ng-template", null, 19, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, PropertyGridComponent_ng_template_6_span_3_Template, 2, 1, "span", 17);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -588,86 +602,92 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 2) {
         var item_r31 = ctx.$implicit;
 
-        var _r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](3);
-
-        var _r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](5);
-
         var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitch", ctx_r3.controlType(item_r31));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("colspan", item_r31.colSpan2 == true ? 2 : 1);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r3.templateLoaded && ctx_r3.getTemplate(item_r31.type))("ngIfThen", _r33)("ngIfElse", _r35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "template");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "dynamicComponent");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "templateNotFound");
       }
     }
 
     function PropertyGridComponent_ng_container_8_ng_template_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r48 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r47 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 26);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_1_Template_input_ngModelChange_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r48);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r47);
 
-          var p_r46 = ctx.$implicit;
-          return p_r46.value = $event;
+          var p_r45 = ctx.$implicit;
+          return p_r45.value = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var p_r46 = ctx.$implicit;
+        var p_r45 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r46.value);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r45.value);
       }
     }
 
     function PropertyGridComponent_ng_container_8_ng_template_2_Template(rf, ctx) {
       if (rf & 1) {
-        var _r51 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 27);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_2_Template_input_ngModelChange_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r51);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50);
 
-          var p_r49 = ctx.$implicit;
-          return p_r49.value = $event;
+          var p_r48 = ctx.$implicit;
+          return p_r48.value = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var p_r49 = ctx.$implicit;
+        var p_r48 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r49.value);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r48.value);
       }
     }
 
     function PropertyGridComponent_ng_container_8_ng_template_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r54 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r53 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 28);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_3_Template_input_ngModelChange_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r54);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r53);
 
-          var p_r52 = ctx.$implicit;
-          return p_r52.value = $event;
+          var p_r51 = ctx.$implicit;
+          return p_r51.value = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var p_r52 = ctx.$implicit;
+        var p_r51 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r52.value);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r51.value);
       }
     }
 
@@ -681,40 +701,40 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var p_r55 = ctx.$implicit;
+        var p_r54 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](p_r55.value);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](p_r54.value);
       }
     }
 
     function PropertyGridComponent_ng_container_8_ng_template_5_Template(rf, ctx) {
       if (rf & 1) {
-        var _r58 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r57 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 29);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_5_Template_input_ngModelChange_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r58);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r57);
 
-          var p_r56 = ctx.$implicit;
-          return p_r56.value = $event;
+          var p_r55 = ctx.$implicit;
+          return p_r55.value = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var p_r56 = ctx.$implicit;
+        var p_r55 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r56.value);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r55.value);
       }
     }
 
     function PropertyGridComponent_ng_container_8_ng_template_6_option_1_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 32);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -722,44 +742,44 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var option_r61 = ctx.$implicit;
+        var option_r60 = ctx.$implicit;
 
-        var ctx_r60 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
+        var ctx_r59 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx_r60.optionValue(option_r61));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx_r59.optionValue(option_r60));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r60.optionLabel(option_r61), " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r59.optionLabel(option_r60), " ");
       }
     }
 
     function PropertyGridComponent_ng_container_8_ng_template_6_Template(rf, ctx) {
       if (rf & 1) {
-        var _r63 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r62 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "select", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "select", 30);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_6_Template_select_ngModelChange_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r62);
 
-          var p_r59 = ctx.$implicit;
-          return p_r59.value = $event;
+          var p_r58 = ctx.$implicit;
+          return p_r58.value = $event;
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_8_ng_template_6_option_1_Template, 2, 2, "option", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_8_ng_template_6_option_1_Template, 2, 2, "option", 31);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var p_r59 = ctx.$implicit;
+        var p_r58 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r59.value);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r58.value);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", p_r59.meta.options);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", p_r58.meta.options);
       }
     }
 
@@ -767,17 +787,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_8_ng_template_1_Template, 1, 1, "ng-template", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_8_ng_template_1_Template, 1, 1, "ng-template", 20);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PropertyGridComponent_ng_container_8_ng_template_2_Template, 1, 1, "ng-template", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PropertyGridComponent_ng_container_8_ng_template_2_Template, 1, 1, "ng-template", 21);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, PropertyGridComponent_ng_container_8_ng_template_3_Template, 1, 1, "ng-template", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, PropertyGridComponent_ng_container_8_ng_template_3_Template, 1, 1, "ng-template", 22);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, PropertyGridComponent_ng_container_8_ng_template_4_Template, 2, 1, "ng-template", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, PropertyGridComponent_ng_container_8_ng_template_4_Template, 2, 1, "ng-template", 23);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, PropertyGridComponent_ng_container_8_ng_template_5_Template, 1, 1, "ng-template", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, PropertyGridComponent_ng_container_8_ng_template_5_Template, 1, 1, "ng-template", 24);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, PropertyGridComponent_ng_container_8_ng_template_6_Template, 2, 2, "ng-template", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, PropertyGridComponent_ng_container_8_ng_template_6_Template, 2, 2, "ng-template", 25);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
       }
@@ -847,6 +867,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           } else {
             return undefined;
           }
+        }
+      }, {
+        key: "controlType",
+        value: function controlType(meta) {
+          if (meta.type instanceof _angular_core__WEBPACK_IMPORTED_MODULE_0__["Type"]) {
+            return 'dynamicComponent';
+          }
+
+          if (this.getTemplate(meta.type)) {
+            return 'template';
+          }
+
+          return 'templateNotFound';
         }
       }, {
         key: "propertyValue",
@@ -1010,7 +1043,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       },
       decls: 9,
       vars: 9,
-      consts: [[1, "property-grid", 3, "ngClass"], [3, "ngClass"], [1, "property-grid-table"], [4, "ngFor", "ngForOf"], ["class", "internal-property-grid", 3, "ngClass", 4, "ngFor", "ngForOf"], ["controlTemplate", ""], [4, "ngIf"], ["colspan", "2", 1, "property-grid-group", 3, "click"], [1, "property-grid-label", 3, "click"], [3, "title", 4, "ngIf"], [3, "title"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "internal-property-grid", 3, "ngClass"], [1, "property-grid-header", 3, "ngClass", "click"], [2, "display", "block", "overflow", "hidden", 3, "showHelp", "state", "options", "width", "labelWidth", "templateMap"], ["pg", ""], [1, "property-grid-control"], [4, "ngIf", "ngIfThen", "ngIfElse"], ["thenBlock", ""], ["elseBlock", ""], [3, "dynamicComponentLoad", "options"], ["ngxTemplate", "checkbox"], ["ngxTemplate", "color"], ["ngxTemplate", "date"], ["ngxTemplate", "label"], ["ngxTemplate", "text"], ["ngxTemplate", "options"], ["type", "checkbox", 3, "ngModel", "ngModelChange"], ["type", "color", 3, "ngModel", "ngModelChange"], ["type", "date", 3, "ngModel", "ngModelChange"], ["type", "text", 3, "ngModel", "ngModelChange"], [3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"]],
+      consts: [[1, "property-grid", 3, "ngClass"], [3, "ngClass"], [1, "property-grid-table"], [4, "ngFor", "ngForOf"], ["class", "internal-property-grid", 3, "ngClass", 4, "ngFor", "ngForOf"], ["controlTemplate", ""], [4, "ngIf"], ["colspan", "2", 1, "property-grid-group", 3, "click"], [1, "property-grid-label", 3, "click"], [3, "title", 4, "ngIf"], [3, "title"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "internal-property-grid", 3, "ngClass"], [1, "property-grid-header", 3, "ngClass", "click"], [2, "display", "block", "overflow", "hidden", 3, "showHelp", "state", "options", "width", "labelWidth", "templateMap"], ["pg", ""], [1, "property-grid-control", 3, "ngSwitch"], [4, "ngSwitchCase"], [3, "dynamicComponentLoad", "options", 4, "ngSwitchCase"], [3, "dynamicComponentLoad", "options"], ["ngxTemplate", "checkbox"], ["ngxTemplate", "color"], ["ngxTemplate", "date"], ["ngxTemplate", "label"], ["ngxTemplate", "text"], ["ngxTemplate", "options"], ["type", "checkbox", 3, "ngModel", "ngModelChange"], ["type", "color", 3, "ngModel", "ngModelChange"], ["type", "date", 3, "ngModel", "ngModelChange"], ["type", "text", 3, "ngModel", "ngModelChange"], [3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"]],
       template: function PropertyGridComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -1033,7 +1066,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, PropertyGridComponent_ng_template_6_Template, 6, 4, "ng-template", null, 5, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, PropertyGridComponent_ng_template_6_Template, 4, 5, "ng-template", null, 5, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, PropertyGridComponent_ng_container_8_Template, 7, 0, "ng-container", 6);
         }
@@ -1064,7 +1097,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.isInternal);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], PropertyGridComponent, _dynamic_component_load_directive__WEBPACK_IMPORTED_MODULE_5__["DynamicComponentLoadDirective"], ngx_template__WEBPACK_IMPORTED_MODULE_2__["NgxTemplate"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ɵangular_packages_forms_forms_x"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], PropertyGridComponent, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _dynamic_component_load_directive__WEBPACK_IMPORTED_MODULE_5__["DynamicComponentLoadDirective"], ngx_template__WEBPACK_IMPORTED_MODULE_2__["NgxTemplate"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ɵangular_packages_forms_forms_x"]],
       styles: [".property-grid[_ngcontent-%COMP%] {\n        \n      }\n\n      .property-grid-border[_ngcontent-%COMP%] {\n        border: 1px solid #d6d6d678\n      }\n\n      .property-grid-table[_ngcontent-%COMP%] {\n        border-spacing: 0;\n        padding: 5px\n      }\n\n      .property-grid-group[_ngcontent-%COMP%] {\n        background-color: white;\n        font-weight: bold;\n        color: #616161;\n        padding-top: 8px;\n        padding-bottom: 5px;\n      }\n\n      .property-grid-label[_ngcontent-%COMP%], .property-grid-control[_ngcontent-%COMP%] {\n        border: dotted 1px #ccc;\n        padding: 2px 5px;\n      }\n\n      .internal-property-grid[_ngcontent-%COMP%] {\n        margin-top: 12px;\n      }\n\n      .internal-property-grid[_ngcontent-%COMP%]   .property-grid[_ngcontent-%COMP%] {\n        border-width: 0;\n      }\n\n      .internal-property-grid[_ngcontent-%COMP%]   .property-grid-header[_ngcontent-%COMP%] {\n        margin-bottom: 5px;\n        background-color: #f5f5f5;\n        padding-bottom: 5px;\n        padding-top: 5px;\n        padding-left: 5px;\n        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n        -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n        width: 100%;\n      }\n\n      .internal-property-grid[_ngcontent-%COMP%]   .property-grid-header-margin[_ngcontent-%COMP%] {\n        margin-left: 5px;\n        margin-right: 5px;\n        width: unset;\n      }\n\n      .internal-property-grid[_ngcontent-%COMP%]   .property-grid-table[_ngcontent-%COMP%] {\n        border-width: 0;\n        \n      }\n\n      .card[_ngcontent-%COMP%] {\n        background-color: #fff;\n        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);\n        display: flex;\n        flex-flow: row wrap;\n        \n        padding: 0;\n      }\n\n      .internal-property-grid[_ngcontent-%COMP%]   ngx-property-grid[_ngcontent-%COMP%]   .card[_ngcontent-%COMP%] {\n        background-color: unset;\n        box-shadow: unset;\n        display: unset;\n        flex-flow: unset;\n        \n        padding: unset;\n      }"],
       data: {
         animation: [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('collapseAnimation', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('hidden', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
@@ -1087,7 +1120,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           selector: 'ngx-property-grid',
-          template: "\n    <div class=\"property-grid\" [ngClass]=\"!isInternal && !cardStyle ? 'property-grid-border': null\" [style.width]=\"width\">\n      <div [ngClass]=\"cardStyle ? 'card' : null\">\n        <table class=\"property-grid-table\" [style.width]=\"width\">\n          <tbody>\n          <ng-container *ngFor=\"let group of groups\">\n            <tr *ngIf=\"group.name\">\n              <td colspan=\"2\" class=\"property-grid-group\" (click)=\"groupCollapse && group.toggle()\">{{group.name}}</td>\n            </tr>\n\n            <ng-container *ngFor=\"let item of group.items\">\n              <tr *ngIf=\"group.state\">\n                <td [attr.colspan]=\"item.colSpan2 == true ? 2 : 1\"\n                    class=\"property-grid-label\"\n                    [style.cursor]=\"item.link ? 'pointer' : null\"\n                    (click)=\"openLink(item.link)\">\n                  {{item.name}}\n                  <span *ngIf=\"showHelp && item.showHelp && item.description\" [title]=\"item.description\">[?]</span>\n                </td>\n                <ng-container *ngIf=\"!item.colSpan2\">\n                  <ng-container\n                    *ngTemplateOutlet=\"controlTemplate; context: {$implicit: item}\">\n                  </ng-container>\n                </ng-container>\n              </tr>\n              <tr *ngIf=\"group.state && item.colSpan2\">\n                <ng-container *ngTemplateOutlet=\"controlTemplate; context: {$implicit: item}\"></ng-container>\n              </tr>\n            </ng-container>\n          </ng-container>\n          </tbody>\n        </table>\n      </div>\n\n      <div *ngFor=\"let item of subItems\" class=\"internal-property-grid\" [ngClass]=\"cardStyle ? 'card' : null\">\n        <div (click)=\"pg.toggle()\" class=\"property-grid-header\"\n             [ngClass]=\"cardStyle ? null : 'property-grid-header-margin'\">\n          <b>{{item.name}}</b>\n        </div>\n        <ngx-property-grid\n          [showHelp]=\"showHelp\"\n          [state]=\"item.initState\"\n          [@collapseAnimation]=\"pg.state\"\n          [options]=\"options[item.key]\"\n          [width]=\"width\"\n          [labelWidth]=\"labelWidth\"\n          [templateMap]=\"templateMap\"\n          style=\"display: block;overflow: hidden\"\n          #pg>\n        </ngx-property-grid>\n      </div>\n    </div>\n\n\n    <ng-template #controlTemplate let-item>\n      <td [attr.colspan]=\"item.colSpan2 == true ? 2 : 1\" class=\"property-grid-control\">\n        <div *ngIf=\"templateLoaded && getTemplate(item.type); then thenBlock; else elseBlock\">this is ignored</div>\n        <ng-template #thenBlock>\n          <ng-container *ngTemplateOutlet=\"templateLoaded && getTemplate(item.type); context: {$implicit: propertyValue(item)}\">\n          </ng-container>\n        </ng-template>\n        <ng-template #elseBlock>\n          <ng-container\n            [dynamicComponentLoad]=\"item\"\n            [options]=\"options\">\n          </ng-container>\n        </ng-template>\n      </td>\n    </ng-template>\n\n\n    <ng-container *ngIf=\"!isInternal\">\n\n      <ng-template ngxTemplate=\"checkbox\" let-p>\n        <input type=\"checkbox\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"color\" let-p>\n        <input type=\"color\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"date\" let-p>\n        <input type=\"date\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"label\" let-p>\n        <label>{{p.value}}</label>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"text\" let-p>\n        <input type=\"text\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"options\" let-p>\n        <select [(ngModel)]=\"p.value\">\n          <option [value]=\"optionValue(option)\" *ngFor=\"let option of p.meta.options\">\n            {{optionLabel(option)}}\n          </option>\n        </select>\n      </ng-template>\n    </ng-container>\n  ",
+          template: "\n    <div class=\"property-grid\" [ngClass]=\"!isInternal && !cardStyle ? 'property-grid-border': null\" [style.width]=\"width\">\n      <div [ngClass]=\"cardStyle ? 'card' : null\">\n        <table class=\"property-grid-table\" [style.width]=\"width\">\n          <tbody>\n          <ng-container *ngFor=\"let group of groups\">\n            <tr *ngIf=\"group.name\">\n              <td colspan=\"2\" class=\"property-grid-group\" (click)=\"groupCollapse && group.toggle()\">{{group.name}}</td>\n            </tr>\n\n            <ng-container *ngFor=\"let item of group.items\">\n              <tr *ngIf=\"group.state\">\n                <td [attr.colspan]=\"item.colSpan2 == true ? 2 : 1\"\n                    class=\"property-grid-label\"\n                    [style.cursor]=\"item.link ? 'pointer' : null\"\n                    (click)=\"openLink(item.link)\">\n                  {{item.name}}\n                  <span *ngIf=\"showHelp && item.showHelp && item.description\" [title]=\"item.description\">[?]</span>\n                </td>\n                <ng-container *ngIf=\"!item.colSpan2\">\n                  <ng-container\n                    *ngTemplateOutlet=\"controlTemplate; context: {$implicit: item}\">\n                  </ng-container>\n                </ng-container>\n              </tr>\n              <tr *ngIf=\"group.state && item.colSpan2\">\n                <ng-container *ngTemplateOutlet=\"controlTemplate; context: {$implicit: item}\"></ng-container>\n              </tr>\n            </ng-container>\n          </ng-container>\n          </tbody>\n        </table>\n      </div>\n\n      <div *ngFor=\"let item of subItems\" class=\"internal-property-grid\" [ngClass]=\"cardStyle ? 'card' : null\">\n        <div (click)=\"pg.toggle()\" class=\"property-grid-header\"\n             [ngClass]=\"cardStyle ? null : 'property-grid-header-margin'\">\n          <b>{{item.name}}</b>\n        </div>\n        <ngx-property-grid\n          [showHelp]=\"showHelp\"\n          [state]=\"item.initState\"\n          [@collapseAnimation]=\"pg.state\"\n          [options]=\"options[item.key]\"\n          [width]=\"width\"\n          [labelWidth]=\"labelWidth\"\n          [templateMap]=\"templateMap\"\n          style=\"display: block;overflow: hidden\"\n          #pg>\n        </ngx-property-grid>\n      </div>\n    </div>\n\n\n    <ng-template #controlTemplate let-item>\n      <td [ngSwitch]=\"controlType(item)\" [attr.colspan]=\"item.colSpan2 == true ? 2 : 1\" class=\"property-grid-control\">\n        <ng-container *ngSwitchCase=\"'template'\">\n          <ng-container *ngTemplateOutlet=\"getTemplate(item.type); context: {$implicit: propertyValue(item)}\">\n          </ng-container>\n        </ng-container>\n\n        <ng-container\n          *ngSwitchCase=\"'dynamicComponent'\"\n          [dynamicComponentLoad]=\"item\"\n          [options]=\"options\">\n        </ng-container>\n\n        <span *ngSwitchCase=\"'templateNotFound'\">\n          {{item.type}} template Not Found\n        </span>\n      </td>\n    </ng-template>\n\n\n    <ng-container *ngIf=\"!isInternal\">\n\n      <ng-template ngxTemplate=\"checkbox\" let-p>\n        <input type=\"checkbox\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"color\" let-p>\n        <input type=\"color\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"date\" let-p>\n        <input type=\"date\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"label\" let-p>\n        <label>{{p.value}}</label>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"text\" let-p>\n        <input type=\"text\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"options\" let-p>\n        <select [(ngModel)]=\"p.value\">\n          <option [value]=\"optionValue(option)\" *ngFor=\"let option of p.meta.options\">\n            {{optionLabel(option)}}\n          </option>\n        </select>\n      </ng-template>\n    </ng-container>\n  ",
           styles: ["\n      .property-grid {\n        /*border: solid 1px #95B8E7;*/\n      }\n\n      .property-grid-border {\n        border: 1px solid #d6d6d678\n      }\n\n      .property-grid-table {\n        border-spacing: 0;\n        padding: 5px\n      }\n\n      .property-grid-group {\n        background-color: white;\n        font-weight: bold;\n        color: #616161;\n        padding-top: 8px;\n        padding-bottom: 5px;\n      }\n\n      .property-grid-label, .property-grid-control {\n        border: dotted 1px #ccc;\n        padding: 2px 5px;\n      }\n\n      .internal-property-grid {\n        margin-top: 12px;\n      }\n\n      .internal-property-grid .property-grid {\n        border-width: 0;\n      }\n\n      .internal-property-grid .property-grid-header {\n        margin-bottom: 5px;\n        background-color: #f5f5f5;\n        padding-bottom: 5px;\n        padding-top: 5px;\n        padding-left: 5px;\n        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n        -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n        width: 100%;\n      }\n\n      .internal-property-grid .property-grid-header-margin {\n        margin-left: 5px;\n        margin-right: 5px;\n        width: unset;\n      }\n\n      .internal-property-grid .property-grid-table {\n        border-width: 0;\n        /*border-top: 1px solid #dbdbdb;*/\n      }\n\n      .card {\n        background-color: #fff;\n        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);\n        display: flex;\n        flex-flow: row wrap;\n        /*margin: 5px 20px;*/\n        padding: 0;\n      }\n\n      .internal-property-grid ngx-property-grid .card {\n        background-color: unset;\n        box-shadow: unset;\n        display: unset;\n        flex-flow: unset;\n        /*margin: 5px 20px;*/\n        padding: unset;\n      }\n    "],
           animations: [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('collapseAnimation', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('hidden', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
             height: '0'

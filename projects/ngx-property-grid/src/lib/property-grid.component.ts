@@ -4,7 +4,7 @@ import {
   ContentChildren, ElementRef,
   Input,
   QueryList,
-  TemplateRef, ViewChildren
+  TemplateRef, Type, ViewChildren
 } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {NgxTemplate} from 'ngx-template';
@@ -68,18 +68,21 @@ import {PropertyValue} from './property-value';
 
 
     <ng-template #controlTemplate let-item>
-      <td [attr.colspan]="item.colSpan2 == true ? 2 : 1" class="property-grid-control">
-        <div *ngIf="templateLoaded && getTemplate(item.type); then thenBlock; else elseBlock">this is ignored</div>
-        <ng-template #thenBlock>
-          <ng-container *ngTemplateOutlet="templateLoaded && getTemplate(item.type); context: {$implicit: propertyValue(item)}">
+      <td [ngSwitch]="controlType(item)" [attr.colspan]="item.colSpan2 == true ? 2 : 1" class="property-grid-control">
+        <ng-container *ngSwitchCase="'template'">
+          <ng-container *ngTemplateOutlet="getTemplate(item.type); context: {$implicit: propertyValue(item)}">
           </ng-container>
-        </ng-template>
-        <ng-template #elseBlock>
-          <ng-container
-            [dynamicComponentLoad]="item"
-            [options]="options">
-          </ng-container>
-        </ng-template>
+        </ng-container>
+
+        <ng-container
+          *ngSwitchCase="'dynamicComponent'"
+          [dynamicComponentLoad]="item"
+          [options]="options">
+        </ng-container>
+
+        <span *ngSwitchCase="'templateNotFound'">
+          {{item.type}} template Not Found
+        </span>
       </td>
     </ng-template>
 
@@ -313,12 +316,22 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     }
   }
 
-  public getTemplate(type: string | any): TemplateRef<any> {
+  public getTemplate(type: string): TemplateRef<any> {
     if (typeof type === 'string' && this.templateMap) {
       return type ? this.templateMap[type] : this.templateMap.default;
     } else {
       return undefined;
     }
+  }
+
+  public controlType(meta: PropertyItemMeta): 'template' | 'dynamicComponent' | 'templateNotFound' {
+    if (meta.type instanceof Type) {
+      return 'dynamicComponent';
+    }
+    if (this.getTemplate(meta.type)) {
+      return 'template';
+    }
+    return 'templateNotFound';
   }
 
   public propertyValue(meta: PropertyItemMeta): PropertyValue {
