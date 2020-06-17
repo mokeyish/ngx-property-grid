@@ -34,10 +34,10 @@
 <p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" class="img-responsive"></a>
 <a href="https://badge.fury.io/js/ngx-property-grid"><img src="https://badge.fury.io/js/ngx-property-grid.svg" alt="npm version" class="img-responsive"></a>
 <a href="https://travis-ci.org/mokeyish/ngx-property-grid"><img src="https://travis-ci.org/mokeyish/ngx-property-grid.svg?branch=master" alt="Build Status" class="img-responsive"></a></p>
-<p>A small and simple property grid in angular to view/edit POJOs, excellent if you have a &quot;settings&quot; object you want to give the user to edit (that&#39;s why I have created it). <a href="https://stackblitz.com/edit/angular-veuf4i">Play online</a>.</p>
+<p>A small and simple property grid in angular to view/edit POJOs, excellent if you have a &quot;settings&quot; object you want to give the user to edit (that&#39;s why I have created it). <a href="https://stackblitz.com/edit/angular-xd44ol">Play online</a>.</p>
 <h2 id="dependencies">Dependencies</h2>
 <ul>
-<li>angular2+</li>
+<li>angular9+</li>
 <li><a href="https://www.npmjs.com/package/ngx-template">ngx-template</a></li>
 </ul>
 <h2 id="usage">Usage</h2>
@@ -98,7 +98,7 @@
     order?: number; // The display order.
     group?: string; //  The group this property belongs to
     hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
-    initState?: string; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
+    initState?: &#39;hidden&#39; | &#39;visible&#39;; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
     type?: &#39;color&#39; | &#39;date&#39; | &#39;checkbox&#39; | &#39;text&#39; | &#39;options&#39; | string | Type&lt;ControlValueAccessor | ICustomDynamicComponent&lt;any&gt;&gt;;
     // options: boolean number options label color,
     // or an custom component should be implement ControlValueAccessor or ICustomDynamicComponent&lt;any&gt;

@@ -286,7 +286,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>initState:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>initState:     <code>&quot;hidden&quot; | &quot;visible&quot;</code>
 </code>
                                     </td>
                                 </tr>
@@ -294,7 +294,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>    <code>&quot;hidden&quot; | &quot;visible&quot;</code>
 
                                         </td>
                                     </tr>
@@ -583,8 +583,10 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Type} from &#x27;@angular/core&#x27;;
-import {ICustomDynamicComponent} from &#x27;./custom.component&#x27;;
+import {ICustomDynamicComponent} from &#x27;./load-component.directive&#x27;;
 import {ControlValueAccessor} from &#x27;@angular/forms&#x27;;
+
+export { ICustomDynamicComponent };
 
 export interface PropertyItemMeta {
     readonly key?: PropertyKey; // auto generate.
@@ -593,7 +595,7 @@ export interface PropertyItemMeta {
     order?: number; // The display order.
     group?: string; //  The group this property belongs to
     hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
-    initState?: string; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
+    initState?: &#x27;hidden&#x27; | &#x27;visible&#x27;; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
     type?: &#x27;color&#x27; | &#x27;date&#x27; | &#x27;checkbox&#x27; | &#x27;text&#x27; | &#x27;options&#x27; | string | Type&lt;ControlValueAccessor | ICustomDynamicComponent&lt;any&gt;&gt;;
     // options: boolean number options label color,
     // or an custom component should be implement ControlValueAccessor or ICustomDynamicComponent&lt;any&gt;

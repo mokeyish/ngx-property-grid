@@ -60,23 +60,34 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PropertyGridModule.html" data-type="entity-link">PropertyGridModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PropertyGridModule-5b82db862314efde6de89379dd7e2d48"' : 'data-target="#xs-components-links-module-PropertyGridModule-5b82db862314efde6de89379dd7e2d48"' }>
+                                            'data-target="#components-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' : 'data-target="#xs-components-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PropertyGridModule-5b82db862314efde6de89379dd7e2d48"' :
-                                            'id="xs-components-links-module-PropertyGridModule-5b82db862314efde6de89379dd7e2d48"' }>
-                                            <li class="link">
-                                                <a href="components/CustomComponent.html"
-                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">CustomComponent</a>
-                                            </li>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' :
+                                            'id="xs-components-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' }>
                                             <li class="link">
                                                 <a href="components/PropertyGridComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">PropertyGridComponent</a>
                                             </li>
                                         </ul>
                                     </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                        'data-target="#directives-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' : 'data-target="#xs-directives-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' }>
+                                        <span class="icon ion-md-code-working"></span>
+                                        <span>Directives</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' :
+                                        'id="xs-directives-links-module-PropertyGridModule-bfc2e5f078f36183dd67901d7bd50ebb"' }>
+                                        <li class="link">
+                                            <a href="directives/LoadComponentDirective.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules">LoadComponentDirective</a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </li>
                 </ul>
                 </li>

@@ -61,7 +61,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ngx-property-grid/src/lib/custom.component.ts</code>
+            <code>projects/ngx-property-grid/src/lib/load-component.directive.ts</code>
         </p>
 
 
@@ -159,28 +159,24 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-    Component,
-    ComponentFactoryResolver,
-    ComponentRef,
-    EventEmitter,
-    Input,
-    OnInit,
-    Output,
-    Type,
-    ViewChild,
-    ViewContainerRef
+  ComponentFactoryResolver,
+  ComponentRef, Directive,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  Type,
+  ViewContainerRef
 } from &#x27;@angular/core&#x27;;
 import {ControlValueAccessor} from &#x27;@angular/forms&#x27;;
 
-@Component({
-    selector: &#x27;custom-component&#x27;,
-    template: &#x27;&lt;ng-container #container&gt;&lt;/ng-container&gt;&#x27;,
+@Directive({
+    selector: &#x27;[loadComponent]&#x27;,
 })
-export class CustomComponent implements OnInit, ICustomDynamicComponent&lt;any&gt; {
+export class LoadComponentDirective implements OnInit, ICustomDynamicComponent&lt;any&gt; {
     private readonly _controlValueChangeFn: (value: any) &#x3D;&gt; void;
     private _value: any;
 
-    @ViewChild(&#x27;container&#x27;, { read: ViewContainerRef }) entry;
     private component: ComponentRef&lt;ICustomDynamicComponent&lt;any&gt;&gt;;
 
     @Input() componentType: Type&lt;PropertyValueAccess&gt;;
@@ -203,7 +199,7 @@ export class CustomComponent implements OnInit, ICustomDynamicComponent&lt;any&g
     readonly valueChange: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
 
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+    constructor(private entry: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {
         this._controlValueChangeFn &#x3D; (value: any) &#x3D;&gt; this.onValueChange(value);
     }
 
