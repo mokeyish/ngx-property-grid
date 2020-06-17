@@ -1,5 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
+// noinspection ES6PreferShortImport
 import {PropertyGridComponent} from './property-grid.component';
 
 describe('PropertyGridComponent', () => {

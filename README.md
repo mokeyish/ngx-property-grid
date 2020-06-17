@@ -73,7 +73,7 @@ A small and simple property grid in angular to view/edit POJOs, excellent if you
     order?: number; // The display order.
     group?: string; //  The group this property belongs to
     hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
-    initState?: string; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
+    initState?: 'hidden' | 'visible'; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
     type?: 'color' | 'date' | 'checkbox' | 'text' | 'options' | string | Type<ControlValueAccessor | ICustomDynamicComponent<any>>;
     // options: boolean number options label color,
     // or an custom component should be implement ControlValueAccessor or ICustomDynamicComponent<any>

@@ -1,24 +1,24 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {CustomComponent, ICustomDynamicComponent} from './custom.component';
+import {LoadComponentDirective} from './load-component.directive';
 import {PropertyGridComponent} from './property-grid.component';
 import {NgxTemplateModule} from 'ngx-template';
+import {FormsModule} from '@angular/forms';
 
-export {ICustomDynamicComponent} from './custom.component';
 export {PropertyGridComponent, PropertyValue} from './property-grid.component';
 export {meta, PropertyItemMeta} from './property-item-meta';
 
 @NgModule({
-    imports: [
-        CommonModule, NgxTemplateModule
-    ],
-    declarations: [
-        PropertyGridComponent,
-        CustomComponent
-    ],
-    exports: [
-        PropertyGridComponent
-    ]
+  imports: [
+    CommonModule, FormsModule, NgxTemplateModule
+  ],
+  declarations: [
+    PropertyGridComponent,
+    LoadComponentDirective
+  ],
+  exports: [
+    PropertyGridComponent
+  ]
 })
 export class PropertyGridModule {
 }

@@ -34,6 +34,9 @@
             "scripts": []
           },
           "configurations": {
+            "lib-prod": {
+              "tsConfig": "tsconfig.dist.json"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -72,6 +75,9 @@
           "configurations": {
             "production": {
               "browserTarget": "demo-app:build:production"
+            },
+            "lib-prod": {
+              "browserTarget": "demo-app:build:lib-prod"
             }
           }
         },

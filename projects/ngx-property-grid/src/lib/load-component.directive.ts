@@ -1,26 +1,22 @@
 import {
-    Component,
-    ComponentFactoryResolver,
-    ComponentRef,
-    EventEmitter,
-    Input,
-    OnInit,
-    Output,
-    Type,
-    ViewChild,
-    ViewContainerRef
+  ComponentFactoryResolver,
+  ComponentRef, Directive,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  Type,
+  ViewContainerRef
 } from '@angular/core';
 import {ControlValueAccessor} from '@angular/forms';
 
-@Component({
-    selector: 'custom-component',
-    template: '<ng-container #container></ng-container>',
+@Directive({
+    selector: '[loadComponent]',
 })
-export class CustomComponent implements OnInit, ICustomDynamicComponent<any> {
+export class LoadComponentDirective implements OnInit, ICustomDynamicComponent<any> {
     private readonly _controlValueChangeFn: (value: any) => void;
     private _value: any;
 
-    @ViewChild('container', { read: ViewContainerRef }) entry;
     private component: ComponentRef<ICustomDynamicComponent<any>>;
 
     @Input() componentType: Type<PropertyValueAccess>;
@@ -43,7 +39,7 @@ export class CustomComponent implements OnInit, ICustomDynamicComponent<any> {
     readonly valueChange: EventEmitter<any> = new EventEmitter<any>();
 
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+    constructor(private entry: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {
         this._controlValueChangeFn = (value: any) => this.onValueChange(value);
     }
 

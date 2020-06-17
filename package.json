@@ -1,7 +1,7 @@
 {
   "name": "ngx-property-grid",
   "description": "A small and simple property grid in angular to view/edit POJOs, excellent if you have a \"settings\" object you want to give the user to edit.",
-  "version": "9.0.1",
+  "version": "9.0.2",
   "private": false,
   "authors": [
     "mokeyish"
@@ -23,14 +23,16 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-lib-prod": "ng serve --configuration=lib-prod",
     "build": "ng build",
     "build-lib": "ng build ngx-property-grid --prod",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --fix",
     "e2e": "ng e2e",
     "publish-npm": "npm run build-lib && npm publish dist/ngx-property-grid",
     "doc:build": "./node_modules/.bin/compodoc -p projects/ngx-property-grid/tsconfig.lib.json -d ./docs && ng build --aot --output-path docs/demo --base-href /demo/",
-    "doc:buildandserve": "./node_modules/.bin/compodoc -p projects/ngx-property-grid/tsconfig.lib.json -d ./docs -s"
+    "doc:buildandserve": "./node_modules/.bin/compodoc -p projects/ngx-property-grid/tsconfig.lib.json -d ./docs -s",
+    "publish": "cd ./dist/ngx-property-grid && npm publish"
   },
   "peerDependencies": {
     "@angular/common": "^9.1.4",

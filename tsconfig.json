@@ -17,10 +17,7 @@
     ],
     "paths": {
       "ngx-property-grid": [
-        "dist/ngx-property-grid/ngx-property-grid",
-        "dist/ngx-property-grid"
-//        "projects/ngx-property-grid/src/public-api.ts",
-//        "projects/ngx-property-grid/src/lib/"
+        "projects/ngx-property-grid/src/public-api.ts"
       ]
     }
   },

@@ -1,7 +1,7 @@
 import {Component, EventEmitter} from '@angular/core';
-import {MatCheckbox} from "@angular/material/checkbox";
-import {MatSlideToggle} from "@angular/material/slide-toggle";
-import {ICustomDynamicComponent, meta} from "ngx-property-grid";
+import {MatCheckbox} from '@angular/material/checkbox';
+import {MatSlideToggle} from '@angular/material/slide-toggle';
+import {ICustomDynamicComponent, meta} from 'ngx-property-grid';
 
 @Component({
     selector: 'app-root',
