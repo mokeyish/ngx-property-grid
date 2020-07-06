@@ -6,8 +6,19 @@ export class PropertyValue {
   }
 
   public set value(val: any) {
-    this.o[this.meta.key] = this.meta.valueConvert ? this.meta.valueConvert(val) : val;
+    const oldValue = this.o[this.meta.key];
+    const newValue = this.meta.valueConvert ? this.meta.valueConvert(val) : val;
+
+    this.o[this.meta.key] = newValue;
+    if (this.meta.valueChanged) {
+      this.meta.valueChanged(newValue, oldValue);
+    }
   }
+
+  public get options(): any {
+    return this.meta.options;
+  }
+
   constructor(private o: any, public meta: PropertyItemMeta) {
   }
 }

@@ -81,6 +81,7 @@ A small and simple property grid in angular to view/edit POJOs, excellent if you
     colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
     // (useful for textarea custom type)
     valueConvert?: (value: any) => any; // convert the value, eg. parseInt
+    valueChanged?: (newValue: any, oldValue: any) => void; 
 }
 ```
 

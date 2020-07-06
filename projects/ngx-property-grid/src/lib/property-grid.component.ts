@@ -68,9 +68,9 @@ import {PropertyValue} from './property-value';
 
 
     <ng-template #controlTemplate let-item>
-      <td [ngSwitch]="controlType(item)" [attr.colspan]="item.colSpan2 == true ? 2 : 1" class="property-grid-control">
+      <td [ngSwitch]="controlType(item)" [attr.colspan]="$any(item).colSpan2 == true ? 2 : 1" class="property-grid-control">
         <ng-container *ngSwitchCase="'template'">
-          <ng-container *ngTemplateOutlet="getTemplate(item.type); context: {$implicit: propertyValue(item)}">
+          <ng-container *ngTemplateOutlet="getTemplate($any(item).type); context: {$implicit: propertyValue(item)}">
           </ng-container>
         </ng-container>
 
@@ -90,28 +90,28 @@ import {PropertyValue} from './property-value';
     <ng-container *ngIf="!isInternal">
 
       <ng-template ngxTemplate="checkbox" let-p>
-        <input type="checkbox" [(ngModel)]="p.value"/>
+        <input type="checkbox" [(ngModel)]="$any(p).value"/>
       </ng-template>
 
       <ng-template ngxTemplate="color" let-p>
-        <input type="color" [(ngModel)]="p.value"/>
+        <input type="color" [(ngModel)]="$any(p).value"/>
       </ng-template>
 
       <ng-template ngxTemplate="date" let-p>
-        <input type="date" [(ngModel)]="p.value"/>
+        <input type="date" [(ngModel)]="$any(p).value"/>
       </ng-template>
 
       <ng-template ngxTemplate="label" let-p>
-        <label>{{p.value}}</label>
+        <label>{{$any(p).value}}</label>
       </ng-template>
 
       <ng-template ngxTemplate="text" let-p>
-        <input type="text" [(ngModel)]="p.value"/>
+        <input type="text" [(ngModel)]="$any(p).value"/>
       </ng-template>
 
       <ng-template ngxTemplate="options" let-p>
-        <select [(ngModel)]="p.value">
-          <option [value]="optionValue(option)" *ngFor="let option of p.meta.options">
+        <select [(ngModel)]="$any(p).value">
+          <option [value]="optionValue(option)" *ngFor="let option of $any(p).options">
             {{optionLabel(option)}}
           </option>
         </select>
