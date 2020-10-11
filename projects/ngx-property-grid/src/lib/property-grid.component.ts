@@ -24,7 +24,7 @@ import {PropertyValue} from './property-value';
             </tr>
 
             <ng-container *ngFor="let item of group.items">
-              <tr *ngIf="group.state">
+              <tr *ngIf="group.state" [attr.class]="item.readonly ? 'property-grid-readonly' : null">
                 <td [attr.colspan]="item.colSpan2 == true ? 2 : 1"
                     class="property-grid-label"
                     [style.cursor]="item.link ? 'pointer' : null"
@@ -90,15 +90,15 @@ import {PropertyValue} from './property-value';
     <ng-container *ngIf="!isInternal">
 
       <ng-template ngxTemplate="checkbox" let-p>
-        <input type="checkbox" [(ngModel)]="$any(p).value"/>
+        <input type="checkbox" [(ngModel)]="$any(p).value"  [disabled]="$any(p).readonly"/>
       </ng-template>
 
       <ng-template ngxTemplate="color" let-p>
-        <input type="color" [(ngModel)]="$any(p).value"/>
+        <input type="color" [(ngModel)]="$any(p).value" [disabled]="$any(p).readonly"/>
       </ng-template>
 
       <ng-template ngxTemplate="date" let-p>
-        <input type="date" [(ngModel)]="$any(p).value"/>
+        <input type="date" [(ngModel)]="$any(p).value" [disabled]="$any(p).readonly"/>
       </ng-template>
 
       <ng-template ngxTemplate="label" let-p>
@@ -106,11 +106,11 @@ import {PropertyValue} from './property-value';
       </ng-template>
 
       <ng-template ngxTemplate="text" let-p>
-        <input type="text" [(ngModel)]="$any(p).value"/>
+        <input type="text" [(ngModel)]="$any(p).value" [disabled]="$any(p).readonly"/>
       </ng-template>
 
       <ng-template ngxTemplate="options" let-p>
-        <select [(ngModel)]="$any(p).value">
+        <select [(ngModel)]="$any(p).value" [disabled]="$any(p).readonly">
           <option [value]="optionValue(option)" *ngFor="let option of $any(p).options">
             {{optionLabel(option)}}
           </option>
@@ -144,6 +144,9 @@ import {PropertyValue} from './property-value';
       .property-grid-label, .property-grid-control {
         border: dotted 1px #ccc;
         padding: 2px 5px;
+      }
+
+      .property-grid-readonly {
       }
 
       .internal-property-grid {

@@ -53,6 +53,7 @@ export class DynamicComponentLoadDirective implements OnInit, OnDestroy, OnChang
       // this.entry.clear();
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory<PropertyValueAccess>(this.componentType);
       const component = this.entry.createComponent(componentFactory, 0);
+      component.instance["disabled"] = this.meta.readonly == true;
       this.initComponent(component);
       this.component = component;
     } catch (e) {

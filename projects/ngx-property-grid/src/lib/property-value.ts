@@ -15,6 +15,10 @@ export class PropertyValue {
     }
   }
 
+  public get readonly(): boolean {
+    return this.meta.readonly == true;
+  }
+
   public get options(): any {
     return this.meta.options;
   }

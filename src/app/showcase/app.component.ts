@@ -22,11 +22,13 @@ export class AppComponent {
 
 @Component({
     selector: 'app-text-editor',
-    template: `<input type="text" [value]="value" (change)="valueChange.emit($event.target.value)"/>`
+    template: `<input type="text" [value]="value" [disabled]="disabled" (change)="valueChange.emit($event.target.value)" />`
 })
 export class SimpleTextEditorComponent implements IDynamicComponent<string> {
     value: string;
     valueChange: EventEmitter<string> = new EventEmitter<string>();
+    disabled: boolean;
+    disabledChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 }
 
 export class ExampleEditorOptions {
@@ -42,7 +44,7 @@ export class ExampleEditorOptions {
     @meta({name: 'Font color', group: 'Editor', type: 'color'})
     fontColor = '#51f41c';
 
-    @meta({name: 'jQuery', group: 'Plugins', type: MatCheckbox})
+    @meta({name: 'jQuery', group: 'Plugins', type: 'checkbox'})
     jQuery = true;
 
     @meta({name: 'Card Style', group: 'Style', type: MatCheckbox})
@@ -73,6 +75,9 @@ export class ExampleStudentOptions {
 
     @meta({name: 'Name', group: 'Basic Information', type: 'text', order: 1, link: 'http://www.baidu.com'})
     name = 'Lily';
+
+    @meta({name: 'Description', group: 'Basic Information', type: 'text', readonly:true, order: 1, link: 'http://www.baidu.com'})
+    description = 'A readonly string';
 
     @meta({name: 'Age', group: 'Basic Information1', valueConvert: parseInt, type: 'text', order: 2})
     age = 19;
