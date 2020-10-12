@@ -1,3 +1,4 @@
+import { PropertyGridComponent } from './property-grid.component';
 import {PropertyItemMeta} from './property-item-meta';
 
 export class PropertyValue {
@@ -13,12 +14,17 @@ export class PropertyValue {
     if (this.meta.valueChanged) {
       this.meta.valueChanged(newValue, oldValue);
     }
+    this.propertyGrid.onValueChanged();
+  }
+
+  public get readonly(): boolean {
+    return this.meta.readonly == true;
   }
 
   public get options(): any {
     return this.meta.options;
   }
 
-  constructor(private o: any, public meta: PropertyItemMeta) {
+  constructor(private propertyGrid: PropertyGridComponent, private o: any, public meta: PropertyItemMeta) {
   }
 }

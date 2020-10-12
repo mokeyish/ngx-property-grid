@@ -8,6 +8,7 @@ export interface PropertyItemMeta {
   description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text "[?]")
   order?: number; // The display order.
   group?: string; //  The group this property belongs to
+  readonly?: boolean; // Whether this property should be readonly, default is false (can be omitted), when set it also adds the 'property-grid-readonly' style onto the 'tr' element.
   hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
   initState?: 'hidden' | 'visible'; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
   type?: 'color' | 'date' | 'checkbox' | 'text' | 'options' | string | Type<ControlValueAccessor | IDynamicComponent<any>>;
