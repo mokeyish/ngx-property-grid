@@ -6,10 +6,11 @@ import {
   QueryList,
   TemplateRef, Type, ViewChildren
 } from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {NgxTemplate} from 'ngx-template';
-import {PropertyItemMeta} from './property-item-meta';
-import {PropertyValue} from './property-value';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { NgxTemplate } from 'ngx-template';
+import { PropertyItemMeta } from './property-item-meta';
+import { PropertyValue } from './property-value';
+import { IPropertyGridMetaDataProvider } from './IPropertyGridMetaDataProvider';
 
 @Component({
   selector: 'ngx-property-grid',
@@ -98,7 +99,7 @@ import {PropertyValue} from './property-value';
       </ng-template>
 
       <ng-template ngxTemplate="date" let-p>
-        <input type="date" [(ngModel)]="$any(p).value" [disabled]="$any(p).readonly"/>
+        <input type="date" [value]="$any(p).value" (blur)="$any(p).value=$event.target.value" [disabled]="$any(p).readonly"/>
       </ng-template>
 
       <ng-template ngxTemplate="label" let-p>
@@ -106,7 +107,7 @@ import {PropertyValue} from './property-value';
       </ng-template>
 
       <ng-template ngxTemplate="text" let-p>
-        <input type="text" [(ngModel)]="$any(p).value" [disabled]="$any(p).readonly"/>
+        <input type="text" [value]="$any(p).value" (change)="$any(p).value = $event.target.value" [disabled]="$any(p).readonly"/>
       </ng-template>
 
       <ng-template ngxTemplate="options" let-p>
@@ -119,7 +120,7 @@ import {PropertyValue} from './property-value';
     </ng-container>
   `,
   styles: [
-      `
+    `
       .property-grid {
         /*border: solid 1px #95B8E7;*/
       }
@@ -210,20 +211,19 @@ import {PropertyValue} from './property-value';
       transition('visible <=> hidden', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
     ]),
     trigger('flyInOut', [
-      state('in', style({transform: 'translateX(0)'})),
+      state('in', style({ transform: 'translateX(0)' })),
       transition('void => *', [
-        style({transform: 'translateX(-100%)'}),
+        style({ transform: 'translateX(-100%)' }),
         animate(100)
       ]),
       transition('* => void', [
-        animate(100, style({transform: 'translateX(100%)'}))
+        animate(100, style({ transform: 'translateX(100%)' }))
       ])
     ])
   ]
 })
 export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
   private _options: any;
-  private _meta: any;
   private _templateLoaded = false;
   public get templateLoaded(): boolean {
     return this._templateLoaded;
@@ -254,25 +254,18 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
   showHelp = true;
 
   @Input()
-  public set meta(v: any) {
-    this._meta = v;
-    this.initMeta();
-  }
-
-  public get meta(): any {
-    return this._meta;
-  }
-
-  @Input()
   public set options(v: any) {
     this._options = v;
-    if (v.__meta__) {
-      this.meta = v.__meta__;
-    }
+    this.initMeta();
   }
 
   public get options(): any {
     return this._options;
+  }
+
+  onValueChanged():void{
+    this.initMeta();
+    this.cdr.detectChanges();
   }
 
   @ViewChildren(NgxTemplate) defaultTemplates: QueryList<NgxTemplate>;
@@ -338,7 +331,7 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
   }
 
   public propertyValue(meta: PropertyItemMeta): PropertyValue {
-    return new PropertyValue(this.options, meta);
+    return new PropertyValue(this, this.options, meta);
   }
 
   public toggle(): void {
@@ -346,19 +339,29 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
   }
 
   private initMeta(): void {
-    const meta: object = this.meta;
-    if (!meta) {
-      this.subItems = [];
-      return;
-    }
-
     const groups: InternalGroup[] = [new InternalGroup(undefined)];
     const subItems: PropertyItemMeta[] = [];
-    for (const i in meta) {
-      if (!meta.hasOwnProperty(i)) {
-        continue;
+    let properties: PropertyItemMeta[] = [];
+
+    if ('providePropertyGridMetaData' in this.options) {
+      properties = (<IPropertyGridMetaDataProvider>(this.options)).providePropertyGridMetaData();
+    }
+    else if (this.options.__meta__) {
+      for (const i in this.options.__meta__) {
+        if (!this.options.__meta__.hasOwnProperty(i)) {
+          continue;
+        }
+        const v: PropertyItemMeta = this.options.__meta__[i];
+        properties.push(v);
       }
-      const v: PropertyItemMeta = meta[i];
+    }
+    else {
+      console.warn("Property Grid Object will be ignored as it has no 'meta' data and does not implement IPropertyGridMetaDataProvider");
+
+    }
+
+    for (const v of properties) {
+
       if (v.hidden) {
         continue;
       }

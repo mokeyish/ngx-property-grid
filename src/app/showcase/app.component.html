@@ -1,4 +1,12 @@
 <div>
+    <button (click)="onHandleReset()">Reset Data</button> 
+</div>
+<mat-radio-group  [(ngModel)]="metaDataType">
+    <mat-radio-button value="static">Static Meta Data</mat-radio-button>
+    <mat-radio-button value="dynamic">Dynamic Meta Data (hint : change the gender radio)</mat-radio-button>
+</mat-radio-group>
+
+<div>
     <h1 style="text-align: center">Property Grid Example</h1>
     <div style="display: flex; flex-direction: row">
 
@@ -12,7 +20,7 @@
             </ng-template>
 
             <ng-template ngxTemplate="date" let-p>
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="p.value" [disabled]="p.readonly">
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [value]="p.value" (dateChange)="p.value=$event.target.value"  [disabled]="p.readonly">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </ng-template>
@@ -30,5 +38,4 @@
           <ngx-json-view [data]="data" [levelOpen]="1"></ngx-json-view>
         </div>
     </div>
-
 </div>

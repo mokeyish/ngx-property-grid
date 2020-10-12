@@ -1,23 +1,21 @@
 import {
   ComponentFactoryResolver,
   ComponentRef, Directive,
-  Input, OnChanges, OnDestroy,
-  OnInit, SimpleChanges,
+  Input,  OnDestroy,
+  OnInit, 
   Type,
   ViewContainerRef
 } from '@angular/core';
-import {ControlValueAccessor} from '@angular/forms';
-import {PropertyItemMeta} from './property-item-meta';
-import {PropertyValue} from './property-value';
-import {IDynamicComponent} from './dynamic-component';
+import { ControlValueAccessor } from '@angular/forms';
+import { PropertyItemMeta } from './property-item-meta';
+import { IDynamicComponent } from './dynamic-component';
 
 @Directive({
   selector: '[dynamicComponentLoad]',
 })
-export class DynamicComponentLoadDirective implements OnInit, OnDestroy, OnChanges {
+export class DynamicComponentLoadDirective implements OnInit, OnDestroy {
   private readonly _controlValueChangeFn: (value: any) => void;
   private component: ComponentRef<IDynamicComponent<any>>;
-  private propertyValue: PropertyValue;
   private get componentType(): Type<PropertyValueAccess> {
     return this.meta.type as Type<PropertyValueAccess>;
   }
@@ -27,12 +25,13 @@ export class DynamicComponentLoadDirective implements OnInit, OnDestroy, OnChang
   public options: any;
 
   constructor(private entry: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {
-    this._controlValueChangeFn = (value: any) => this.propertyValue.value = value;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.options) {
-      this.propertyValue = new PropertyValue(changes.options.currentValue, this.meta);
+    this._controlValueChangeFn = (value: any) => {
+      const oldValue = this.options[this.meta.key];
+      const newValue = this.meta.valueConvert ? this.meta.valueConvert(value) : value;
+      this.options[this.meta.key] = newValue;
+      if (this.meta.valueChanged) {
+        this.meta.valueChanged(newValue, oldValue);
+      }
     }
   }
 
@@ -50,7 +49,6 @@ export class DynamicComponentLoadDirective implements OnInit, OnDestroy, OnChang
     }
     try {
       this.destroyComponent();
-      // this.entry.clear();
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory<PropertyValueAccess>(this.componentType);
       const component = this.entry.createComponent(componentFactory, 0);
       component.instance["disabled"] = this.meta.readonly == true;
@@ -63,7 +61,7 @@ export class DynamicComponentLoadDirective implements OnInit, OnDestroy, OnChang
   }
 
   private initComponent(component: ComponentRef<PropertyValueAccess>) {
-    component.instance.value = this.propertyValue.value;
+    component.instance.value = this.options[this.meta.key]; 
     if (component.instance.registerOnChange) {
       component.instance.registerOnChange(this._controlValueChangeFn);
     }
