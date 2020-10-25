@@ -103,6 +103,9 @@
                                 <li>
                                     <a href="#value">value</a>
                                 </li>
+                                <li>
+                                    <a href="#options">options</a>
+                                </li>
                             </ul>
                         </td>
                     </tr>
@@ -121,7 +124,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ngx-property-grid/src/lib/property-value.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ngx-property-grid/src/lib/property-value.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -197,7 +200,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/ngx-property-grid/src/lib/property-value.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ngx-property-grid/src/lib/property-value.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -285,6 +288,28 @@
                     </tr>
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="options"></a>
+                        <span class="name"><b>options</b><a href="#options"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>options()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/ngx-property-grid/src/lib/property-value.ts:18</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
 </section>
     </div>
 
@@ -298,8 +323,19 @@ export class PropertyValue {
   }
 
   public set value(val: any) {
-    this.o[this.meta.key] &#x3D; this.meta.valueConvert ? this.meta.valueConvert(val) : val;
+    const oldValue &#x3D; this.o[this.meta.key];
+    const newValue &#x3D; this.meta.valueConvert ? this.meta.valueConvert(val) : val;
+
+    this.o[this.meta.key] &#x3D; newValue;
+    if (this.meta.valueChanged) {
+      this.meta.valueChanged(newValue, oldValue);
+    }
   }
+
+  public get options(): any {
+    return this.meta.options;
+  }
+
   constructor(private o: any, public meta: PropertyItemMeta) {
   }
 }

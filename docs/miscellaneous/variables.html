@@ -84,53 +84,53 @@
                     <tr>
                         <td class="col-md-4">
                             <i>Default value : </i><code>(itemMeta: PropertyItemMeta) &#x3D;&gt;
-    (target: any, key: PropertyKey) &#x3D;&gt; {
+  (target: any, key: PropertyKey) &#x3D;&gt; {
 
-        // region [adjust]
-        (itemMeta as any).key &#x3D; key;
-        if (typeof itemMeta.type &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+    // region [adjust]
+    (itemMeta as any).key &#x3D; key;
+    if (typeof itemMeta.type &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
 
-        } else {
+    } else {
 
-        }
-        if (!itemMeta.type) {
-            itemMeta.type &#x3D; &#x27;text&#x27;;
-        }
+    }
+    if (!itemMeta.type) {
+      itemMeta.type &#x3D; &#x27;text&#x27;;
+    }
 
-        if (itemMeta.type &#x3D;&#x3D;&#x3D; &#x27;number&#x27; &amp;&amp; !itemMeta.valueConvert) {
-            itemMeta.valueConvert &#x3D; parseInt;
-        }
+    if (itemMeta.type &#x3D;&#x3D;&#x3D; &#x27;number&#x27; &amp;&amp; !itemMeta.valueConvert) {
+      itemMeta.valueConvert &#x3D; parseInt;
+    }
 
-        if (!itemMeta.initState) {
-            itemMeta.initState &#x3D; &#x27;hidden&#x27;;
-        }
-        if (!itemMeta.order) {
-            itemMeta.order &#x3D; Number.MAX_VALUE;
-        }
-        if (itemMeta.showHelp &#x3D;&#x3D;&#x3D; undefined) {
-            itemMeta.showHelp &#x3D; true;
-        }
-        // endregion
+    if (itemMeta.collapse &#x3D;&#x3D;&#x3D; undefined) {
+      itemMeta.collapse &#x3D; true;
+    }
+    if (!itemMeta.order) {
+      itemMeta.order &#x3D; Number.MAX_VALUE;
+    }
+    if (itemMeta.showHelp &#x3D;&#x3D;&#x3D; undefined) {
+      itemMeta.showHelp &#x3D; true;
+    }
+    // endregion
 
-        let __meta__ &#x3D; target.__meta__;
-        if (!__meta__) {
-            __meta__ &#x3D; {};
-            target.__meta__ &#x3D; __meta__;
-        } else if (target.__proto__.__meta__ &#x3D;&#x3D;&#x3D; __meta__) {
-            const subMeta &#x3D; Object.create(Object.getPrototypeOf(__meta__));
-            Object.getOwnPropertyNames(__meta__).forEach(name &#x3D;&gt; {
-                Object.defineProperty(subMeta, name, Object.getOwnPropertyDescriptor(__meta__, name));
-            });
-            __meta__ &#x3D; subMeta;
-            target.__meta__ &#x3D; __meta__;
-        }
+    let __meta__ &#x3D; target.__meta__;
+    if (!__meta__) {
+      __meta__ &#x3D; {};
+      target.__meta__ &#x3D; __meta__;
+    } else if (target.__proto__.__meta__ &#x3D;&#x3D;&#x3D; __meta__) {
+      const subMeta &#x3D; Object.create(Object.getPrototypeOf(__meta__));
+      Object.getOwnPropertyNames(__meta__).forEach(name &#x3D;&gt; {
+        Object.defineProperty(subMeta, name, Object.getOwnPropertyDescriptor(__meta__, name));
+      });
+      __meta__ &#x3D; subMeta;
+      target.__meta__ &#x3D; __meta__;
+    }
 
-        Object.defineProperty(__meta__, key, {
-            enumerable: true,
-            get: () &#x3D;&gt; itemMeta,
-            set: (v) &#x3D;&gt; itemMeta &#x3D; v
-        });
-    }</code>
+    Object.defineProperty(__meta__, key, {
+      enumerable: true,
+      get: () &#x3D;&gt; itemMeta,
+      set: (v) &#x3D;&gt; itemMeta &#x3D; v
+    });
+  }</code>
                         </td>
                     </tr>
 

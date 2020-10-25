@@ -8,8 +8,8 @@ export interface PropertyItemMeta {
   description?: string; // A description of the property, will be used as tooltip on an hint element (a span with text "[?]")
   order?: number; // The display order.
   group?: string; //  The group this property belongs to
-  hidden?: boolean; // Whether this property should be hidden in the grid, default is false (can be omitted).
-  initState?: 'hidden' | 'visible'; // - hidden/visible. If hidden then subItems should init by hidden state. default is hidden
+  hidden?: boolean | ((obj: unknown) => boolean); // Whether this property should be hidden in the grid, default is false (can be omitted).
+  collapse?: boolean; // Whether the subItems should collapse. default is true
   type?: 'color' | 'date' | 'checkbox' | 'text' | 'options' | string | Type<ControlValueAccessor | IDynamicComponent<any>>;
   // options: boolean number options label color,
   // or an custom component should be implement ControlValueAccessor or ICustomDynamicComponent<any>
@@ -41,8 +41,8 @@ export const meta = (itemMeta: PropertyItemMeta) =>
       itemMeta.valueConvert = parseInt;
     }
 
-    if (!itemMeta.initState) {
-      itemMeta.initState = 'hidden';
+    if (itemMeta.collapse === undefined) {
+      itemMeta.collapse = true;
     }
     if (!itemMeta.order) {
       itemMeta.order = Number.MAX_VALUE;

@@ -106,6 +106,7 @@
     colSpan2?: boolean; //  - true/false. If true then property input will span both columns and will have no name/label
     // (useful for textarea custom type)
     valueConvert?: (value: any) =&gt; any; // convert the value, eg. parseInt
+    valueChanged?: (newValue: any, oldValue: any) =&gt; void; 
 }</code></pre></div><ul>
 <li>The result would be (<a href="https://ngx-property-grid.yish.vip/demo">live demo</a>):
 <img src="https://github.com/mokeyish/ngx-property-grid/raw/master/example.png" alt="jqPropertyGrid" class="img-responsive"></li>

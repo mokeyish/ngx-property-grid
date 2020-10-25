@@ -24,23 +24,25 @@ import {PropertyValue} from './property-value';
             </tr>
 
             <ng-container *ngFor="let item of group.items">
-              <tr *ngIf="group.state">
-                <td [attr.colspan]="item.colSpan2 == true ? 2 : 1"
-                    class="property-grid-label"
-                    [style.cursor]="item.link ? 'pointer' : null"
-                    (click)="openLink(item.link)">
-                  {{item.name}}
-                  <span *ngIf="showHelp && item.showHelp && item.description" [title]="item.description">[?]</span>
-                </td>
-                <ng-container *ngIf="!item.colSpan2">
-                  <ng-container
-                    *ngTemplateOutlet="controlTemplate; context: {$implicit: item}">
+              <ng-container *ngIf="!hidden(item)">
+                <tr *ngIf="group.state">
+                  <td [attr.colspan]="item.colSpan2 == true ? 2 : 1"
+                      class="property-grid-label"
+                      [style.cursor]="item.link ? 'pointer' : null"
+                      (click)="openLink(item.link)">
+                    {{item.name}}
+                    <span *ngIf="showHelp && item.showHelp && item.description" [title]="item.description">[?]</span>
+                  </td>
+                  <ng-container *ngIf="!item.colSpan2">
+                    <ng-container
+                      *ngTemplateOutlet="controlTemplate; context: {$implicit: item}">
+                    </ng-container>
                   </ng-container>
-                </ng-container>
-              </tr>
-              <tr *ngIf="group.state && item.colSpan2">
-                <ng-container *ngTemplateOutlet="controlTemplate; context: {$implicit: item}"></ng-container>
-              </tr>
+                </tr>
+                <tr *ngIf="group.state && item.colSpan2">
+                  <ng-container *ngTemplateOutlet="controlTemplate; context: {$implicit: item}"></ng-container>
+                </tr>
+              </ng-container>
             </ng-container>
           </ng-container>
           </tbody>
@@ -48,21 +50,24 @@ import {PropertyValue} from './property-value';
       </div>
 
       <div *ngFor="let item of subItems" class="internal-property-grid" [ngClass]="cardStyle ? 'card' : null">
-        <div (click)="pg.toggle()" class="property-grid-header"
-             [ngClass]="cardStyle ? null : 'property-grid-header-margin'">
-          <b>{{item.name}}</b>
-        </div>
-        <ngx-property-grid
-          [showHelp]="showHelp"
-          [state]="item.initState"
-          [@collapseAnimation]="pg.state"
-          [options]="options[item.key]"
-          [width]="width"
-          [labelWidth]="labelWidth"
-          [templateMap]="templateMap"
-          style="display: block;overflow: hidden"
-          #pg>
-        </ngx-property-grid>
+        <ng-container *ngIf="!hidden(item)">
+
+          <div (click)="pg.toggle()" class="property-grid-header"
+               [ngClass]="cardStyle ? null : 'property-grid-header-margin'">
+            <b>{{item.name}}</b>
+          </div>
+          <ngx-property-grid
+            [showHelp]="showHelp"
+            [collapse]="item.collapse"
+            [@collapseAnimation]="pg.collapse ? 'hidden' : 'visible' "
+            [options]="options[item.key]"
+            [width]="width"
+            [labelWidth]="labelWidth"
+            [templateMap]="templateMap"
+            style="display: block;overflow: hidden"
+            #pg>
+          </ngx-property-grid>
+        </ng-container>
       </div>
     </div>
 
@@ -232,7 +237,7 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
   public templateMap: { [key: string]: TemplateRef<any> };
 
   @Input()
-  public state: 'hidden' | 'visible' = 'visible';
+  public collapse = true;
 
   @Input()
   width: string | number;
@@ -334,12 +339,22 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     return 'templateNotFound';
   }
 
+  public hidden(meta: PropertyItemMeta): boolean {
+    if (typeof meta.hidden === 'boolean') {
+      return meta.hidden;
+    }
+    if (typeof meta.hidden === 'function') {
+      return meta.hidden(this._options);
+    }
+    return false;
+  }
+
   public propertyValue(meta: PropertyItemMeta): PropertyValue {
     return new PropertyValue(this.options, meta);
   }
 
   public toggle(): void {
-    this.state = this.state === 'visible' ? 'hidden' : 'visible';
+    this.collapse = !this.collapse;
   }
 
   private initMeta(): void {
@@ -356,9 +371,6 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
         continue;
       }
       const v: PropertyItemMeta = meta[i];
-      if (v.hidden) {
-        continue;
-      }
       if (v.type === 'subItems') {
         subItems.push(v);
         continue;

@@ -135,7 +135,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="406" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:406</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="418" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:418</a></div>
                             </td>
                         </tr>
 
@@ -205,7 +205,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="399" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:399</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="411" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:411</a></div>
                             </td>
                         </tr>
 
@@ -233,7 +233,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="408" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:408</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="420" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:420</a></div>
                             </td>
                         </tr>
 
@@ -260,7 +260,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="402" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:402</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="414" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:414</a></div>
                             </td>
                         </tr>
 
@@ -293,7 +293,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="400" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:400</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="412" class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:412</a></div>
                             </td>
                         </tr>
 
@@ -331,8 +331,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="404"
-                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:404</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="416"
+                            class="link-to-prism">projects/ngx-property-grid/src/lib/property-grid.component.ts:416</a></div>
                 </td>
             </tr>
 
@@ -384,23 +384,25 @@ import {PropertyValue} from &#x27;./property-value&#x27;;
             &lt;/tr&gt;
 
             &lt;ng-container *ngFor&#x3D;&quot;let item of group.items&quot;&gt;
-              &lt;tr *ngIf&#x3D;&quot;group.state&quot;&gt;
-                &lt;td [attr.colspan]&#x3D;&quot;item.colSpan2 &#x3D;&#x3D; true ? 2 : 1&quot;
-                    class&#x3D;&quot;property-grid-label&quot;
-                    [style.cursor]&#x3D;&quot;item.link ? &#x27;pointer&#x27; : null&quot;
-                    (click)&#x3D;&quot;openLink(item.link)&quot;&gt;
-                  {{item.name}}
-                  &lt;span *ngIf&#x3D;&quot;showHelp &amp;&amp; item.showHelp &amp;&amp; item.description&quot; [title]&#x3D;&quot;item.description&quot;&gt;[?]&lt;/span&gt;
-                &lt;/td&gt;
-                &lt;ng-container *ngIf&#x3D;&quot;!item.colSpan2&quot;&gt;
-                  &lt;ng-container
-                    *ngTemplateOutlet&#x3D;&quot;controlTemplate; context: {$implicit: item}&quot;&gt;
+              &lt;ng-container *ngIf&#x3D;&quot;!hidden(item)&quot;&gt;
+                &lt;tr *ngIf&#x3D;&quot;group.state&quot;&gt;
+                  &lt;td [attr.colspan]&#x3D;&quot;item.colSpan2 &#x3D;&#x3D; true ? 2 : 1&quot;
+                      class&#x3D;&quot;property-grid-label&quot;
+                      [style.cursor]&#x3D;&quot;item.link ? &#x27;pointer&#x27; : null&quot;
+                      (click)&#x3D;&quot;openLink(item.link)&quot;&gt;
+                    {{item.name}}
+                    &lt;span *ngIf&#x3D;&quot;showHelp &amp;&amp; item.showHelp &amp;&amp; item.description&quot; [title]&#x3D;&quot;item.description&quot;&gt;[?]&lt;/span&gt;
+                  &lt;/td&gt;
+                  &lt;ng-container *ngIf&#x3D;&quot;!item.colSpan2&quot;&gt;
+                    &lt;ng-container
+                      *ngTemplateOutlet&#x3D;&quot;controlTemplate; context: {$implicit: item}&quot;&gt;
+                    &lt;/ng-container&gt;
                   &lt;/ng-container&gt;
-                &lt;/ng-container&gt;
-              &lt;/tr&gt;
-              &lt;tr *ngIf&#x3D;&quot;group.state &amp;&amp; item.colSpan2&quot;&gt;
-                &lt;ng-container *ngTemplateOutlet&#x3D;&quot;controlTemplate; context: {$implicit: item}&quot;&gt;&lt;/ng-container&gt;
-              &lt;/tr&gt;
+                &lt;/tr&gt;
+                &lt;tr *ngIf&#x3D;&quot;group.state &amp;&amp; item.colSpan2&quot;&gt;
+                  &lt;ng-container *ngTemplateOutlet&#x3D;&quot;controlTemplate; context: {$implicit: item}&quot;&gt;&lt;/ng-container&gt;
+                &lt;/tr&gt;
+              &lt;/ng-container&gt;
             &lt;/ng-container&gt;
           &lt;/ng-container&gt;
           &lt;/tbody&gt;
@@ -408,29 +410,32 @@ import {PropertyValue} from &#x27;./property-value&#x27;;
       &lt;/div&gt;
 
       &lt;div *ngFor&#x3D;&quot;let item of subItems&quot; class&#x3D;&quot;internal-property-grid&quot; [ngClass]&#x3D;&quot;cardStyle ? &#x27;card&#x27; : null&quot;&gt;
-        &lt;div (click)&#x3D;&quot;pg.toggle()&quot; class&#x3D;&quot;property-grid-header&quot;
-             [ngClass]&#x3D;&quot;cardStyle ? null : &#x27;property-grid-header-margin&#x27;&quot;&gt;
-          &lt;b&gt;{{item.name}}&lt;/b&gt;
-        &lt;/div&gt;
-        &lt;ngx-property-grid
-          [showHelp]&#x3D;&quot;showHelp&quot;
-          [state]&#x3D;&quot;item.initState&quot;
-          [@collapseAnimation]&#x3D;&quot;pg.state&quot;
-          [options]&#x3D;&quot;options[item.key]&quot;
-          [width]&#x3D;&quot;width&quot;
-          [labelWidth]&#x3D;&quot;labelWidth&quot;
-          [templateMap]&#x3D;&quot;templateMap&quot;
-          style&#x3D;&quot;display: block;overflow: hidden&quot;
-          #pg&gt;
-        &lt;/ngx-property-grid&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;!hidden(item)&quot;&gt;
+
+          &lt;div (click)&#x3D;&quot;pg.toggle()&quot; class&#x3D;&quot;property-grid-header&quot;
+               [ngClass]&#x3D;&quot;cardStyle ? null : &#x27;property-grid-header-margin&#x27;&quot;&gt;
+            &lt;b&gt;{{item.name}}&lt;/b&gt;
+          &lt;/div&gt;
+          &lt;ngx-property-grid
+            [showHelp]&#x3D;&quot;showHelp&quot;
+            [collapse]&#x3D;&quot;item.collapse&quot;
+            [@collapseAnimation]&#x3D;&quot;pg.collapse ? &#x27;hidden&#x27; : &#x27;visible&#x27; &quot;
+            [options]&#x3D;&quot;options[item.key]&quot;
+            [width]&#x3D;&quot;width&quot;
+            [labelWidth]&#x3D;&quot;labelWidth&quot;
+            [templateMap]&#x3D;&quot;templateMap&quot;
+            style&#x3D;&quot;display: block;overflow: hidden&quot;
+            #pg&gt;
+          &lt;/ngx-property-grid&gt;
+        &lt;/ng-container&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 
 
     &lt;ng-template #controlTemplate let-item&gt;
-      &lt;td [ngSwitch]&#x3D;&quot;controlType(item)&quot; [attr.colspan]&#x3D;&quot;item.colSpan2 &#x3D;&#x3D; true ? 2 : 1&quot; class&#x3D;&quot;property-grid-control&quot;&gt;
+      &lt;td [ngSwitch]&#x3D;&quot;controlType(item)&quot; [attr.colspan]&#x3D;&quot;$any(item).colSpan2 &#x3D;&#x3D; true ? 2 : 1&quot; class&#x3D;&quot;property-grid-control&quot;&gt;
         &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;template&#x27;&quot;&gt;
-          &lt;ng-container *ngTemplateOutlet&#x3D;&quot;getTemplate(item.type); context: {$implicit: propertyValue(item)}&quot;&gt;
+          &lt;ng-container *ngTemplateOutlet&#x3D;&quot;getTemplate($any(item).type); context: {$implicit: propertyValue(item)}&quot;&gt;
           &lt;/ng-container&gt;
         &lt;/ng-container&gt;
 
@@ -450,28 +455,28 @@ import {PropertyValue} from &#x27;./property-value&#x27;;
     &lt;ng-container *ngIf&#x3D;&quot;!isInternal&quot;&gt;
 
       &lt;ng-template ngxTemplate&#x3D;&quot;checkbox&quot; let-p&gt;
-        &lt;input type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;p.value&quot;/&gt;
+        &lt;input type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;$any(p).value&quot;/&gt;
       &lt;/ng-template&gt;
 
       &lt;ng-template ngxTemplate&#x3D;&quot;color&quot; let-p&gt;
-        &lt;input type&#x3D;&quot;color&quot; [(ngModel)]&#x3D;&quot;p.value&quot;/&gt;
+        &lt;input type&#x3D;&quot;color&quot; [(ngModel)]&#x3D;&quot;$any(p).value&quot;/&gt;
       &lt;/ng-template&gt;
 
       &lt;ng-template ngxTemplate&#x3D;&quot;date&quot; let-p&gt;
-        &lt;input type&#x3D;&quot;date&quot; [(ngModel)]&#x3D;&quot;p.value&quot;/&gt;
+        &lt;input type&#x3D;&quot;date&quot; [(ngModel)]&#x3D;&quot;$any(p).value&quot;/&gt;
       &lt;/ng-template&gt;
 
       &lt;ng-template ngxTemplate&#x3D;&quot;label&quot; let-p&gt;
-        &lt;label&gt;{{p.value}}&lt;/label&gt;
+        &lt;label&gt;{{$any(p).value}}&lt;/label&gt;
       &lt;/ng-template&gt;
 
       &lt;ng-template ngxTemplate&#x3D;&quot;text&quot; let-p&gt;
-        &lt;input type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;p.value&quot;/&gt;
+        &lt;input type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;$any(p).value&quot;/&gt;
       &lt;/ng-template&gt;
 
       &lt;ng-template ngxTemplate&#x3D;&quot;options&quot; let-p&gt;
-        &lt;select [(ngModel)]&#x3D;&quot;p.value&quot;&gt;
-          &lt;option [value]&#x3D;&quot;optionValue(option)&quot; *ngFor&#x3D;&quot;let option of p.meta.options&quot;&gt;
+        &lt;select [(ngModel)]&#x3D;&quot;$any(p).value&quot;&gt;
+          &lt;option [value]&#x3D;&quot;optionValue(option)&quot; *ngFor&#x3D;&quot;let option of $any(p).options&quot;&gt;
             {{optionLabel(option)}}
           &lt;/option&gt;
         &lt;/select&gt;
@@ -592,7 +597,7 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
   public templateMap: { [key: string]: TemplateRef&lt;any&gt; };
 
   @Input()
-  public state: &#x27;hidden&#x27; | &#x27;visible&#x27; &#x3D; &#x27;visible&#x27;;
+  public collapse &#x3D; true;
 
   @Input()
   width: string | number;
@@ -694,12 +699,22 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     return &#x27;templateNotFound&#x27;;
   }
 
+  public hidden(meta: PropertyItemMeta): boolean {
+    if (typeof meta.hidden &#x3D;&#x3D;&#x3D; &#x27;boolean&#x27;) {
+      return meta.hidden;
+    }
+    if (typeof meta.hidden &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+      return meta.hidden(this._options);
+    }
+    return false;
+  }
+
   public propertyValue(meta: PropertyItemMeta): PropertyValue {
     return new PropertyValue(this.options, meta);
   }
 
   public toggle(): void {
-    this.state &#x3D; this.state &#x3D;&#x3D;&#x3D; &#x27;visible&#x27; ? &#x27;hidden&#x27; : &#x27;visible&#x27;;
+    this.collapse &#x3D; !this.collapse;
   }
 
   private initMeta(): void {
@@ -716,9 +731,6 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
         continue;
       }
       const v: PropertyItemMeta &#x3D; meta[i];
-      if (v.hidden) {
-        continue;
-      }
       if (v.type &#x3D;&#x3D;&#x3D; &#x27;subItems&#x27;) {
         subItems.push(v);
         continue;

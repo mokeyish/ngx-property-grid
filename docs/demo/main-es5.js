@@ -294,7 +294,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }
 
-    function PropertyGridComponent_ng_container_4_ng_container_2_tr_1_span_3_Template(rf, ctx) {
+    function PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_1_span_3_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 10);
 
@@ -304,13 +304,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
+        var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3).$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", item_r12.description);
       }
     }
 
-    function PropertyGridComponent_ng_container_4_ng_container_2_tr_1_ng_container_4_ng_container_1_Template(rf, ctx) {
+    function PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_1_ng_container_4_ng_container_1_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](0);
       }
@@ -322,17 +322,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       };
     };
 
-    function PropertyGridComponent_ng_container_4_ng_container_2_tr_1_ng_container_4_Template(rf, ctx) {
+    function PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_1_ng_container_4_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_4_ng_container_2_tr_1_ng_container_4_ng_container_1_Template, 1, 0, "ng-container", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_1_ng_container_4_ng_container_1_Template, 1, 0, "ng-container", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
       }
 
       if (rf & 2) {
-        var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
+        var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3).$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
@@ -344,39 +344,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }
 
-    function PropertyGridComponent_ng_container_4_ng_container_2_tr_1_Template(rf, ctx) {
+    function PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 8);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function PropertyGridComponent_ng_container_4_ng_container_2_tr_1_Template_td_click_1_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_1_Template_td_click_1_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23);
 
-          var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+          var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
 
-          var ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r20.openLink(item_r12.link);
+          return ctx_r21.openLink(item_r12.link);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, PropertyGridComponent_ng_container_4_ng_container_2_tr_1_span_3_Template, 2, 1, "span", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_1_span_3_Template, 2, 1, "span", 9);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, PropertyGridComponent_ng_container_4_ng_container_2_tr_1_ng_container_4_Template, 2, 4, "ng-container", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_1_ng_container_4_Template, 2, 4, "ng-container", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
 
-        var ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -390,7 +390,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r13.showHelp && item_r12.showHelp && item_r12.description);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r14.showHelp && item_r12.showHelp && item_r12.description);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -398,23 +398,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }
 
-    function PropertyGridComponent_ng_container_4_ng_container_2_tr_2_ng_container_1_Template(rf, ctx) {
+    function PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_2_ng_container_1_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](0);
       }
     }
 
-    function PropertyGridComponent_ng_container_4_ng_container_2_tr_2_Template(rf, ctx) {
+    function PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_2_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_4_ng_container_2_tr_2_ng_container_1_Template, 1, 0, "ng-container", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_2_ng_container_1_Template, 1, 0, "ng-container", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
@@ -426,19 +426,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }
 
-    function PropertyGridComponent_ng_container_4_ng_container_2_Template(rf, ctx) {
+    function PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_4_ng_container_2_tr_1_Template, 5, 6, "tr", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_1_Template, 5, 6, "tr", 6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PropertyGridComponent_ng_container_4_ng_container_2_tr_2_Template, 2, 4, "tr", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_tr_2_Template, 2, 4, "tr", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
       }
 
       if (rf & 2) {
-        var item_r12 = ctx.$implicit;
+        var item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
         var group_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
@@ -452,13 +452,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }
 
+    function PropertyGridComponent_ng_container_4_ng_container_2_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_4_ng_container_2_ng_container_1_Template, 3, 2, "ng-container", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+      }
+
+      if (rf & 2) {
+        var item_r12 = ctx.$implicit;
+
+        var ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r7.hidden(item_r12));
+      }
+    }
+
     function PropertyGridComponent_ng_container_4_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_4_tr_1_Template, 3, 1, "tr", 6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PropertyGridComponent_ng_container_4_ng_container_2_Template, 3, 2, "ng-container", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PropertyGridComponent_ng_container_4_ng_container_2_Template, 2, 1, "ng-container", 3);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
       }
@@ -476,20 +496,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }
 
-    function PropertyGridComponent_div_5_Template(rf, ctx) {
+    function PropertyGridComponent_div_5_ng_container_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 13);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function PropertyGridComponent_div_5_Template_div_click_1_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function PropertyGridComponent_div_5_ng_container_1_Template_div_click_1_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r33);
 
-          var _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](5);
+          var _r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](5);
 
-          return _r28.toggle();
+          return _r31.toggle();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "b");
@@ -502,13 +522,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "ngx-property-grid", 14, 15);
 
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+      }
+
+      if (rf & 2) {
+        var _r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](5);
+
+        var item_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+
+        var ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r30.cardStyle ? null : "property-grid-header-margin");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](item_r29.name);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("showHelp", ctx_r30.showHelp)("collapse", item_r29.collapse)("@collapseAnimation", _r31.collapse ? "hidden" : "visible")("options", ctx_r30.options[item_r29.key])("width", ctx_r30.width)("labelWidth", ctx_r30.labelWidth)("templateMap", ctx_r30.templateMap);
+      }
+    }
+
+    function PropertyGridComponent_div_5_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 12);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_div_5_ng_container_1_Template, 6, 9, "ng-container", 6);
+
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var item_r27 = ctx.$implicit;
-
-        var _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](5);
+        var item_r29 = ctx.$implicit;
 
         var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
@@ -516,15 +564,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r1.cardStyle ? null : "property-grid-header-margin");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](item_r27.name);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("showHelp", ctx_r1.showHelp)("state", item_r27.initState)("@collapseAnimation", _r28.state)("options", ctx_r1.options[item_r27.key])("width", ctx_r1.width)("labelWidth", ctx_r1.labelWidth)("templateMap", ctx_r1.templateMap);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r1.hidden(item_r29));
       }
     }
 
@@ -544,13 +584,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var item_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var item_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngTemplateOutlet", ctx_r32.getTemplate(item_r31.type))("ngTemplateOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, ctx_r32.propertyValue(item_r31)));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngTemplateOutlet", ctx_r36.getTemplate(item_r35.type))("ngTemplateOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, ctx_r36.propertyValue(item_r35)));
       }
     }
 
@@ -560,11 +600,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var item_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var item_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dynamicComponentLoad", item_r31)("options", ctx_r33.options);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dynamicComponentLoad", item_r35)("options", ctx_r37.options);
       }
     }
 
@@ -578,11 +618,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var item_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var item_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", item_r31.type, " template Not Found ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", item_r35.type, " template Not Found ");
       }
     }
 
@@ -600,13 +640,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var item_r31 = ctx.$implicit;
+        var item_r35 = ctx.$implicit;
 
         var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitch", ctx_r3.controlType(item_r31));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitch", ctx_r3.controlType(item_r35));
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("colspan", item_r31.colSpan2 == true ? 2 : 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("colspan", item_r35.colSpan2 == true ? 2 : 1);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -624,98 +664,57 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function PropertyGridComponent_ng_container_8_ng_template_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r47 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r51 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 26);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_1_Template_input_ngModelChange_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r47);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r51);
 
-          var p_r45 = ctx.$implicit;
-          return p_r45.value = $event;
+          var p_r49 = ctx.$implicit;
+          return p_r49.value = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var p_r45 = ctx.$implicit;
+        var p_r49 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r45.value);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r49.value);
       }
     }
 
     function PropertyGridComponent_ng_container_8_ng_template_2_Template(rf, ctx) {
       if (rf & 1) {
-        var _r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r54 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 27);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_2_Template_input_ngModelChange_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r54);
 
-          var p_r48 = ctx.$implicit;
-          return p_r48.value = $event;
+          var p_r52 = ctx.$implicit;
+          return p_r52.value = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var p_r48 = ctx.$implicit;
+        var p_r52 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r48.value);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r52.value);
       }
     }
 
     function PropertyGridComponent_ng_container_8_ng_template_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r53 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r57 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 28);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_3_Template_input_ngModelChange_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r53);
-
-          var p_r51 = ctx.$implicit;
-          return p_r51.value = $event;
-        });
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      }
-
-      if (rf & 2) {
-        var p_r51 = ctx.$implicit;
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r51.value);
-      }
-    }
-
-    function PropertyGridComponent_ng_container_8_ng_template_4_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      }
-
-      if (rf & 2) {
-        var p_r54 = ctx.$implicit;
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](p_r54.value);
-      }
-    }
-
-    function PropertyGridComponent_ng_container_8_ng_template_5_Template(rf, ctx) {
-      if (rf & 1) {
-        var _r57 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 29);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_5_Template_input_ngModelChange_0_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r57);
 
           var p_r55 = ctx.$implicit;
@@ -732,6 +731,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }
 
+    function PropertyGridComponent_ng_container_8_ng_template_4_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var p_r58 = ctx.$implicit;
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](p_r58.value);
+      }
+    }
+
+    function PropertyGridComponent_ng_container_8_ng_template_5_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r61 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 29);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_5_Template_input_ngModelChange_0_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r61);
+
+          var p_r59 = ctx.$implicit;
+          return p_r59.value = $event;
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var p_r59 = ctx.$implicit;
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r59.value);
+      }
+    }
+
     function PropertyGridComponent_ng_container_8_ng_template_6_option_1_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 32);
@@ -742,29 +782,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var option_r60 = ctx.$implicit;
+        var option_r64 = ctx.$implicit;
 
-        var ctx_r59 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
+        var ctx_r63 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx_r59.optionValue(option_r60));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx_r63.optionValue(option_r64));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r59.optionLabel(option_r60), " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r63.optionLabel(option_r64), " ");
       }
     }
 
     function PropertyGridComponent_ng_container_8_ng_template_6_Template(rf, ctx) {
       if (rf & 1) {
-        var _r62 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r66 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "select", 30);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PropertyGridComponent_ng_container_8_ng_template_6_Template_select_ngModelChange_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r62);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r66);
 
-          var p_r58 = ctx.$implicit;
-          return p_r58.value = $event;
+          var p_r62 = ctx.$implicit;
+          return p_r62.value = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyGridComponent_ng_container_8_ng_template_6_option_1_Template, 2, 2, "option", 31);
@@ -773,13 +813,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var p_r58 = ctx.$implicit;
+        var p_r62 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r58.value);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", p_r62.value);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", p_r58.meta.options);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", p_r62.options);
       }
     }
 
@@ -810,7 +850,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.cdr = cdr;
         this._templateLoaded = false;
         this.isInternal = false;
-        this.state = 'visible';
+        this.collapse = true;
         this.labelWidth = '120px';
         this.cardStyle = true;
         this.groupCollapse = false;
@@ -882,6 +922,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return 'templateNotFound';
         }
       }, {
+        key: "hidden",
+        value: function hidden(meta) {
+          if (typeof meta.hidden === 'boolean') {
+            return meta.hidden;
+          }
+
+          if (typeof meta.hidden === 'function') {
+            return meta.hidden(this._options);
+          }
+
+          return false;
+        }
+      }, {
         key: "propertyValue",
         value: function propertyValue(meta) {
           return new _property_value__WEBPACK_IMPORTED_MODULE_3__["PropertyValue"](this.options, meta);
@@ -889,7 +942,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "toggle",
         value: function toggle() {
-          this.state = this.state === 'visible' ? 'hidden' : 'visible';
+          this.collapse = !this.collapse;
         }
       }, {
         key: "initMeta",
@@ -910,10 +963,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var v = meta[i];
-
-            if (v.hidden) {
-              return "continue";
-            }
 
             if (v.type === 'subItems') {
               subItems.push(v);
@@ -1032,7 +1081,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       },
       inputs: {
         templateMap: "templateMap",
-        state: "state",
+        collapse: "collapse",
         width: "width",
         labelWidth: "labelWidth",
         cardStyle: "cardStyle",
@@ -1043,7 +1092,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       },
       decls: 9,
       vars: 9,
-      consts: [[1, "property-grid", 3, "ngClass"], [3, "ngClass"], [1, "property-grid-table"], [4, "ngFor", "ngForOf"], ["class", "internal-property-grid", 3, "ngClass", 4, "ngFor", "ngForOf"], ["controlTemplate", ""], [4, "ngIf"], ["colspan", "2", 1, "property-grid-group", 3, "click"], [1, "property-grid-label", 3, "click"], [3, "title", 4, "ngIf"], [3, "title"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "internal-property-grid", 3, "ngClass"], [1, "property-grid-header", 3, "ngClass", "click"], [2, "display", "block", "overflow", "hidden", 3, "showHelp", "state", "options", "width", "labelWidth", "templateMap"], ["pg", ""], [1, "property-grid-control", 3, "ngSwitch"], [4, "ngSwitchCase"], [3, "dynamicComponentLoad", "options", 4, "ngSwitchCase"], [3, "dynamicComponentLoad", "options"], ["ngxTemplate", "checkbox"], ["ngxTemplate", "color"], ["ngxTemplate", "date"], ["ngxTemplate", "label"], ["ngxTemplate", "text"], ["ngxTemplate", "options"], ["type", "checkbox", 3, "ngModel", "ngModelChange"], ["type", "color", 3, "ngModel", "ngModelChange"], ["type", "date", 3, "ngModel", "ngModelChange"], ["type", "text", 3, "ngModel", "ngModelChange"], [3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"]],
+      consts: [[1, "property-grid", 3, "ngClass"], [3, "ngClass"], [1, "property-grid-table"], [4, "ngFor", "ngForOf"], ["class", "internal-property-grid", 3, "ngClass", 4, "ngFor", "ngForOf"], ["controlTemplate", ""], [4, "ngIf"], ["colspan", "2", 1, "property-grid-group", 3, "click"], [1, "property-grid-label", 3, "click"], [3, "title", 4, "ngIf"], [3, "title"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "internal-property-grid", 3, "ngClass"], [1, "property-grid-header", 3, "ngClass", "click"], [2, "display", "block", "overflow", "hidden", 3, "showHelp", "collapse", "options", "width", "labelWidth", "templateMap"], ["pg", ""], [1, "property-grid-control", 3, "ngSwitch"], [4, "ngSwitchCase"], [3, "dynamicComponentLoad", "options", 4, "ngSwitchCase"], [3, "dynamicComponentLoad", "options"], ["ngxTemplate", "checkbox"], ["ngxTemplate", "color"], ["ngxTemplate", "date"], ["ngxTemplate", "label"], ["ngxTemplate", "text"], ["ngxTemplate", "options"], ["type", "checkbox", 3, "ngModel", "ngModelChange"], ["type", "color", 3, "ngModel", "ngModelChange"], ["type", "date", 3, "ngModel", "ngModelChange"], ["type", "text", 3, "ngModel", "ngModelChange"], [3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"]],
       template: function PropertyGridComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -1062,7 +1111,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, PropertyGridComponent_div_5_Template, 6, 10, "div", 4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, PropertyGridComponent_div_5_Template, 2, 2, "div", 4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1120,7 +1169,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           selector: 'ngx-property-grid',
-          template: "\n    <div class=\"property-grid\" [ngClass]=\"!isInternal && !cardStyle ? 'property-grid-border': null\" [style.width]=\"width\">\n      <div [ngClass]=\"cardStyle ? 'card' : null\">\n        <table class=\"property-grid-table\" [style.width]=\"width\">\n          <tbody>\n          <ng-container *ngFor=\"let group of groups\">\n            <tr *ngIf=\"group.name\">\n              <td colspan=\"2\" class=\"property-grid-group\" (click)=\"groupCollapse && group.toggle()\">{{group.name}}</td>\n            </tr>\n\n            <ng-container *ngFor=\"let item of group.items\">\n              <tr *ngIf=\"group.state\">\n                <td [attr.colspan]=\"item.colSpan2 == true ? 2 : 1\"\n                    class=\"property-grid-label\"\n                    [style.cursor]=\"item.link ? 'pointer' : null\"\n                    (click)=\"openLink(item.link)\">\n                  {{item.name}}\n                  <span *ngIf=\"showHelp && item.showHelp && item.description\" [title]=\"item.description\">[?]</span>\n                </td>\n                <ng-container *ngIf=\"!item.colSpan2\">\n                  <ng-container\n                    *ngTemplateOutlet=\"controlTemplate; context: {$implicit: item}\">\n                  </ng-container>\n                </ng-container>\n              </tr>\n              <tr *ngIf=\"group.state && item.colSpan2\">\n                <ng-container *ngTemplateOutlet=\"controlTemplate; context: {$implicit: item}\"></ng-container>\n              </tr>\n            </ng-container>\n          </ng-container>\n          </tbody>\n        </table>\n      </div>\n\n      <div *ngFor=\"let item of subItems\" class=\"internal-property-grid\" [ngClass]=\"cardStyle ? 'card' : null\">\n        <div (click)=\"pg.toggle()\" class=\"property-grid-header\"\n             [ngClass]=\"cardStyle ? null : 'property-grid-header-margin'\">\n          <b>{{item.name}}</b>\n        </div>\n        <ngx-property-grid\n          [showHelp]=\"showHelp\"\n          [state]=\"item.initState\"\n          [@collapseAnimation]=\"pg.state\"\n          [options]=\"options[item.key]\"\n          [width]=\"width\"\n          [labelWidth]=\"labelWidth\"\n          [templateMap]=\"templateMap\"\n          style=\"display: block;overflow: hidden\"\n          #pg>\n        </ngx-property-grid>\n      </div>\n    </div>\n\n\n    <ng-template #controlTemplate let-item>\n      <td [ngSwitch]=\"controlType(item)\" [attr.colspan]=\"item.colSpan2 == true ? 2 : 1\" class=\"property-grid-control\">\n        <ng-container *ngSwitchCase=\"'template'\">\n          <ng-container *ngTemplateOutlet=\"getTemplate(item.type); context: {$implicit: propertyValue(item)}\">\n          </ng-container>\n        </ng-container>\n\n        <ng-container\n          *ngSwitchCase=\"'dynamicComponent'\"\n          [dynamicComponentLoad]=\"item\"\n          [options]=\"options\">\n        </ng-container>\n\n        <span *ngSwitchCase=\"'templateNotFound'\">\n          {{item.type}} template Not Found\n        </span>\n      </td>\n    </ng-template>\n\n\n    <ng-container *ngIf=\"!isInternal\">\n\n      <ng-template ngxTemplate=\"checkbox\" let-p>\n        <input type=\"checkbox\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"color\" let-p>\n        <input type=\"color\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"date\" let-p>\n        <input type=\"date\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"label\" let-p>\n        <label>{{p.value}}</label>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"text\" let-p>\n        <input type=\"text\" [(ngModel)]=\"p.value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"options\" let-p>\n        <select [(ngModel)]=\"p.value\">\n          <option [value]=\"optionValue(option)\" *ngFor=\"let option of p.meta.options\">\n            {{optionLabel(option)}}\n          </option>\n        </select>\n      </ng-template>\n    </ng-container>\n  ",
+          template: "\n    <div class=\"property-grid\" [ngClass]=\"!isInternal && !cardStyle ? 'property-grid-border': null\" [style.width]=\"width\">\n      <div [ngClass]=\"cardStyle ? 'card' : null\">\n        <table class=\"property-grid-table\" [style.width]=\"width\">\n          <tbody>\n          <ng-container *ngFor=\"let group of groups\">\n            <tr *ngIf=\"group.name\">\n              <td colspan=\"2\" class=\"property-grid-group\" (click)=\"groupCollapse && group.toggle()\">{{group.name}}</td>\n            </tr>\n\n            <ng-container *ngFor=\"let item of group.items\">\n              <ng-container *ngIf=\"!hidden(item)\">\n                <tr *ngIf=\"group.state\">\n                  <td [attr.colspan]=\"item.colSpan2 == true ? 2 : 1\"\n                      class=\"property-grid-label\"\n                      [style.cursor]=\"item.link ? 'pointer' : null\"\n                      (click)=\"openLink(item.link)\">\n                    {{item.name}}\n                    <span *ngIf=\"showHelp && item.showHelp && item.description\" [title]=\"item.description\">[?]</span>\n                  </td>\n                  <ng-container *ngIf=\"!item.colSpan2\">\n                    <ng-container\n                      *ngTemplateOutlet=\"controlTemplate; context: {$implicit: item}\">\n                    </ng-container>\n                  </ng-container>\n                </tr>\n                <tr *ngIf=\"group.state && item.colSpan2\">\n                  <ng-container *ngTemplateOutlet=\"controlTemplate; context: {$implicit: item}\"></ng-container>\n                </tr>\n              </ng-container>\n            </ng-container>\n          </ng-container>\n          </tbody>\n        </table>\n      </div>\n\n      <div *ngFor=\"let item of subItems\" class=\"internal-property-grid\" [ngClass]=\"cardStyle ? 'card' : null\">\n        <ng-container *ngIf=\"!hidden(item)\">\n\n          <div (click)=\"pg.toggle()\" class=\"property-grid-header\"\n               [ngClass]=\"cardStyle ? null : 'property-grid-header-margin'\">\n            <b>{{item.name}}</b>\n          </div>\n          <ngx-property-grid\n            [showHelp]=\"showHelp\"\n            [collapse]=\"item.collapse\"\n            [@collapseAnimation]=\"pg.collapse ? 'hidden' : 'visible' \"\n            [options]=\"options[item.key]\"\n            [width]=\"width\"\n            [labelWidth]=\"labelWidth\"\n            [templateMap]=\"templateMap\"\n            style=\"display: block;overflow: hidden\"\n            #pg>\n          </ngx-property-grid>\n        </ng-container>\n      </div>\n    </div>\n\n\n    <ng-template #controlTemplate let-item>\n      <td [ngSwitch]=\"controlType(item)\" [attr.colspan]=\"$any(item).colSpan2 == true ? 2 : 1\" class=\"property-grid-control\">\n        <ng-container *ngSwitchCase=\"'template'\">\n          <ng-container *ngTemplateOutlet=\"getTemplate($any(item).type); context: {$implicit: propertyValue(item)}\">\n          </ng-container>\n        </ng-container>\n\n        <ng-container\n          *ngSwitchCase=\"'dynamicComponent'\"\n          [dynamicComponentLoad]=\"item\"\n          [options]=\"options\">\n        </ng-container>\n\n        <span *ngSwitchCase=\"'templateNotFound'\">\n          {{item.type}} template Not Found\n        </span>\n      </td>\n    </ng-template>\n\n\n    <ng-container *ngIf=\"!isInternal\">\n\n      <ng-template ngxTemplate=\"checkbox\" let-p>\n        <input type=\"checkbox\" [(ngModel)]=\"$any(p).value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"color\" let-p>\n        <input type=\"color\" [(ngModel)]=\"$any(p).value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"date\" let-p>\n        <input type=\"date\" [(ngModel)]=\"$any(p).value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"label\" let-p>\n        <label>{{$any(p).value}}</label>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"text\" let-p>\n        <input type=\"text\" [(ngModel)]=\"$any(p).value\"/>\n      </ng-template>\n\n      <ng-template ngxTemplate=\"options\" let-p>\n        <select [(ngModel)]=\"$any(p).value\">\n          <option [value]=\"optionValue(option)\" *ngFor=\"let option of $any(p).options\">\n            {{optionLabel(option)}}\n          </option>\n        </select>\n      </ng-template>\n    </ng-container>\n  ",
           styles: ["\n      .property-grid {\n        /*border: solid 1px #95B8E7;*/\n      }\n\n      .property-grid-border {\n        border: 1px solid #d6d6d678\n      }\n\n      .property-grid-table {\n        border-spacing: 0;\n        padding: 5px\n      }\n\n      .property-grid-group {\n        background-color: white;\n        font-weight: bold;\n        color: #616161;\n        padding-top: 8px;\n        padding-bottom: 5px;\n      }\n\n      .property-grid-label, .property-grid-control {\n        border: dotted 1px #ccc;\n        padding: 2px 5px;\n      }\n\n      .internal-property-grid {\n        margin-top: 12px;\n      }\n\n      .internal-property-grid .property-grid {\n        border-width: 0;\n      }\n\n      .internal-property-grid .property-grid-header {\n        margin-bottom: 5px;\n        background-color: #f5f5f5;\n        padding-bottom: 5px;\n        padding-top: 5px;\n        padding-left: 5px;\n        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n        -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);\n        width: 100%;\n      }\n\n      .internal-property-grid .property-grid-header-margin {\n        margin-left: 5px;\n        margin-right: 5px;\n        width: unset;\n      }\n\n      .internal-property-grid .property-grid-table {\n        border-width: 0;\n        /*border-top: 1px solid #dbdbdb;*/\n      }\n\n      .card {\n        background-color: #fff;\n        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);\n        display: flex;\n        flex-flow: row wrap;\n        /*margin: 5px 20px;*/\n        padding: 0;\n      }\n\n      .internal-property-grid ngx-property-grid .card {\n        background-color: unset;\n        box-shadow: unset;\n        display: unset;\n        flex-flow: unset;\n        /*margin: 5px 20px;*/\n        padding: unset;\n      }\n    "],
           animations: [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('collapseAnimation', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('hidden', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
             height: '0'
@@ -1144,7 +1193,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         templateMap: [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }],
-        state: [{
+        collapse: [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }],
         width: [{
@@ -1331,8 +1380,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           itemMeta.valueConvert = parseInt;
         }
 
-        if (!itemMeta.initState) {
-          itemMeta.initState = 'hidden';
+        if (itemMeta.collapse === undefined) {
+          itemMeta.collapse = true;
         }
 
         if (!itemMeta.order) {
@@ -1407,7 +1456,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return this.o[this.meta.key];
         },
         set: function set(val) {
-          this.o[this.meta.key] = this.meta.valueConvert ? this.meta.valueConvert(val) : val;
+          var oldValue = this.o[this.meta.key];
+          var newValue = this.meta.valueConvert ? this.meta.valueConvert(val) : val;
+          this.o[this.meta.key] = newValue;
+
+          if (this.meta.valueChanged) {
+            this.meta.valueChanged(newValue, oldValue);
+          }
+        }
+      }, {
+        key: "options",
+        get: function get() {
+          return this.meta.options;
         }
       }]);
 
@@ -1971,7 +2031,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(ngx_property_grid__WEBPACK_IMPORTED_MODULE_4__["meta"])({
       name: 'Editor Preference',
       type: 'subItems',
-      initState: 'visible'
+      collapse: true,
+      hidden: function hidden(s) {
+        return s.gender === 'male';
+      }
     })], ExampleStudentOptions.prototype, "editor", void 0);
     /***/
   },
@@ -2226,7 +2289,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /Users/yish/work/ngx-property-grid/src/main.ts */
+    /*! /home/yish/work/angular-work/ngx-property-grid/src/main.ts */
     "./src/main.ts");
     /***/
   }

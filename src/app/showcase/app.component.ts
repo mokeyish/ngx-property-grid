@@ -83,6 +83,6 @@ export class ExampleStudentOptions {
     @meta({name: 'Gender', group: 'Basic Information', type: 'sex', order: 3})
     gender = 'male';
 
-    @meta({name: 'Editor Preference', type: 'subItems', initState: 'visible'})
+    @meta({name: 'Editor Preference', type: 'subItems', collapse: true, hidden: (s: ExampleStudentOptions) => s.gender === 'male' })
     editor: ExampleEditorOptions = new ExampleEditorOptions();
 }
