@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 // noinspection ES6PreferShortImport
 import {PropertyGridComponent} from './property-grid.component';
@@ -7,7 +7,7 @@ describe('PropertyGridComponent', () => {
     let component: PropertyGridComponent;
     let fixture: ComponentFixture<PropertyGridComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [PropertyGridComponent]
         })

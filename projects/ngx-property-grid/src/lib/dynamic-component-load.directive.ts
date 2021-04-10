@@ -15,20 +15,21 @@ import { IDynamicComponent } from './dynamic-component';
 })
 export class DynamicComponentLoadDirective implements OnInit, OnDestroy {
   private readonly _controlValueChangeFn: (value: any) => void;
-  private component: ComponentRef<IDynamicComponent<any>>;
+  private component!: ComponentRef<IDynamicComponent<any>>;
   private get componentType(): Type<PropertyValueAccess> {
     return this.meta.type as Type<PropertyValueAccess>;
   }
 
-  @Input('dynamicComponentLoad') private meta: PropertyItemMeta;
+  @Input('dynamicComponentLoad') 
+  private meta!: PropertyItemMeta;
   @Input()
   public options: any;
 
   constructor(private entry: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {
     this._controlValueChangeFn = (value: any) => {
-      const oldValue = this.options[this.meta.key];
+      const oldValue = this.options[this.meta.key!];
       const newValue = this.meta.valueConvert ? this.meta.valueConvert(value) : value;
-      this.options[this.meta.key] = newValue;
+      this.options[this.meta.key!] = newValue;
       if (this.meta.valueChanged) {
         this.meta.valueChanged(newValue, oldValue);
       }
@@ -61,7 +62,7 @@ export class DynamicComponentLoadDirective implements OnInit, OnDestroy {
   }
 
   private initComponent(component: ComponentRef<PropertyValueAccess>) {
-    component.instance.value = this.options[this.meta.key]; 
+    component.instance.value = this.options[this.meta.key!]; 
     if (component.instance.registerOnChange) {
       component.instance.registerOnChange(this._controlValueChangeFn);
     }

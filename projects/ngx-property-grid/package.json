@@ -1,10 +1,11 @@
 {
-  "name": "ngx-property-grid",
-  "description": "A small and simple property grid in angular to view/edit POJOs, excellent if you have a \"settings\" object you want to give the user to edit.",
+  "name": "ngx-property-grid-sprotty",
+  "description": "Forked from ngx-property-grid - adds readonly property and ability to get meta data from a function not from property attributes.",
   "version": "9.0.5",
   "private": false,
   "authors": [
-    "mokeyish"
+    "mokeyish",
+    "sprotty"
   ],
   "keywords": [
     "angular",

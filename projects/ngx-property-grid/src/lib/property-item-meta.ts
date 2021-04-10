@@ -60,7 +60,7 @@ export const meta = (itemMeta: PropertyItemMeta) =>
     } else if (target.__proto__.__meta__ === __meta__) {
       const subMeta = Object.create(Object.getPrototypeOf(__meta__));
       Object.getOwnPropertyNames(__meta__).forEach(name => {
-        Object.defineProperty(subMeta, name, Object.getOwnPropertyDescriptor(__meta__, name));
+        Object.defineProperty(subMeta, name, Object.getOwnPropertyDescriptor(__meta__, name)!);
       });
       __meta__ = subMeta;
       target.__meta__ = __meta__;

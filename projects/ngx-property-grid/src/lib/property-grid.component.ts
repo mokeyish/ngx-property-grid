@@ -232,13 +232,13 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
   public readonly isInternal: boolean = false;
 
   @Input()
-  public templateMap: { [key: string]: TemplateRef<any> };
+  public templateMap!: { [key: string]: TemplateRef<any> };
 
   @Input()
   public state: 'hidden' | 'visible' = 'visible';
 
   @Input()
-  width: string | number;
+  width!: string | number;
 
 
   @Input()
@@ -263,19 +263,21 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     return this._options;
   }
 
-  onValueChanged():void{
+  onValueChanged(): void {
     this.initMeta();
-    this.cdr.detectChanges();
+    this.cdr.markForCheck();
   }
 
-  @ViewChildren(NgxTemplate) defaultTemplates: QueryList<NgxTemplate>;
-  @ContentChildren(NgxTemplate) templates: QueryList<NgxTemplate>;
+  @ViewChildren(NgxTemplate) defaultTemplates!: QueryList<NgxTemplate>;
+  @ContentChildren(NgxTemplate) templates!: QueryList<NgxTemplate>;
 
-  public groups: InternalGroup[];
-  public subItems: PropertyItemMeta[];
+  public groups!: InternalGroup[];
+  public subItems!: PropertyItemMeta[];
 
   constructor(el: ElementRef<HTMLElement>, private cdr: ChangeDetectorRef) {
-    this.isInternal = el.nativeElement.parentElement && el.nativeElement.parentElement.classList &&
+    this.isInternal =
+      el.nativeElement.parentElement != null &&
+      el.nativeElement.parentElement.classList &&
       el.nativeElement.parentElement.classList.contains('internal-property-grid');
   }
 
@@ -312,7 +314,7 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     }
   }
 
-  public getTemplate(type: string): TemplateRef<any> {
+  public getTemplate(type: string): TemplateRef<any> | undefined {
     if (typeof type === 'string' && this.templateMap) {
       return type ? this.templateMap[type] : this.templateMap.default;
     } else {
@@ -324,7 +326,7 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
     if (meta.type instanceof Type) {
       return 'dynamicComponent';
     }
-    if (this.getTemplate(meta.type)) {
+    if (this.getTemplate(meta.type!)) {
       return 'template';
     }
     return 'templateNotFound';
@@ -377,7 +379,7 @@ export class PropertyGridComponent implements AfterContentInit, AfterViewInit {
       }
       group.items.push(v);
     }
-    groups.forEach(o => o.items.sort((a, b) => a.order - b.order));
+    groups.forEach(o => o.items.sort((a, b) => (a.order??0) - (b.order??0)));
 
     this.groups = groups.filter(o => o.items.length > 0);
     this.subItems = subItems;
@@ -411,6 +413,6 @@ export class InternalGroup {
     this.state = !this.state;
   }
 
-  constructor(public name: string) {
+  constructor(public name: string|undefined) {
   }
 }
