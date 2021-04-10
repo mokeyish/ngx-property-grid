@@ -1,7 +1,7 @@
 {
   "name": "ngx-property-grid-sprotty",
   "description": "Forked from ngx-property-grid - adds readonly property and ability to get meta data from a function not from property attributes.",
-  "version": "9.0.5",
+  "version": "9.0.6",
   "private": false,
   "authors": [
     "mokeyish",
