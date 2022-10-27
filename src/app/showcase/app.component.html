@@ -4,7 +4,7 @@
 
         <ngx-property-grid [width]="'400px'" [options]="student" [showHelp]="true" [groupCollapse]="true" [cardStyle]="student.editor.cardStyle">
             <ng-template ngxTemplate="text" let-p>
-                <input type="text" [value]="p.value" (change)="p.value = $event.target.value">
+                <input type="text" [value]="p.value" (change)="p.value = $event.target.value" [disabled]="p.meta?.additional?.disabled">
             </ng-template>
             <ng-template ngxTemplate="fontSize" let-pp>
                 <input matInput type="number" placeholder="Value" [(ngModel)]="pp.value">
