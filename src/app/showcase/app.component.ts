@@ -77,6 +77,9 @@ export class ExampleStudentOptions {
     @meta({name: 'Age', group: 'Basic Information1', valueConvert: parseInt, type: 'text', order: 2})
     age = 19;
 
+    @meta({name: 'Id', group: 'Basic Information1', type: 'text', order: 3, additional: { disabled: true }})
+    id = '123456789';
+
     @meta({name: 'Telephone', type: 'telephone', group: 'Basic Information1', hidden: true})
     telephone;
 

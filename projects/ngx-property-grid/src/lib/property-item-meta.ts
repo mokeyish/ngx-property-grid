@@ -20,6 +20,7 @@ export interface PropertyItemMeta {
   valueChanged?: (newValue: any, oldValue: any) => void;
   showHelp?: boolean; // default True.
   link?: string; // help link
+  additional?: any; // additional data you can pass to the property
 }
 
 
