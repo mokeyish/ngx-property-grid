@@ -69,7 +69,7 @@
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "ng-json-view": "^3.0.0",
-    "ng-packagr": "^9.0.0",
+    "ng-packagr": "^10.1.1",
     "protractor": "~5.4.3",
     "rxjs": "~6.5.4",
     "ts-node": "~8.3.0",
